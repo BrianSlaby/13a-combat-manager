@@ -1230,32 +1230,112 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Derro Maniac",
+        type: "humanoid",
         level: 4,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+8",
         ac: 19,
         pd: 16,
         md: 18,
         hp: 52,
         health: 52,
-        attacks: ["Shortsword +9 vs AC - 12 damage. Natural 16+: The derro can cast one of the following close-quarters spells as a quick action this turn: Cloaking Dark: all nearby derro gain a +1 bonus to attacks and defenses until the end of the derro maniac's next turn (cumulative). Sonic Squeal: two random nearby non-derro creatures take 2D4 thunder damage.", "R: Light Repeating Crossbow +9 vs AC - 10 damage. Natural 16+: The target also takes 5 ongoing poison damage. Natural 19+: As above, and the derro maniac can make another light repeating crossbow attack as a free action."],
-        abilities: ["Derro Are Confused to Begin With: Confusion only affects derro if they secretely want to murder one of their own companions, a not uncommon condition."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Shortsword",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "12 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The derro can cast one of the following close-quarters spells as a quick action this turn: Cloaking Dark: all nearby Derro gain a +1 bonus to attacks and defenses until the end of the Derro Maniac's next turn (cumulative). Sonic Squeal: two random nearby non-derro creatures take 2D4 thunder damage."
+                    }
+                ]
+            },
+            {
+                type: "ranged",
+                name: "Light Repeating Crossbow",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "10 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The target also takes 5 ongoing poison damage."
+                    },
+                    {
+                        trigger: "Natural 19+",
+                        effect: "As above, and the derro maniac can make another light repeating crossbow attack as a free action."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Derro Are Confused to Begin With",
+                text: "Confusion only affects derro if they secretely want to murder one of their own companions, a not uncommon condition."
+            }
+        ],
         isStaggered: false,
         id: 28
     },
     
     {
         name: "Derro Sage",
+        type: "humanoid",
         level: 4,
-        type: "caster",
+        sizeOrStrength: "normal",
+        role: "caster",
         initiative: "+7",
         ac: 18,
         pd: 15,
         md: 18,
         hp: 40,
         health: 40,
-        attacks: ["Staff +7 vs AC - 7 damage. Natural 16+: the derro can cast one of the following close-quarters spells as a quick action this turn: Cloaking Dark: all nearby derro gain a +1 bonus to attacks and defenses until the end of the derro sage's next turn (cumulative). Sonic Squeal: two random nearby non-derro creatures take 2D8 thunder damage.", "R: Mind Scream +9 vs MD - 12 psychic damage, and the target is confused until the end of the derro sage's next turn. Natural 16+: the derro sage can make another mind scream attack against a different nearby target as a free action."],
-        abilities: ["Derro Are Confused to Begin With: Confusion only affects derro if they secretely want to murder one of their own companions, a not uncommon condition.", "[Nastier Special] Group Gibbering: The derro sage starts a group of derro gibbering as a quick action. It can maintain the gibber as a free action at the start of each turn by taking 1 damage. Each nearby non-derro creature that hears the gibber must roll a D6 at the start of its turn and takes psychic damage equal to the die roll or to the number of gibbering derro, whichever is lower."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Staff",
+                bonus: 7,
+                defenseTargeted: "AC",
+                damage: "7 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "the derro can cast one of the following close-quarters spells as a quick action this turn: Cloaking Dark: all nearby derro gain a +1 bonus to attacks and defenses until the end of the derro sage's next turn (cumulative). Sonic Squeal: two random nearby non-derro creatures take 2D8 thunder damage."
+                    }
+                ]
+            },
+            {
+                type: "ranged",
+                name: "Mind Scream",
+                bonus: 9,
+                defenseTargeted: "MD",
+                damage: "12 psychic damage",
+                effect: "the target is confused until the end of the Derro Sage's next turn.",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "the derro sage can make another mind scream attack against a different nearby target as a free action."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Derro Are Confused to Begin With",
+                text: "Confusion only affects derro if they secretely want to murder one of their own companions, a not uncommon condition."
+            }
+            
+        ],
+        nastierSpecials: [
+            {
+                name: "Group Gibbering",
+                text: "The derro sage starts a group of derro gibbering as a quick action. It can maintain the gibber as a free action at the start of each turn by taking 1 damage. Each nearby non-derro creature that hears the gibber must roll a D6 at the start of its turn and takes psychic damage equal to the die roll or to the number of gibbering derro, whichever is lower."
+            }
+        ],
         isStaggered: false,
         id: 29
     },
@@ -1264,240 +1344,1128 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Medium White Dragon",
+        type: "dragon",
         level: 2,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+6",
         ac: 18,
         pd: 15,
         md: 11,
         hp: 38,
         health: 38,
-        attacks: ["Claws and Bite +6 vs AC (2 attacks) - 4 damage. Natural 16+: The white dragon can make an ice breath attack as a free action.", "[special trigger] C: Ice Breath +6 vs PD (1D3 nearby enemies) - 4 cold damage. Natural Odd Hit or Miss: The dragon takes 1D4 damage"],
-        abilities: ["Vulnerability: Fire", "Resist Cold 12+", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Claws and Bite",
+                bonus: 6,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "4 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The white dragon can make an ice breath attack as a free action."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "[special trigger] Ice Breath",
+                bonus: 6,
+                defenseTargeted: "PD",
+                damage: "4 cold damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Odd Hit or Miss",
+                        effect: "The dragon takes 1D4 damage."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Fire"
+            },
+            {
+                name: "Resist",
+                text: "Cold 12+"
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 30
     },
     
     {
         name: "Medium Black Dragon",
+        type: "dragon",
         level: 3,
-        type: "wrecker",
+        sizeOrStrength: "normal",
+        role: "wrecker",
         initiative: "+9",
         ac: 19,
         pd: 17,
         md: 15,
         hp: 42,
         health: 42,
-        attacks: ["Claws and Bite +8 vs AC (2 attacks) - 4 damage. Natural 16+: The target also takes 4 ongoing acid damage.", "C: Acid Breath +9 vs PD (1D3 nearby enemies) - 5 acid damage, and 5 ongoing acid damage. Miss: 3 acid damage."],
-        abilities: ["Vulnerability: Thunder", "Resist Acid 12+", "Water Breathing: Black dragons swim well and breathe underwater", "Intermittent Breath: A medium black dragon can use acid breath 1D3 times per battle, but never two turns in a row.", "Draconic Grace: At the start of each turn, roll a D6 to see if this dragon gets an extra standard action. If the roll is equal to or less than the escalation die, the black dragon can take an extra standard action. After each success, bump up the die size up to a D20.", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Claws and Bite",
+                bonus: 8,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "4 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The target also takes 4 ongoing acid damage."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "Acid Breath",
+                bonus: 9,
+                defenseTargeted: "PD",
+                damage: "5 acid damage",
+                effect: "5 ongoing acid damage",
+                miss: "3 acid damage"
+            }
+        ],
+       specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Thunder"
+            },
+            {
+                name: "Resist",
+                text: "Acid 12+"
+            },
+            {
+                name: "Water Breathing",
+                text: "Black dragons swim well and breathe underwater"
+            },
+            {
+                name: "Intermittent Breath",
+                text: "A medium black dragon can use acid breath 1D3 times per battle, but never two turns in a row."
+            },
+            {
+                name: "Draconic Grace",
+                text: "At the start of each turn, roll a D6 to see if this dragon gets an extra standard action. If the roll is equal to or less than the escalation die, the black dragon can take an extra standard action. After each success, bump up the die size up to a D20."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 31
     },
     
     {
         name: "Large White Dragon",
+        type: "dragon",
         level: 4,
-        type: "troop (large)",
+        sizeOrStrength: "large",
+        role: "troop",
         initiative: "+8",
         ac: 20,
         pd: 17,
         md: 13,
         hp: 104,
         health: 104,
-        attacks: ["Claws and Bite +8 vs AC (2 attacks) - 12 damage. Natural 16+: The white dragon can make an ice breath attack as a free action.", "[special trigger] C: Ice Breath +8 vs PD (1D3 nearby enemies) - 10 cold damage. Natural Odd Hit or Miss: The dragon takes 2D4 damage."],
-        abilities: ["Vulnerability: Fire", "Resist Cold 16+", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Claws and Bite",
+                bonus: 8,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "12 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The white dragon can make an ice breath attack as a free action."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "[special trigger] Ice Breath",
+                bonus: 8,
+                defenseTargeted: "PD",
+                damage: "10 cold damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Odd Hit or Miss",
+                        effect: "The dragon takes 2D4 damage."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Fire"
+            },
+            {
+                name: "Resist",
+                text: "Cold 16+"
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 32
     },
     
     {
         name: "Medium Green Dragon",
+        type: "dragon",
         level: 4,
-        type: "spoiler",
+        sizeOrStrength: "normal",
+        role: "spoiler",
         initiative: "+9",
         ac: 21,
         pd: 18,
         md: 14,
         hp: 60,
         health: 60,
-        attacks: ["Sharp Claws +9 vs AC - 7 damage. Natural 11-15: The dragon can make a bite attack as a free action. Natural 16+: The dragon can make a poison breath attack as a free action.", "[special trigger] Bite +9 vs AC - 10 damage. Natural 16+: The target also takes 5 ongoing poison damage.", "[special trigger] C: Poison Breath +9 vs PD (1D3 nearby enemies) - 7 poison damage, and the target is hampered (save ends)."],
-        abilities: ["Vulnerability: Psychic", "Resist Poison 12+", "Burrow: As the standard monster ability.", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Sharp Claws",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "7 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 11-15",
+                        effect: "The dragon can make a bite attack as a free action."
+                    },
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The dragon can make a poison breath attack as a free action."
+                    }
+                ]
+            },
+            {
+                type: "melee",
+                name: "[special trigger] Bite",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "10 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The target also takes 5 ongoing poison damage."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "[special trigger] Poison Breath",
+                bonus: 9,
+                defenseTargeted: "PD",
+                damage: "7 poison damage",
+                effect: "the target is hampered (save ends)."
+            }
+        
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Psychic"
+            },
+            {
+                name: "Resist",
+                text: "Poison 12+"
+            },
+            {
+                name: "Burrow",
+                text: "As the standard monster ability."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 33
     },
     
     {
         name: "Medium Blue Dragon",
+        type: "dragon",
         level: 5,
-        type: "caster",
+        sizeOrStrength: "normal",
+        role: "caster",
         initiative: "+9",
         ac: 22,
         pd: 19,
         md: 19,
         hp: 76,
         health: 76,
-        attacks: ["Dragon Claw +9 vs AC - 10 damage. Natural Even Hit or Miss: The dragon can make a bite attack as a free action.", "[special trigger] Bite +9 vs AC - 10 damage, and 2D6 lightning damage", "C: Lightning Breath +9 vs PD (1D3 nearby enemies) - 8 lightning damage. Natural Even Hit: The target is also dazed (save ends)."],
-        abilities: ["Vulnerability: Force", "Resist Lightning 12+", "Intermittent Breath: A medium blue dragon can use lightning breath 1D4 times per battle, but never two turns in a row.", "Counter-spell: When an enemy targets the blue dragon with a spell, the dragon can roll a save; success means the spell has no effect on the dragon. If the level of the spell is lower than the dragon's level, it's a normal save. Against an equal or higher level spell, it's a hard save. If the dragon is staggered, the save increases by +5 (hard becomes 21+, impossible unless the dragon has a save bonus from some other source).", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Dragon Claw",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "10 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The dragon can make a bite attack as a free action."
+                    }
+                ]
+            },
+            {
+                type: "melee",
+                name: "[special trigger] Bite",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "10 damage and 2D6 lightning damage"
+            },
+            {
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "Lightning Breath",
+                bonus: 9,
+                defenseTargeted: "PD",
+                damage: "8 lightning damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit",
+                        effect: "The target is also dazed (save ends)."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Force"
+            },
+            {
+                name: "Resist",
+                text: "Lightning 12+"
+            },
+            {
+                name: "Intermittent Breath",
+                text: "A medium blue dragon can use lightning breath 1D4 times per battle, but never two turns in a row."
+            },
+            {
+                name: "Counter-spell",
+                text: "When an enemy targets the blue dragon with a spell, the dragon can roll a save; success means the spell has no effect on the dragon. If the level of the spell is lower than the dragon's level, it's a normal save. Against an equal or higher level spell, it's a hard save. If the dragon is staggered, the save increases by +5 (hard becomes 21+, impossible unless the dragon has a save bonus from some other source)."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 34
     },
     
     {
         name: "Huge White Dragon",
+        type: "dragon",
         level: 5,
-        type: "troop (huge)",
+        sizeOrStrength: "huge",
+        role: "troop",
         initiative: "+10",
         ac: 21,
         pd: 18,
         md: 14,
         hp: 200,
         health: 200,
-        attacks: ["Claws and Bite +9 vs AC (2 attacks) - 25 damage. Natural 16+: The white dragon can make an ice breath attack as a free action.", "[special trigger] C: Ice Breath +9 vs PD (1D3 nearby enemies) - 20 cold damage. Natural Odd Hit or Miss: The dragon takes 2D8 damage."],
-        abilities: ["Vulnerability: Fire", "Resist Cold 18+", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Claws and Bite",
+                bonus: 9,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "25 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The white dragon can make an ice breath attack as a free action."
+                    }
+                ]
+            }, 
+            {
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "[special trigger] Ice Breath",
+                bonus: 9,
+                defenseTargeted: "PD",
+                damage: "20 cold damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Odd Hit or Miss",
+                        effect: "The dragon takes 2D8 damage."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Fire"
+            },
+            {
+                name: "Resist",
+                text: "Cold 18+"
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 35
     },
     
     {
         name: "Large Black Dragon",
+        type: "dragon",
         level: 6,
-        type: "wrecker (large)",
+        sizeOrStrength: "large",
+        role: "wrecker",
         initiative: "+13",
         ac: 22,
         pd: 20,
         md: 18,
         hp: 160,
         health: 160,
-        attacks: ["Claws and Bite +11 vs AC (2 attacks) - 18 damage. Natural 16+: The target also takes 10 ongoing acid damage.", "C: Acid Breath +11 vs PD (1D3 nearby enemies) - 20 acid damage, and 10 ongoing acid damage. Miss: 10 acid damage."],
-        abilities: ["Vulnerability: Thunder", "Resist Acid 16+", "Water Breathing: Black dragons swim well and breathe underwater", "Intermittent Breath: A large black dragon can use acid breath 1D3 times per battle, but never two turns in a row.", "Draconic Grace: At the start of each turn, roll a D6 to see if this dragon gets an extra standard action. If the roll is equal to or less than the escalation die, the black dragon can take an extra standard action. After each success, bump up the die size up to a D20.", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Claws and Bite",
+                bonus: 11,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "18 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The target also takes 10 ongoing acid damage."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "Acid Breath",
+                bonus: 11,
+                defenseTargeted: "PD",
+                damage: "20 acid damage",
+                effect: "10 ongoing acid damage",
+                miss: "10 acid damage"
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Thunder"
+            },
+            {
+                name: "Resist",
+                text: "Acid 16+"
+            },
+            {
+                name: "Water Breathing",
+                text: "Black dragons swim well and breathe underwater"
+            },
+            {
+                name: "Intermittent Breath",
+                text: "A large black dragon can use acid breath 1D3 times per battle, but never two turns in a row."
+            },
+            {
+                name: "Draconic Grace",
+                text: "At the start of each turn, roll a D6 to see if this dragon gets an extra standard action. If the roll is equal to or less than the escalation die, the black dragon can take an extra standard action. After each success, bump up the die size up to a D20."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 36
     },
     
     {
         name: "Medium Red Dragon",
+        type: "dragon",
         level: 6,
-        type: "wrecker",
+        sizeOrStrength: "normal",
+        role: "wrecker",
         initiative: "+11",
         ac: 21,
         pd: 20,
         md: 16,
         hp: 90,
         health: 90,
-        attacks: ["Fangs, Claws, and Tail +11 vs AC (2 attacks) - 8 damage. First Natural Even Hit or Miss Each Turn: Roll a third fangs, claws, and tail attack.", "C: Fiery Breath +11 vs PD (2D3 nearby enemies) - 10 fire damage. Miss: Half damage."],
-        abilities: ["Vulnerability: Cold", "Resist Fire 12+", "Intermittent Breath: A medium red dragon can use fiery breath 1D3 times per battle, but never two turns in a row.", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Fangs, Claws, and Tail",
+                bonus: 11,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "8 damage",
+                extraEffects: [
+                    {
+                        trigger: "First Natural Even Hit or Miss Each Turn",
+                        effect: "Roll a third fangs, claws, and tail attack."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "2D3 nearby enemies",
+                name: "Fiery Breath",
+                bonus: 11,
+                defenseTargeted: "PD",
+                damage: "10 fire damage",
+                miss: "Half damage"
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Cold"
+            },
+            {
+                name: "Resist",
+                text: "Fire 12+"
+            },
+            {
+                name: "Intermittent Breath",
+                text: "A medium red dragon can use fiery breath 1D3 times per battle, but never two turns in a row."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 37
     },
     
     {
         name: "Large Green Dragon",
+        type: "dragon",
         level: 7,
-        type: "spoiler (large)",
+        sizeOrStrength: "large",
+        role: "spoiler",
         initiative: "+11",
         ac: 24,
         pd: 21,
         md: 16,
         hp: 230,
         health: 230,
-        attacks: ["Sharp Claws +12 vs AC - 25 damage. Natural 11-15: The dragon can make a bite attack as a free action. Natural 16+: The dragon can make a poison breath attack as a free action.", "[special trigger] Bite +12 vs AC - 38 damage. Natural 16+: The target also takes 10 ongoing poison damage.", "[special trigger] C: Poison Breath +12 vs PD (1D3 nearby enemies) - 25 poison damage, and the target is hampered (save ends)."],
-        abilities: ["Vulnerability: Psychic", "Resist Poison 16+", "Burrow: As the standard monster ability.", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [        
+            {
+                type: "melee",
+                name: "Sharp Claws",
+                bonus: 12,
+                defenseTargeted: "AC",
+                damage: "25 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 11-15",
+                        effect: "The dragon can make a bite attack as a free action."
+                    },
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The dragon can make a poison breath attack as a free action."
+                    }
+                ]
+            },
+            {
+                type: "melee",
+                name: "[special trigger] Bite",
+                bonus: 12,
+                defenseTargeted: "AC",
+                damage: "38 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The target also takes 10 ongoing poison damage."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "[special trigger] Poison Breath",
+                bonus: 12,
+                defenseTargeted: "PD",
+                damage: "25 poison damage",
+                effect: "the target is hampered (save ends)."
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Psychic"
+            },
+            {
+                name: "Resist",
+                text: "Poison 16+"
+            },
+            {
+                name: "Burrow",
+                text: "As the standard monster ability."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 38
     },
     
     {
         name: "Large Blue Dragon",
+        type: "dragon",
         level: 8,
-        type: "caster (large)",
+        sizeOrStrength: "large",
+        role: "caster",
         initiative: "+13",
         ac: 25,
         pd: 22,
         md: 22,
         hp: 260,
         health: 260,
-        attacks: ["Double Claws +12 vs AC (2 attacks) - 15 damage. Natural Even Hit or Miss: The dragon can make a bite attack as a free action.", "[special trigger] Bite +12 vs AC - 20 damage, and 2D10 lightning damage.", "C: Lightning Breath +12 vs PD (1D3 nearby or far away enemies) - 40 lightning damage. Natural Even Hit: The target is also dazed (save ends)."],
-        abilities: ["Vulnerability: Force", "Resist Lightning 16+", "Intermittent Breath: A large blue dragon can use lightning breath 1D6 times per battle, but never two turns in a row.", "Counter-spell: When an enemy targets the blue dragon with a spell, the dragon can roll a save; success means the spell has no effect on the dragon. If the level of the spell is lower than the dragon's level, it's a normal save. Against an equal or higher level spell, it's a hard save. If the dragon is staggered, the save increases by +5 (hard becomes 21+, impossible unless the dragon has a save bonus from some other source).", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Double Claws",
+                bonus: 12,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "15 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The dragon can make a bite attack as a free action."
+                    }
+                ]
+            }, 
+            {
+                type: "melee",
+                name: "[special trigger] Bite",
+                bonus: 12,
+                defenseTargeted: "AC",
+                damage: "20 damage, and 2D10 lightning damage"
+            },
+            {
+                type: "close",
+                target: "1D3 nearby or far away enemies",
+                name: "Lightning Breath",
+                bonus: 12,
+                defenseTargeted: "PD",
+                damage: "40 lightning damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit",
+                        effect: "The target is also dazed (save ends)."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Force"
+            },
+            {
+                name: "Resist",
+                text: "Lightning 16+"
+            },
+            {
+                name: "Intermittent Breath",
+                text: "A large blue dragon can use lightning breath 1D6 times per battle, but never two turns in a row."
+            },
+            {
+                name: "Counter-spell",
+                text: "When an enemy targets the blue dragon with a spell, the dragon can roll a save; success means the spell has no effect on the dragon. If the level of the spell is lower than the dragon's level, it's a normal save. Against an equal or higher level spell, it's a hard save. If the dragon is staggered, the save increases by +5 (hard becomes 21+, impossible unless the dragon has a save bonus from some other source)."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 39
     },
     
     {
         name: "Huge Black Dragon",
+        type: "dragon",
         level: 9,
-        type: "wrecker (huge)",
+        sizeOrStrength: "huge",
+        role: "wrecker",
         initiative: "+17",
         ac: 25,
         pd: 23,
         md: 21,
         hp: 510,
         health: 510,
-        attacks: ["Claws and Bite +14 vs AC (3 attacks) - 30 damage. Natural 16+: The target also takes 15 ongoing acid damage. Miss: 20 damage.", "C: Acid Breath +14 vs PD (1D3 nearby or far away enemies) - 50 acid damage, and 15 ongoing acid damage. Miss: 4D12 acid damage."],
-        abilities: ["Resist Acid 18+", "Water Breathing: Black dragons swim well and breathe underwater", "Intermittent Breath: A huge black dragon can use acid breath 2D3 times per battle, but never two turns in a row.", "Draconic Grace: At the start of each turn, roll a D6 to see if this dragon gets an extra standard action. If the roll is equal to or less than the escalation die, the black dragon can take an extra standard action. After each success, bump up the die size up to a D20.", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Claws and Bite",
+                bonus: 14,
+                defenseTargeted: "AC",
+                numberOfAttacks: 3,
+                damage: "30 damage",
+                miss: "20 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The target also takes 15 ongoing acid damage."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "1D3 nearby or far away enemies",
+                name: "Acid Breath",
+                bonus: 14,
+                defenseTargeted: "PD",
+                damage: "50 acid damage",
+                effect: "15 ongoing acid damage",
+                miss: "4D12 acid damage"
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Resist",
+                text: "Acid 18+"
+            },
+            {
+                name: "Water Breathing",
+                text: "Black dragons swim well and breathe underwater."
+            },
+            {
+                name: "Intermittent Breath",
+                text: "A huge black dragon can use acid breath 2D3 times per battle, but never two turns in a row."
+            },
+            {
+                name: "Draconic Grace",
+                text: "At the start of each turn, roll a D6 to see if this dragon gets an extra standard action. If the roll is equal to or less than the escalation die, the black dragon can take an extra standard action. After each success, bump up the die size up to a D20."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 40
     },
     
     {
         name: "Large Red Dragon",
+        type: "dragon",
         level: 10,
-        type: "wrecker (large)",
+        sizeOrStrength: "large",
+        role: "wrecker",
         initiative: "+13",
         ac: 25,
         pd: 24,
         md: 20,
         hp: 400,
         health: 400,
-        attacks: ["Fangs, Claws, and Tail +15 vs AC (2 attacks) - 35 damage. First Natural Even Hit or Miss Each Turn: Roll a third fangs, claws, and tail attack.", "C: Fiery Breath +15 vs PD (2D3 nearby enemies) - 40 fire damage. Miss: Half damage."],
-        abilities: ["Vulnerability: Cold", "Resist Fire 16+", "Intermittent Breath: A large red dragon can use fiery breath 1D4 times per battle, but never two turns in a row.", "Fear: While engaged with this creature, enemies with 72 HP or fewer are dazed and do not add the escalation die to their attacks.", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Fangs, Claws, and Tail",
+                bonus: 15,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "35 damage",
+                extraEffects: [
+                    {
+                        trigger: "First Natural Even Hit or Miss Each Turn",
+                        effect: "Roll a third fangs, claws, and tail attack."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "2D3 nearby enemies",
+                name: "Fiery Breath",
+                bonus: 15,
+                defenseTargeted: "PD",
+                damage: "40 fire damage",
+                miss: "Half damage"
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Cold"
+            },
+            {
+                name: "Resist",
+                text: "Fire 16+"
+            },
+            {
+                name: "Intermittent Breath",
+                text: "A large red dragon can use fiery breath 1D4 times per battle, but never two turns in a row."
+            },
+            {
+                name: "Fear",
+                text: "While engaged with this creature, enemies with 72 HP or fewer are dazed and do not add the escalation die to their attacks."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 41
     },
     
     {
         name: "Huge Green Dragon",
+        type: "dragon",
         level: 11,
-        type: "spoiler (huge)",
+        sizeOrStrength: "huge",
+        role: "spoiler",
         initiative: "+15",
         ac: 28,
         pd: 25,
         md: 20,
         hp: 900,
         health: 900,
-        attacks: ["Sharp Claws +16 vs AC - 100 damage. Natural 11-15: The dragon can make a bite attack as a free action. Natural 16+: The dragon can make a poison breath attack as a free action.", "[special trigger] Bite +16 vs AC - 140 damage. Natural 16+: The target also takes 20 ongoing poison damage.", "[special trigger] C: Poison Breath +16 vs PD (1D3 nearby enemies) - 100 poison damage, and the target is hampered (save ends)."],
-        abilities: ["Resist Poison 18+", "Burrow: as the standard monster ability.", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Sharp Claws",
+                bonus: 16,
+                defenseTargeted: "AC",
+                damage: "100 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 11-15",
+                        effect: "The dragon can make a bite attack as a free action."
+                    },
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The dragon can make a poison breath attack as a free action."
+                    }
+                ]
+            },
+            {
+                type: "melee",
+                name: "[special trigger] Bite",
+                bonus: 16,
+                defenseTargeted: "AC",
+                damage: "140 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The target also takes 20 ongoing poison damage."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "[special trigger] Poison Breath",
+                bonus: 16,
+                defenseTargeted: "PD",
+                damage: "100 poison damage",
+                effect: "the target is hampered (save ends)."
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Resist",
+                text: "Poison 18+"
+            },
+            {
+                name: "Burrow",
+                text: "as the standard monster ability."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 42
     },
     
     {
         name: "Huge Blue Dragon",
+        type: "dragon",
         level: 12,
-        type: "caster (huge)",
+        sizeOrStrength: "huge",
+        role: "caster",
         initiative: "+17",
         ac: 29,
         pd: 26,
         md: 26,
         hp: 980,
         health: 980,
-        attacks: ["Double Claws +16 vs AC (2 attacks) - 50 damage. Natural Even Hit or Miss: The dragon can make a bite attack as a free action.", "[special trigger] Bite +16 vs AC - 60 damage, and 4D10 lightning damage to the target and to one other nearby enemy of the dragon's choice.", "C: Far Slashing Lightning Breath +16 vs PD (1D4 nearby or far away enemies) - 80 lightning damage. Natural Even Hit: The target is also dazed (save ends). After the target saves, it takes a -1 attack penalty (non-cumulative) until its next full heal up (because it's vibrating slightly out of synch with the rest of the world)."],
-        abilities: ["Resist Lightning 18+", "Intermittent Breath: A huge blue dragon can use far slashing lightning breath 2D4 times per battle, but never two turns in a row.", "Counter-spell: When an enemy targets the blue dragon with a spell, the dragon can roll a save; success means the spell has no effect on the dragon. If the level of the spell is lower than the dragon's level, it's a normal save. Against an equal or higher level spell, it's a hard save. If the dragon is staggered, the save increases by +5 (hard becomes 21+, impossible unless the dragon has a save bonus from some other source).", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Double Claws",
+                bonus: 16,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "50 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The dragon can make a bite attack as a free action."
+                    }
+                ]
+            },
+            {
+                type: "melee",
+                name: "[special trigger] Bite",
+                bonus: 16,
+                defenseTargeted: "AC",
+                damage: "60 damage, and 4D10 lightning damage to the target and to one other nearby enemy of the dragon's choice."
+            },
+            {
+                type: "close",
+                target: "1D4 nearby or far away enemies",
+                name: "Far Slashing Lightning Breath",
+                bonus: 16,
+                defenseTargeted: "PD",
+                damage: "80 lightning damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit",
+                        effect: "The target is also dazed (save ends). After the target saves, it takes a -1 attack penalty (non-cumulative) until its next full heal up (because it's vibrating slightly out of synch with the rest of the world)."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Resist",
+                text: "Lightning 18+"
+            },
+            {
+                name: "Intermittent Breath",
+                text: "A huge blue dragon can use far slashing lightning breath 2D4 times per battle, but never two turns in a row."
+            },
+            {
+                name: "Counter-spell",
+                text: "When an enemy targets the blue dragon with a spell, the dragon can roll a save; success means the spell has no effect on the dragon. If the level of the spell is lower than the dragon's level, it's a normal save. Against an equal or higher level spell, it's a hard save. If the dragon is staggered, the save increases by +5 (hard becomes 21+, impossible unless the dragon has a save bonus from some other source)."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 43
     },
     
     {
         name: "Huge Red Dragon",
+        type: "dragon",
         level: 13,
-        type: "wrecker (huge)",
+        sizeOrStrength: "huge",
+        role: "wrecker",
         initiative: "+19",
         ac: 28,
         pd: 27,
         md: 23,
         hp: 1200,
         health: 1200,
-        attacks: ["Fangs, Claws, and Tail +19 vs AC (3 attacks) - 70 damage. First Natural Even Hit or Miss Each Turn: Roll a fourth fangs, claws, and tail attack. Second Natural Even Hit or Miss Each Turn: Roll a fifth fangs, claws, and tail attack.", "C: Fiery Breath +19 vs PD (2D3 nearby or far away enemies) - 80 fire damage. Miss: Half damage."],
-        abilities: ["Resist Fire 18+", "Intermittent Breath: A huge red dragon can use fiery breath 1D6 times per battle, but never two turns in a row.", "Fear: While engaged with this creature, enemies with 144 HP or fewer are dazed and do not add the escalation die to their attacks.", "Escalator: A dragon adds the escalation die to its attack rolls.", "Flight: A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers.", "Random Dragon Ability: roll on table."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Fangs, Claws, and Tail",
+                bonus: 19,
+                defenseTargeted: "AC",
+                numberOfAttacks: 3,
+                damage: "70 damage",
+                extraEffects: [
+                    {
+                        trigger: "First Natural Even Hit or Miss Each Turn",
+                        effect: "Roll a fourth fangs, claws, and tail attack."
+                    },
+                    {
+                        trigger: "Second Natural Even Hit or Miss Each Turn",
+                        effect: "Roll a fifth fangs, claws, and tail attack."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "2D3 nearby or far away enemies",
+                name: "Fiery Breath",
+                bonus: 19,
+                defenseTargeted: "PD",
+                damage: "80 fire damage",
+                miss: "Half damage"
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Resist",
+                text: "Fire 18+"
+            },
+            {
+                name: "Intermittent Breath",
+                text: "A huge red dragon can use fiery breath 1D6 times per battle, but never two turns in a row."
+            },
+            {
+                name: "Fear",
+                text: "While engaged with this creature, enemies with 144 HP or fewer are dazed and do not add the escalation die to their attacks."
+            },
+            {
+                name: "Escalator",
+                text: "A dragon adds the escalation die to its attack rolls."
+            },
+            {
+                name: "Flight",
+                text: "A dragon flies reasonably well, powerful and fast in a straight line though not as maneuverable as more agile fliers."
+            },
+            {
+                name: "Random Dragon Ability",
+                text: "roll on table."
+            }
+        ],
         isStaggered: false,
         id: 44
     },
