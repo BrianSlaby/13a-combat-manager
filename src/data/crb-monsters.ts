@@ -2474,16 +2474,64 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Drider",
+        type: "aberration",
         level: 6,
-        type: "caster (large)",
+        sizeOrStrength: "large",
+        role: "caster",
         initiative: "+10",
         ac: 21,
         pd: 15,
         md: 20,
         hp: 170,
         health: 170,
-        attacks: ["Sword or Mace +9 vs AC - 20 damage. Natural Even Hit: The drider can make a poison bite attack as a free action.", "[special trigger] Poison Bite +9 vs PD - 10 poison damage, and 10 ongoing poison damage.", "R: Lightning Bolt Spell +11 vs PD - 30 lightning damage. Natural Even Hit: The drider can make a lightning bolt spell attack against a second nearby enemy, followed by a third and final different enemy if the second attack is also a natural even hit.", "C: Web Attack +11 vs PD (up to 2 nearby enemies in a group) - the target is hampered (save ends). Limited Use: 1/round as a quick action, if the escalation die is even."],
-        abilities: ["None"],
+        attacks: [
+            {
+                type: "melee",
+                name: "Sword or Mace",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "20 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit",
+                        effect: "The drider can make a poison bite attack as a free action."
+                    }
+                ]
+            },
+            
+            {
+                type: "melee",
+                name: "[special trigger] Poison Bite",
+                bonus: 9,
+                defenseTargeted: "PD",
+                damage: "10 poison damage",
+                effect: "10 ongoing poison damage"
+            },
+            {
+                type: "ranged",
+                name: "Lightning Bolt Spell",
+                bonus: 11,
+                defenseTargeted: "PD",
+                damage: "30 lightning damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit",
+                        effect: "The drider can make a lightning bolt spell attack against a second nearby enemy, followed by a third and final different enemy if the second attack is also a natural even hit."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "up to 2 nearby enemies in a group",
+                name: "Web Attack",
+                bonus: 11,
+                defenseTargeted: "PD",
+                damage: null,
+                effect: "the target is hampered (save ends).",
+                limitedUse: "1/round as a quick action, if the escalation die is even."
+            }
+        ],
+        specialAbilities: [],
         isStaggered: false,
         id: 45
     },
@@ -2492,16 +2540,50 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Ettin",
+        type: "giant",
         level: 5,
-        type: "troop (large)",
+        sizeOrStrength: "large",
+        role: "troop",
         initiative: "+9",
         ac: 21,
         pd: 18,
         md: 14,
         hp: 160,
         health: 160,
-        attacks: ["First Big Swing +10 vs AC - 25 damage, and the target pops free from the ettin; then, as a free action, the ettin can move (or choose not to move) and make a second swing attack.", "[special trigger] Second Swing +10 vs AC (different target from first big swing) - 15 damage"],
-        abilities: ["Two-headed Save: If an ettin's first save against an effect fails, it can roll a second save.", "[Nastier Special] Big Bully: The ettin deals double damage with its attacks against staggered enemies.", "Escalating Agreement: If the escalation die is 3+, the ettin can target two engaged enemies with its first big swing attack."],
+        attacks: [
+            {
+                type: "melee",
+                name: "First Big Swing",
+                bonus: 10,
+                defenseTargeted: "AC",
+                damage: "25 damage",
+                effect: "the target pops free from the ettin; then, as a free action, the ettin can move (or choose not to move) and make a Second Swing attack."
+            },
+            {
+                type: "melee",
+                target: "different target from First Big Swing",
+                name: "[special trigger] Second Swing",
+                bonus: 10,
+                defenseTargeted: "AC",
+                damage: "15 damage"
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Two-headed Save",
+                text: "If an ettin's first save against an effect fails, it can roll a second save."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Big Bully",
+                text: "The ettin deals double damage with its attacks against staggered enemies."
+            },
+            {
+                name: "Escalating Agreement",
+                text: "If the escalation die is 3+, the ettin can target two engaged enemies with its first big swing attack."
+            }
+        ],
         isStaggered: false,
         id: 46
     },
@@ -2510,16 +2592,46 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Gargoyle",
+        type: "construct",
         level: 5,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+4",
         ac: 24,
         pd: 21,
         md: 14,
         hp: 60,
         health: 60,
-        attacks: ["Furious Claws and Fangs +9 vs AC - 9 damage. Natural 11+: The gargoyle can make two more melee attacks as a free action (but never more than 3 total attacks per standard action, even if you roll another 11+)."],
-        abilities: ["Flight: Gargoyles can fly, but not very well. They would rather crawl or climb.", "[Nastier Special] Rocky Hide: The gargoyle has resist damage 12+ against attacks targeting AC.", "[Nastier Special] Statues, Statues, Everywhere: Because they often look like statues, gargoyles are capable of springing a surprise on inattentive PCs. When there's a chance of such an ambush, give the PCs a champion-tier skill check (usually DC 20) to notice the gargoyles and avoid being surprised (see pagee 164 of core rules)."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Furious Claws and Fangs",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "9 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 11+",
+                        effect: "The gargoyle can make two more melee attacks as a free action (but never more than 3 total attacks per standard action, even if you roll another 11+)."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Flight",
+                text: "Gargoyles can fly, but not very well. They would rather crawl or climb."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Rocky Hide",
+                text: "The gargoyle has resist damage 12+ against attacks targeting AC."
+            },            {
+                name: "Statues, Statues, Everywhere",
+                text: "Because they often look like statues, gargoyles are capable of springing a surprise on inattentive PCs. When there's a chance of such an ambush, give the PCs a champion-tier skill check (usually DC 20) to notice the gargoyles and avoid being surprised (see pagee 164 of core rules)."
+            }
+        ],
         isStaggered: false,
         id: 47
     },
@@ -2528,24 +2640,61 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Ghoul",
+        type: "undead",
         level: 3,
-        type: "spoiler",
+        sizeOrStrength: "normal",
+        role: "spoiler",
         initiative: "+8",
         ac: 18,
         pd: 16,
         md: 12,
         hp: 36,
         health: 36,
-        attacks: ["Claws and Bite +8 vs AC - 8 damage. Natural Even Hit: The target is vulnerable to attacks by undead until the end of the ghoul's next turn."],
-        abilities: ["Vulnerability: Holy", "Pound of Flesh: The ghoul's claws and bite attack deals +4 damage against vulnerable targets.", "Infected Bite: Any creature that is slain by a ghoul and not consumed will rise as a ghoul the next night.", "[Nastier Special] Paralyzing Bite: When the ghoul hits a vulnerable target with a natural even attack roll, the target is also stunned (save ends)."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Claws and Bite",
+                bonus: 8,
+                defenseTargeted: "AC",
+                damage: "8 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit",
+                        effect: "The target is vulnerable to attacks by undead until the end of the ghoul's next turn."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Holy"
+            },
+            {
+                name: "Pound of Flesh",
+                text: "The ghoul's claws and bite attack deals +4 damage against vulnerable targets."
+            },
+            {
+                name: "Infected Bite",
+                text: "Any creature that is slain by a ghoul and not consumed will rise as a ghoul the next night."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Paralyzing Bite",
+                text: "When the ghoul hits a vulnerable target with a natural even attack roll, the target is also stunned (save ends)."
+            }
+        ],
         isStaggered: false,
         id: 48
     },
     
     {
         name: "Newly-risen Ghoul",
+        type: "undead",
         level: 2,
-        type: "mook",
+        sizeOrStrength: "normal",
+        role: "mook",
         mookNumber: 1,
         initiative: "+5",
         ac: 17,
@@ -2553,8 +2702,31 @@ const crbMonsterData: monsterStatBlock[] = [
         md: 11,
         hp: 9,
         health: 9,
-        attacks: ["Scrabbling Claws +7 vs AC - 3 damage. Natural 16+: The target is vulnerable to attacks by undead until the end of the ghoul's next turn."],
-        abilities: ["Vulnerability: Holy", "Pound of Flesh: The newly-risen ghoul's scrabbling claws attack deals +2 damage against vulnerable targets."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Scrabbling Claws",
+                bonus: 7,
+                defenseTargeted: "AC",
+                damage: "3 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural 16+",
+                        effect: "The target is vulnerable to attacks by undead until the end of the ghoul's next turn."
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Holy"
+            },
+            {
+                name: "Pound of Flesh",
+                text: "The newly-risen ghoul's scrabbling claws attack deals +2 damage against vulnerable targets."
+            }
+        ],
         isStaggered: false,
         id: 49
     },
@@ -2563,96 +2735,403 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Hill Giant",
+        type: "giant",
         level: 6,
-        type: "troop (large)",
+        sizeOrStrength: "large",
+        role: "troop",
         initiative: "+8",
         ac: 20,
         pd: 20,
         md: 14,
         hp: 200,
         health: 200,
-        attacks: ["Massive Gnarly Club +10 vs AC - 45 damage. Miss that's a natural 6+: Half damage (sometimes close is good enough).", "R: Two-handed Boulder Throw +8 vs PD - 35 damage."],
-        abilities: ["[Nastier Special] Big Bully: The giant deals double damage with its attacks against staggered targets."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Massive Gnarly Club",
+                bonus: 10,
+                defenseTargeted: "AC",
+                damage: "45 damage",
+                extraEffects: [
+                    {
+                        trigger: "Miss That's a Natural 6+",
+                        effect: "Half damage (sometimes close is good enough)."
+                    }
+                ]
+            },
+            {
+                type: "ranged",
+                name: "Two-handed Boulder Throw",
+                bonus: 8,
+                defenseTargeted: "PD",
+                damage: "35 damage"
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Big Bully",
+                text: "The giant deals double damage with its attacks against staggered targets."
+            }
+        ],
         isStaggered: false,
         id: 50
     },
     
     {
         name: "Frost Giant",
+        type: "giant",
         level: 7,
-        type: "spoiler (large)",
+        sizeOrStrength: "large",
+        role: "spoiler",
         initiative: "+10",
         ac: 23,
         pd: 22,
         md: 17,
         hp: 210,
         health: 210,
-        attacks: ["Ice-covered War Axe +12 vs AC - 45 damage. Natural Even Hit or Miss: The giant can make a frost touch attack against the target as a free action.", "[special trigger] Frost Touch +11 vs PD - 10 cold damage, and the target is hampered until the end of its next turn.", "R: Large Rock or Iceball +11 vs PD (one nearby target or far away target at -2 attack) - 35 damage", "[Nastier Special] Slam +10 vs PD (one enemy smaller than it) - 20 damage, the target pops free from the giant, and the target loses its next move action."],
-        abilities: ["Vulnerability: Fire", "Resist Cold 16+", "Ancient Cold: While battling one or more frost giants, there is only a 50% chance that the escalation die increases at the start of the round.", "[Nastier Special] Strength of Giants: Twice per battle, the giant can make a slam attack as a quick action (once per round)."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Ice-covered War Axe",
+                bonus: 12,
+                defenseTargeted: "AC",
+                damage: "45 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The giant can make a frost touch attack against the target as a free action."
+                    }
+                ]
+            },
+            {
+                type: "melee",
+                name: "[special trigger] Frost Touch",
+                bonus: 11,
+                defenseTargeted: "PD",
+                damage: "10 cold damage",
+                effect: "the target is hampered until the end of its next turn."
+            },
+            {
+                type: "ranged",
+                target: "one nearby target or far away target at -2 attack",
+                name: "Large Rock or Iceball",
+                bonus: 11,
+                defenseTargeted: "PD",
+                damage: "35 damage"
+            },
+            {
+                type: "melee",
+                target: "one enemy smaller than it",
+                name: "[nastier special] Slam",
+                bonus: 10,
+                defenseTargeted: "PD",
+                damage: "20 damage",
+                effect: "the target pops free from the giant, and the target loses its next move action.",
+                limitedUse: "Twice per battle, the giant can make a slam attack as a quick action (once per round)."
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Fire"
+            },
+            {
+                name: "Resist",
+                text: "Cold 16+"
+            },
+            {
+                name: "Ancient Cold",
+                text: "While battling one or more frost giants, there is only a 50% chance that the escalation die increases at the start of the round."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Strength of Giants",
+                text: "Twice per battle, the giant can make a slam attack as a quick action (once per round)."
+            }
+        ],
         isStaggered: false,
         id: 51
     },
     
     {
         name: "Stone Giant",
+        type: "giant",
         level: 8,
-        type: "troop (large)",
+        sizeOrStrength: "large",
+        role: "troop",
         initiative: "+11",
         ac: 24,
         pd: 22,
         md: 18,
         hp: 270,
         health: 270,
-        attacks: ["Stone Club +13 vs AC - 50 damage. Natural Even Hit or Miss: The stone giant can also make a stomp attack against a single target as a free action.", "Stomp +13 vs PD (each smaller enemy engaged with the giant) - 30 damage, and the target is dazed (save ends).", "R: Thrown Boulder +11 vs PD (one nearby or far away enemy) - 40 damage. Natural Even Miss: 20 damage."],
-        abilities: ["Built of Stone: The stone giant has resist weapons 16+."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Stone Club",
+                bonus: 13,
+                defenseTargeted: "AC",
+                damage: "50 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The stone giant can also make a stomp attack against a single target as a free action."
+                    }
+                ]
+            },
+            {
+                type: "melee",
+                target: "each smaller enemy engaged with the giant",
+                name: "Stomp",
+                bonus: 13,
+                defenseTargeted: "PD",
+                damage: "30 damage",
+                effect: "the target is dazed (save ends)."
+            },
+            {
+                type: "ranged",
+                target: "one nearby or far away enemy",
+                name: "Thrown Boulder",
+                bonus: 11,
+                defenseTargeted: "PD",
+                damage: "40 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Miss",
+                        effect: "20 damage"
+                    }
+                ]
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Built of Stone",
+                text: "The stone giant has resist weapons 16+."
+            }
+        ],
         isStaggered: false,
         id: 52
     },
     
     {
         name: "Fire Giant",
+        type: "giant",
         level: 8,
-        type: "wrecker (large)",
+        sizeOrStrength: "large",
+        role: "wrecker",
         initiative: "+12",
         ac: 25,
         pd: 21,
         md: 17,
         hp: 285,
         health: 285,
-        attacks: ["Flaming Greatsword +13 vs AC (2 attacks) - 35 damage. Natural Even Hit or Miss: The target also takes 10 ongoing fire damage.", "R: Flaming Black-iron Javelin +11 vs AC - 40 damage. Natural Even Hit or Miss: The target also takes 10 ongoing fire damage.", "[Nastier Special] Slam +12 vs PD (one enemy smaller than it) - 10 damage, the target pops free from the giant, and the target loses its next move action."],
-        abilities: ["Vulnerability: Cold", "Resist Fire 16+", "Fiery Escalator: The fire giant adds the escalation die to its attacks against targets taking ongoing fire damage.", "[Nastier Special] Burning Blood: When a fire giant becomes staggered, it deals 10 ongoing fire damage to each enemy engaged with it.", "[Nastier Special] Strength of Giants: Twice per battle, the giant can make a slam attack as a quick action (once per round)."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Flaming Greatsword",
+                bonus: 13,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "35 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The target also takes 10 ongoing fire damage."
+                    }
+                ]
+            },
+            {
+                type: "ranged",
+                name: "Flaming Black-iron Javelin",
+                bonus: 11,
+                defenseTargeted: "AC",
+                damage: "40 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The target also takes 10 ongoing fire damage."
+                    }
+                ]
+            },
+            {
+                type: "melee",
+                target: "one enemy smaller than it",
+                name: "[nastier special] Slam",
+                bonus: 12,
+                defenseTargeted: "PD",
+                damage: "10 damage",
+                effect: "the target pops free from the giant, and the target loses its next move action.",
+                limitedUse: "Twice per battle, the giant can make a slam attack as a quick action (once per round)."
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Cold"
+            },
+            {
+                name: "Resist",
+                text: "Fire 16+"
+            },
+            {
+                name: "Fiery Escalator",
+                text: "The fire giant adds the escalation die to its attacks against targets taking ongoing fire damage."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Burning Blood",
+                text: "When a fire giant becomes staggered, it deals 10 ongoing fire damage to each enemy engaged with it."
+            },
+            {
+                name: "Strength of Giants",
+                text: "Twice per battle, the giant can make a slam attack as a quick action (once per round)."
+            }
+        ],
         isStaggered: false,
         id: 53
     },
     
     {
         name: "Fire Giant Warlord",
+        type: "giant",
         level: 9,
-        type: "leader (large)",
+        sizeOrStrength: "large",
+        role: "leader",
         initiative: "+14",
         ac: 26,
         pd: 22,
         md: 18,
         hp: 355,
         health: 355,
-        attacks: ["Flaming Greatsword +15 vs AC (2 attacks) - 40 damage. Natural Even Hit or Miss: The target also takes 10 ongoing fire damage.", "Massive Strike +15 vs AC - 90 damage, and 10 ongoing fire damage."],
-        abilities: ["Vulnerability: Cold", "Resist Fire 16+", "Fiery Escalator: The fire giant warlord adds the escalation die to its attacks against targets taking ongoing fire damage.", "Warlord of Fire: As a standard action, the warlord can command one nearby ally that has resistance to fire to make a melee attack as a free action.", "[Nastier Special] Unquenchable Fires: Enemies engaged with the fire giant warlord take a -5 penalty to saves against ongoing fire damage."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Flaming Greatsword",
+                bonus: 15,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "40 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The target also takes 10 ongoing fire damage."
+                    }
+                ]
+            },
+            {
+                type: "melee",
+                name: "Massive Strike",
+                bonus: 15,
+                defenseTargeted: "AC",
+                damage: "90 damage",
+                effect: "10 ongoing fire damage"
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Cold"
+            },
+            {
+                name: "Resist",
+                text: "Fire 16+"
+            },
+            {
+                name: "Fiery Escalator",
+                text: "The fire giant warlord adds the escalation die to its attacks against targets taking ongoing fire damage."
+            },
+            {
+                name: "Warlord of Fire",
+                text: "As a standard action, the warlord can command one nearby ally that has resistance to fire to make a melee attack as a free action."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Unquenchable Fires",
+                text: "Enemies engaged with the fire giant warlord take a -5 penalty to saves against ongoing fire damage."
+            }
+        ],
         isStaggered: false,
         id: 54
     },
     
     {
         name: "Storm Giant",
+        type: "giant",
         level: 10,
-        type: "archer (huge)",
+        sizeOrStrength: "huge",
+        role: "archer",
         initiative: "+16",
         ac: 26,
         pd: 24,
         md: 22,
         hp: 650,
         health: 650,
-        attacks: ["Truly Enormous Greatsword +15 vs AC - 120 damage. Natural Even Hit or Miss: The giant can make a lightning bolt attack against a random nearby enemy as a free action. Miss: 40 damage, OR the giant can make a release the thunder attack as a free action.", "R: Giant Longbow +14 vs AC (2 attacks vs nearby or far away enemies) - 60 damage. Natural Even Hit: The giant can make a lightning bolt attack against a random enemy that is nearby the target of the longbow attack.", "[special trigger] C: Lightning Bolt +15 vs PD (one random nearby enemy) - 2D6 x 10 lightning damage. Miss: Half Damage.", "[special trigger] C: Release the Thunder +15 vs PD (all nearby creatures) - 1D10 thunder damage per building thunder point (see below). Miss: Half Damage."],
-        abilities: ["Storm Born: The storm giant has resist thunder 16+ and resist lightning 16+", "Building Thunder: Keep count of the number of times the storm giant uses its lightning bolt attack during the battle. Add that number to the escalation die to get the current building thunder value.", "Skystep: A storm giant can use its standard action to walk or run through air, using move actions to continue. If the storm giant makes a standard action attack, it settles back to the ground below it without falling."],
+        attacks: [
+            {
+                type: "melee",
+                name: "Truly Enormous Greatsword",
+                bonus: 15,
+                defenseTargeted: "AC",
+                damage: "120 damage",
+                miss: "40 damage, OR the giant can make a Release the Thunder attack as a free action.",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The giant can make a lightning bolt attack against a random nearby enemy as a free action."
+                    }
+                ]
+            },
+            {
+                type: "ranged",
+                target: "2 attacks vs nearby or far away enemies",
+                name: "Giant Longbow",
+                bonus: 14,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "60 damage",
+                extraEffects: [
+                    {
+                        trigger: "Natural Even Hit",
+                        effect: "The giant can make a lightning bolt attack against a random enemy that is nearby the target of the longbow attack."
+                    }
+                ]
+            },
+            {
+                type: "close",
+                target: "one random nearby enemy",
+                name: "[special trigger] Lightning Bolt",
+                bonus: 15,
+                defenseTargeted: "PD",
+                damage: "2D6 x 10 lightning damage",
+                miss: "half damage"
+            }, 
+            {
+                type: "close",
+                target: "all nearby creatures",
+                name: "[special trigger] Release the Thunder",
+                bonus: 15,
+                defenseTargeted: "PD",
+                damage: "1D10 thunder damage per building thunder point (see below)",
+                miss: "half damage"
+            }
+        ],
+        specialAbilities: [
+            {
+                name: "Storm Born",
+                text: "The storm giant has resist thunder 16+ and resist lightning 16+"
+            },
+            {
+                name: "Building Thunder",
+                text: "Keep count of the number of times the storm giant uses its lightning bolt attack during the battle. Add that number to the escalation die to get the current building thunder value."
+            },
+            {
+                name: "Skystep",
+                text: "A storm giant can use its standard action to walk or run through air, using move actions to continue. If the storm giant makes a standard action attack, it settles back to the ground below it without falling."
+            }
+        ],
         isStaggered: false,
         id: 55
     },
@@ -2669,7 +3148,23 @@ const crbMonsterData: monsterStatBlock[] = [
         md: 13,
         hp: 42,
         health: 42,
-        attacks: ["Spear +7 vs AC - 10 damage. Pack Ferocity: If more than one gnoll is engaged with the target, each gnoll melee attack that misses that target deals half damage.", "R: Thrown Spear +6 vs AC - 8 damage"],
+        attacks: [
+            {
+                type: "",
+                name: "",
+                bonus: ,
+                defenseTargeted: "",
+                damage: "",
+                extraEffects: [
+                    {
+                        trigger: "",
+                        effect: ""
+                    }
+                ]
+            }
+
+            "Spear +7 vs AC - 10 damage. Pack Ferocity: If more than one gnoll is engaged with the target, each gnoll melee attack that misses that target deals half damage.", "R: Thrown Spear +6 vs AC - 8 damage"
+        ],
         abilities: ["[Nastier Special] Blood Fury: +1D10 melee damage if the gnoll or its target is staggered."],
         isStaggered: false,
         id: 56
