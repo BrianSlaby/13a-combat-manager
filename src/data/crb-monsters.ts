@@ -4555,8 +4555,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Medusa Outlaw",
+        type: "humanoid",
         level: 6,
-        type: "wrecker (double-strength)",
+        sizeOrStrength: "double-strength",
+        role: "wrecker",
         initiative: "+11",
         ac: 22,
         pd: 16,
@@ -4565,63 +4567,65 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 150,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Snakes and Daggers",
+                bonus: 11,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "10 damage",
+                effect: "10 ongoing poison damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 18+",
+                        effect: "The medusa can make a petrifying gaze attack against the target as a free action."
                     }
                 ]
-            },
-            
-            
-            "Snakes and Daggers +11 vs AC (2 attacks) - 10 damage, and 10 ongoing poison damage. Natural 18+: The medusa can make a petrifying gaze attack against the target as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "ranged",
+                target: "one nearby or far away enemy",
+                name: "Poison Arrow",
+                bonus: 11,
+                defenseTargeted: "AC",
+                damage: "15 damage",
+                effect: "10 ongoing poison damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 20",
+                        effect: "The medusa can make a petrifying gaze attack against the target as a free action."
                     }
                 ]
-            },
-            
-            "R: Poison Arrow +11 vs AC (one nearby or far away enemy) - 15 damage, and 10 ongoing poison damage. Natural 20: The medusa can make a petrifying gaze attack against the target as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "close",
+                target: "one enemy",
+                name: "[special trigger] Petrifying Gaze",
+                bonus: 11,
+                defenseTargeted: "MD",
+                damage: "20 psychic damage",
+                effect: "the target must start making last gasp saves as it turns to stone."
             }
-            
-            "[special trigger] C: Petrifying Gaze +11 vs MD (one enemy) - 20 psychic damage, and the target must start making last gasp saves as it turns to stone."
         ],
-        abilities: ["Caught by an Eye: Whenever a nearby enemy attacks the medusa outlaw and rolls a natural 1 or 2, the medusa can make a petrifying gaze attack against that attacker as a free action.", "Escalating Threat: At the start of each of the medusa's turns, roll a D4. If you roll less than or equal to the escalation die, the medusa can also use petrifying gaze as a quick action once during that turn."],
+        specialAbilities: [
+            {
+                name: "Caught by an Eye",
+                text: "Whenever a nearby enemy attacks the medusa outlaw and rolls a natural 1 or 2, the medusa can make a petrifying gaze attack against that attacker as a free action."
+            },
+            {
+                name: "Escalating Threat",
+                text: "At the start of each of the medusa's turns, roll a D4. If you roll less than or equal to the escalation die, the medusa can also use petrifying gaze as a quick action once during that turn."
+            }
+        ],
         isStaggered: false,
         id: 82
     },
     
     {
         name: "Medusa Noble",
+        type: "humanoid",
         level: 11,
-        type: "caster (double-strength)",
+        sizeOrStrength: "double-strength",
+        role: "caster",
         initiative: "+17",
         ac: 27,
         pd: 21,
@@ -4630,58 +4634,62 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 500,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Snakes and Swords",
+                bonus: 17,
+                defenseTargeted: "AC",
+                numberOfAttacks: 3,
+                damage: "30 damage",
+                effect: "15 ongoing poison damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 18+",
+                        effect: "The medusa can make a petrifying gaze attack against the target as a free action."
                     }
                 ]
-            },
-            
-            
-            
-            "Snakes and Swords +17 vs AC (3 attacks) - 30 damage, and 15 ongoing poison damage. Natural 18+: The medusa can make a petrifying gaze attack against the target as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "ranged",
+                target: "one nearby or far away enemy",
+                name: "Lightning Fork",
+                bonus: 17,
+                defenseTargeted: "PD",
+                damage: "80 lightning damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Odd Hit or Miss",
+                        effect: "The medusa deals 1D6 x 10 lightning damage to all nearby enemies."
+                    },
+                    {
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The medusa can make a lightning fork attack against a different target as a free action; keep making lightning fork attacks until you run out of targets that have taken damage from lightning fork or roll a natural odd attack."
                     }
                 ]
-            },
-            
-            
-            "R: Lightning Fork +17 vs PD (one nearby or far away enemy) - 80 lightning damage. Natural Odd Hit or Miss: The medusa deals 1D6 x 10 lightning damage to all nearby enemies. Natural Even Hit or Miss: The medusa can make a lightning fork attack against a different target as a free action; keep making lightning fork attacks until you run out of targets that have taken damage from lightning fork or roll a natural odd attack.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "close",
+                target: "one enemy",
+                name: "[special trigger] Petrifying Gaze",
+                bonus: 17,
+                defenseTargeted: "MD",
+                damage: "70 psychic damage",
+                effect: "the target must start making last gasp saves as it turns to stone."
             }
-            
-            
-            "[special trigger] C: Petrifying Gaze +17 vs MD (one enemy) - 70 psychic damage, and the target must start making last gasp saves as it turns to stone."
         ],
-        abilities: ["Caught by an Eye: Whenever a nearby enemy attacks the medusa noble and rolls a natural 1-5, the medusa can make a petrifying gaze attack against that attacker as a free action.", "Serpent Wardings: Thrice per battle, as a free action, the medusa noble can force an enemy to reroll a spell attack that targeted it. The attacker can't use the escalation die for the reroll.", "Skilled Sorcerer: If lightning isn't working against her target, the medusa noble can take a -2 attack penalty to change the energy type of her ranged attack to fire or thunder."],
+        specialAbilities: [
+            {
+                name: "Caught by an Eye",
+                text: "Whenever a nearby enemy attacks the medusa noble and rolls a natural 1-5, the medusa can make a petrifying gaze attack against that attacker as a free action."
+            },            
+            {
+                name: "Serpent Wardings",
+                text: "Thrice per battle, as a free action, the medusa noble can force an enemy to reroll a spell attack that targeted it. The attacker can't use the escalation die for the reroll."
+            },            
+            {
+                name: "Skilled Sorcerer",
+                text: "If lightning isn't working against her target, the medusa noble can take a -2 attack penalty to change the energy type of her ranged attack to fire or thunder."
+            }
+        ],
         isStaggered: false,
         id: 83
     },
@@ -4690,8 +4698,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Minotaur",
+        type: "humanoid",
         level: 4,
-        type: "troop (large)",
+        sizeOrStrength: "large",
+        role: "troop",
         initiative: "+8",
         ac: 19,
         pd: 17,
@@ -4700,23 +4710,36 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 94,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Axe or Horns",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "27 damage",
+                effect: "one of the minotaur's allies can pop free from the target as a free action.",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Furious Charge",
+                        effect: "The attack instead deals 40 damage on a hit if the minotaur first moves before attacking an enemy it was not engaged with at the start of its turn."
                     }
                 ]
             }
-            
-            
-            "Axe or Horns +9 vs AC - 27 damage, and one of the minotaur's allies can pop free from the target as a free action. Furious Charge: The attack instead deals 40 damage on a hit if the minotaur first moves before attacking an enemy it was not engaged with at the start of its turn."
         ],
-        abilities: ["Blood Frenzy: Minotaurs gain a +4 melee attack bonus against staggered enemies.", "[Nastier Special] Durable: The first time each round the minotaur takes damage, prevent 2D6 of it.", "[Nastier Special] Fear: While engaged with this creature, enemies that have 24 HP or fewer are dazed and do not add the escalation die to their attacks."],
+        specialAbilities: [
+            {
+                name: "Blood Frenzy",
+                text: "Minotaurs gain a +4 melee attack bonus against staggered enemies."
+            }        
+        ],
+        nastierSpecials: [
+            {
+                name: "Durable",
+                text: "The first time each round the minotaur takes damage, prevent 2D6 of it."
+            },
+            {
+                name: "Fear",
+                text: "While engaged with this creature, enemies that have 24 HP or fewer are dazed and do not add the escalation die to their attacks."
+            }
+        ],
         isStaggered: false,
         id: 84
     },
@@ -4725,8 +4748,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Ogre",
+        type: "giant",
         level: 3,
-        type: "troop (large)",
+        sizeOrStrength: "large",
+        role: "troop",
         initiative: "+5",
         ac: 19,
         pd: 16,
@@ -4735,39 +4760,30 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 90,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            
-            "Big Honkin' Club +7 vs AC - 18 damage. Miss: Half damage.", 
-            
+                type: "melee",
+                name: "Big Honkin' Club",
+                bonus: 7,
+                defenseTargeted: "AC",
+                damage: "18 damage",
+                miss: "half damage"
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "melee",
+                target: "each enemy engaged with ogre",
+                name: "Big Shove",
+                bonus: 9,
+                defenseTargeted: "PD",
+                damage: "1D6 damage",
+                effect: "the target pops free from the ogre",
+                limitedUse: "Quick Use: This power only requires a quick action (once per round) instead of a standard action when the escalation die is even."
             }
-            
-            "Big Shove +9 vs PD (each enemy engaged with ogre) - 1D6 damage, and the target pops free from the ogre. Quick use: This power only requires a quick action (once per round) instead of a standard action when the escalation die is even."
         ],
-        abilities: ["[Nastier Special] Tough Skin: Whenever the ogre takes weapon damage, reduce that damage by 1D8 points."],
+        nastierSpecials: [
+            {
+                name: "Tough Skin",
+                text: "Whenever the ogre takes weapon damage, reduce that damage by 1D8 points."
+            }
+        ],
         isStaggered: false,
         id: 85
     },
@@ -4776,8 +4792,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Ogre Mage",
+        type: "giant",
         level: 7,
-        type: "caster (large)",
+        sizeOrStrength: "large",
+        role: "caster",
         initiative: "+14",
         ac: 23,
         pd: 19,
@@ -4786,55 +4804,58 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 170,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Naginata",
+                bonus: 13,
+                defenseTargeted: "AC",
+                damage: "35 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 18+",
+                        effect: "Make a second naginata attack against a nearby enemy as a free action (engaging it is not required)."
                     }
                 ]
-            },
-            
-            
-            "Naginata +13 vs AC - 35 damage. Natural 18+: Make a second naginata attack against a nearby enemy as a free action (engaging it is not required).", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            "C: Cone of Cold +13 vs PD (up to 3 nearby enemies in a group) - 50 cold damage. Limited Use: 1/day,and the attack also targets the ogre's allies engaged with or between enemy targets.", 
-            
+                type: "close",
+                target: "up to 3 nearby enemies in a group",
+                name: "Cone of Cold",
+                bonus: 13,
+                defenseTargeted: "PD",
+                damage: "50 cold damage",
+                limitedUse: "1/day,and the attack also targets the ogre's allies engaged with or between enemy targets."
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "close",
+                name: "[special trigger] Aura of Treachery",
+                bonus: 13,
+                defenseTargeted: "MD",
+                damage: null,
+                effect: "the target is confused until the end of the ogre mage's next turn."
             }
-            
-            "[special trigger] Aura of Treachery +13 vs MD - the target is confused until the end of the ogre mage's next turn."
         ],
-        abilities: ["Aura of Treachery: Once per round when a nearby enemy misses the ogre mage with an attack, the ogre mage can make an aura of treachery attack against it as a free action.", "Flight: The ogre mage flies using the sheer power of its superior mind.", "Invisibility: If the ogre mage is not engaged, it can turn invisible as an at-will standard action. It becomes visible when it attacks. The ogre mage takes 1D10 damage each time it uses invisibility while it's staggered.", "Resist Exceptional Attacks 16+: When a limited attack (not an at-will attack) targets this creature, the attacker must roll a natural 16+ on the attack roll or it only deals half damage.", "Trollish Regeneration 20: While an ogre mage is damaged, its uncanny flesh heals 20 HP at the start of the ogre mage's turn. It can regenerate 5 times per battle. If it heals to its maximum HP, then that use of regeneration doesn't count against the five-use limit. When the ogre mage is hit by an attack that deals fire or acid damage, it loses one use of its regeneration, and it can't regenerate during its next turn. Dropping an ogre mage to 0 HP doesn't kill it if it has any uses of regeneration left."],
+        specialAbilities: [
+            {
+                name: "Aura of Treachery",
+                text: "Once per round when a nearby enemy misses the ogre mage with an attack, the ogre mage can make an aura of treachery attack against it as a free action."
+            },            
+            {
+                name: "Flight",
+                text: "The ogre mage flies using the sheer power of its superior mind."
+            },            
+            {
+                name: "Invisibility",
+                text: "If the ogre mage is not engaged, it can turn invisible as an at-will standard action. It becomes visible when it attacks. The ogre mage takes 1D10 damage each time it uses invisibility while it's staggered."
+            },            
+            {
+                name: "Resist Exceptional Attacks 16+",
+                text: "When a limited attack (not an at-will attack) targets this creature, the attacker must roll a natural 16+ on the attack roll or it only deals half damage."
+            },            
+            {
+                name: "Trollish Regeneration 20",
+                text: "While an ogre mage is damaged, its uncanny flesh heals 20 HP at the start of the ogre mage's turn. It can regenerate 5 times per battle. If it heals to its maximum HP, then that use of regeneration doesn't count against the five-use limit. When the ogre mage is hit by an attack that deals fire or acid damage, it loses one use of its regeneration, and it can't regenerate during its next turn. Dropping an ogre mage to 0 HP doesn't kill it if it has any uses of regeneration left."
+            }
+        ],
         isStaggered: false,
         id: 86
     },
@@ -4844,6 +4865,7 @@ const crbMonsterData: monsterStatBlock[] = [
     {
         name: "Black Pudding",
         level: 9,
+        sizeOrStrength: "huge",
         type: "wrecker (huge)",
         initiative: "+8",
         ac: 23,
