@@ -3778,8 +3778,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Half-orc Legionnaire",
+        type: "humanoid",
         level: 4,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+8",
         ac: 20,
         pd: 18,
@@ -3788,47 +3790,54 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 56,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Longsword",
+                bonus: 10,
+                defenseTargeted: "AC",
+                damage: "12 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "The half-orc legionnaire gains a +2 bonus to all defenses until the start of its next turn."
+                    },
+                    {
+                        trigger: "Natural Odd Hit",
+                        effect: "The target takes +1D6 damage."
+                    },
+                    {
+                        trigger: "Natural Even Miss",
+                        effect: "4 damage"
+                    },
+                    {
+                        trigger: "Natural Odd Miss",
+                        effect: "If the legionnaire's next melee attack is a natural even hit, it becomes a critical hit instead!"
                     }
                 ]
-            },
-            
-            
-            "Longsword +10 vs AC - 12 damage. Natural Even Hit: The half-orc legionnaire gains a +2 bonus to all defenses until the start of its next turn. Natural Odd Hit: The target takes +1D6 damage. Natural Even Miss: 4 damage. Natural Odd Miss: If the legionnaire's next melee attack is a natural even hit, it becomes a critical hit instead!", 
-            
+            },        
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "ranged",
+                name: "Javelin",
+                bonus: 10,
+                defenseTargeted: "AC",
+                damage: "10 damage"
             }
-
-            "R: Javelin +10 vs AC - 10 damage."
         ],
-        abilities: ["[Nastier Special] Lethal Swing: Once per battle, a half-orc can reroll a melee attack and use the result it prefers."],
+        nastierSpecials: [
+            {
+                name: "Lethal Swing",
+                text: "Once per battle, a half-orc can reroll a melee attack and use the result it prefers."
+            }
+        ],
         isStaggered: false,
         id: 67
     },
     
     {
         name: "Half-orc Tribal Champion",
+        type: "humanoid",
         level: 5,
-        type: "wrecker",
+        sizeOrStrength: "normal",
+        role: "wrecker",
         initiative: "+9",
         ac: 19,
         pd: 18,
@@ -3837,48 +3846,52 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 80,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Great Axe",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "18 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Odd Miss",
+                        effect: "The tribal champion heals 5 HP"
+                    },
+                    {
+                        trigger: "Natural Even Miss",
+                        effect: "10 damage"
                     }
                 ]
             },
-            
-            
-            "Great Axe +9 vs AC - 18 damage. Natural Odd Miss: The tribal champion heals 5 HP. Natural Even Miss: 10 damage.", 
-            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            }
-            
-            "R: Longbow +8 vs AC - 12 damage"
-        
+                type: "ranged",
+                name: "Longbow",
+                bonus: 8,
+                defenseTargeted: "AC",
+                damage: "12 damage"
+            }        
         ],
-        abilities: ["Tribal Rage: When the escalation die is even, a tribal champion can roll 2D20 for each melee attack roll it makes and use the result it prefers. If both dice are 11+, the melee attack is a critical hit.", "[Nastier Special] Lethal Swing: Once per battle, a half-orc can reroll a melee attack and use the result it prefers."],
+        specialAbilities: [
+            {
+                name: "Tribal Rage",
+                text: "When the escalation die is even, a tribal champion can roll 2D20 for each melee attack roll it makes and use the result it prefers. If both dice are 11+, the melee attack is a critical hit."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Lethal Swing",
+                text: "Once per battle, a half-orc can reroll a melee attack and use the result it prefers."
+            }
+        ],
         isStaggered: false,
         id: 68
     },
     
     {
         name: "Half-orc Commander",
+        type: "humanoid",
         level: 8,
-        type: "leader",
+        sizeOrStrength: "normal",
+        role: "leader",
         initiative: "+13",
         ac: 23,
         pd: 22,
@@ -3887,40 +3900,45 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 150,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Jagged Longsword",
+                bonus: 15,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "15 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "One nearby lower-level mook makes an attack as a free action."
                     }
                 ]
-            },
-            
-            
-            "Jagged Longsword + 15 vs AC (2 attacks) - 15 damage. Natural Even Hit: One nearby lower-level mook makes an attack as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "ranged",
+                name: "Thrown Javelin",
+                bonus: 13,
+                defenseTargeted: "AC",
+                damage: "20 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "The half-orc commander gains 20 temporary HP."
                     }
                 ]
             }
-            
-            "R: Thrown Javelin +13 vs AC - 20 damage. Natural Even Hit: The half-orc commander gains 20 temporary HP."
-        
         ],
-        abilities: ["Orcish Command: When a nearby ally of the half-orc commander scores a critical hit, that ally can roll a save against a save ends effect as a free action.", "[Nastier Special] Lethal Swing: Once per battle, a half-orc can reroll a melee attack and use the result it prefers."],
+        specialAbilities: [
+            {
+                name: "Orcish Command",
+                text: "When a nearby ally of the half-orc commander scores a critical hit, that ally can roll a save against a save ends effect as a free action."
+            }        
+        ],
+        nastierSpecials: [
+            {
+                name: "Lethal Swing",
+                text: "Once per battle, a half-orc can reroll a melee attack and use the result it prefers."
+            }
+        ],
         isStaggered: false,
         id: 69
     },
@@ -3929,8 +3947,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Hellhound",
+        type: "beast",
         level: 3,
-        type: "wrecker",
+        sizeOrStrength: "normal",
+        role: "wrecker",
         initiative: "+5",
         ac: 18,
         pd: 16,
@@ -3939,40 +3959,39 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 58,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Savage Bite",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "7 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The hellhound can make a fiery breath attack as a free action."
                     }
                 ]
-            },
-            
-            
-            "Savage Bite +9 vs AC - 7 damage. Natural Even Hit or Miss: The hellhound can make a fiery breath attack as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            }
-            
-            "[special trigger] C: Fiery Breath +9 vs PD (1D3 nearby enemies in a group) - 10 fire damage."
-        
+                type: "close",
+                target: "1D3 nearby enemies in a group",
+                name: "[special trigger] Fiery Breath",
+                bonus: 9,
+                defenseTargeted: "PD",
+                damage: "10 fire damage"
+            }        
         ],
-        abilities: ["Resist Fire 16+", "[Nastier Special] Fiery Aura: Each creature engaged with a hellhound at the start of its turn takes 2D6 fire damage."],
+        specialAbilities: [
+            {
+                name: "Resist",
+                text: "Fire 16+"
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Fiery Aura",
+                text: "Each creature engaged with a hellhound at the start of its turn takes 2D6 fire damage."
+            }
+        ],
         isStaggered: false,
         id: 70
     },
@@ -3981,8 +4000,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Harpy",
+        type: "humanoid",
         level: 4,
-        type: "spoiler",
+        sizeOrStrength: "normal",
+        role: "spoiler",
         initiative: "+7",
         ac: 18,
         pd: 14,
@@ -3991,39 +4012,47 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 44,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Talons",
+                bonus: 6,
+                defenseTargeted: "AC",
+                damage: "10 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Cull",
+                        effect: "The harpy gains a +5 bonus to attack and damage with this attack against any enemy suffering from any Fiendish Song effect."
                     }
                 ]
-            },
-            
-            
-            "Talons +6 vs AC - 10 damage. Cull: The harpy gains a +5 bonus to attack and damage with this attack against any enemy suffering from any fiendish song effect.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "Fiendish Song",
+                bonus: 10,
+                defenseTargeted: "MD",
+                damage: "5 psychic damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 16-17",
+                        effect: "The target is hampered (easy save ends)."
+                    },
+                    {
+                        trigger: "Natural 18-19",
+                        effect: "The target is weakened instead of hampered (easy save ends)."
+                    },
+                    {
+                        trigger: "Natural 20",
+                        effect: "The target is confused instead of weakened (easy save ends)."
                     }
                 ]
             }
-            
-            "C: Fiendish Song +10 vs MD (1D3 nearby enemies) - 5 psychic damage. Natural 16-17: The target is hampered (easy save ends). Natural 18-19: The target is weakened instead of hampered (easy save ends). Natural 20: The target is confused instead of weakened (easy save ends)."
         ],
-        abilities: ["Flight: Harpies are neither quick nor graceful, but their wings get the job done."],
+        specialAbilities: [
+            {
+                name: "Flight",
+                text: "Harpies are neither quick nor graceful, but their wings get the job done."
+            }
+        ],
         isStaggered: false,
         id: 71
     },
@@ -4032,8 +4061,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Human Thug",
+        type: "humanoid",
         level: 1,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+3",
         ac: 17,
         pd: 14,
@@ -4042,31 +4073,29 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 27,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Heavy Mace",
+                bonus: 5,
+                defenseTargeted: "AC",
+                damage: "4 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The thug deals +6 damage with its next attack this battle (be sure to let the PCs know this is coming)."
                     }
                 ]
-            }
-            
-            "Heavy Mace +5 vs AC - 4 damage. Natural Even Hit or Miss: The thug deals +6 damage with its next attack this battle (be sure to let the PCs know this is coming)."
-        
+            }        
         ],
-        abilities: ["None"],
         isStaggered: false,
         id: 72
     },
     
     {
         name: "Demon-touched Human Ranger",
+        type: "humanoid",
         level: 5,
-        type: "archer",
+        sizeOrStrength: "normal",
+        role: "archer",
         initiative: "+10",
         ac: 21,
         pd: 14,
@@ -4075,23 +4104,26 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 80,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "ranged",
+                name: "[melee or ranged] Demon Bow",
+                bonus: 10,
+                defenseTargeted: "AC",
+                damage: "15 damage",
+                effect: "the target is dazed until it pulls the arrow out using a quick action, which deals 10 ongoing damage.",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Odd Hit or Miss",
+                        effect: "The demon bow eats at the ranger's arm and the ranger takes 1D6 damage."
                     }
                 ]
             }
-            
-            
-            "M or R: Demon Bow +10 vs AC - 15 damage, and the target is dazed until it pulls the arrow out using a quick action, which deals 10 ongoing damage. Natural Odd Hit or Miss: The demon bow eats at the ranger's arm and the ranger takes 1D6 damage."
         ],
-        abilities: ["Bow Teeth: Whenever an attacker hits the ranger with a melee attack, that creature takes 1D6 damage as the bow chews on it."],
+        specialAbilities: [
+            {
+                name: "Bow Teeth",
+                text: "Whenever an attacker hits the ranger with a melee attack, that creature takes 1D6 damage as the bow chews on it."
+            }
+        ],
         isStaggered: false,
         id: 73
     },
@@ -4100,8 +4132,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Hungry Star",
+        type: "aberration",
         level: 3,
-        type: "wrecker",
+        sizeOrStrength: "normal",
+        role: "wrecker",
         initiative: "+8",
         ac: 16,
         pd: 12,
@@ -4110,39 +4144,48 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 54,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Ripping Tentacles",
+                bonus: 8,
+                defenseTargeted: "AC",
+                damage: "10 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "If the target is taking ongoing psychic damage, the attack deals +2D6 damage."
                     }
                 ]
-            },
-            
-            
-            "Ripping Tentacles +8 vs AC - 10 damage. Natural Even Hit: If the target is taking ongoing psychic damage, the attack deals +2D6 damage.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "ranged",
+                target: "1D3 enemies in a group",
+                name: "[group ability] Warp-pulse",
+                bonus: 8,
+                defenseTargeted: "PD",
+                damage: null,
+                effect: "5 ongoing psychic damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 16-18",
+                        effect: "While the target is taking ongoing psychic damage, it is dazed."
+                    },
+                    {
+                        trigger: "Natural 19-20",
+                        effect: "While the target is taking ongoing psychic damage, it is confused instead of dazed."
                     }
                 ]
             }
-            
-            "[group ability] R: Warp-pulse +8 vs PD (1D3 enemies in a group) - 5 ongoing psychic damage. Natural 16-18: While the target is taking ongoing psychic damage, it is dazed. Natural 19-20: While the target is taking ongoing psychic damage, it is confused instead of dazed."
         ],
-        abilities: ["Group Ability: For every 2 hungry stars in the battle (round up), one of them can use warp-pulse once during the battle.", "Limited Flight: Hungry stars flap and glide and hover, always within seven or eight feet of the ground. No one knows how that works."],
+        specialAbilities: [
+            {
+                name: "Group Ability",
+                text: "For every 2 hungry stars in the battle (round up), one of them can use warp-pulse once during the battle."
+            },            
+            {
+                name: "Limited Flight",
+                text: "Hungry stars flap and glide and hover, always within seven or eight feet of the ground. No one knows how that works."
+            }
+        ],
         isStaggered: false,
         id: 74
     },
@@ -4151,8 +4194,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Five-Headed Hydra",
+        type: "beast",
         level: 5,
-        type: "wrecker (huge)",
+        sizeOrStrength: "huge",
+        role: "wrecker",
         initiative: "+9",
         ac: 20,
         pd: 19,
@@ -4161,31 +4206,55 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 150,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Gnashing Teeth",
+                bonus: 10,
+                defenseTargeted: "AC",
+                numberOfAttacks: 5,
+                damage: "10 damage",
+                miss: "5 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The hydra's next gnashing teeth attack, if it has an attack left this turn, can be against any nearby enemy instead of against a creature engaged with it."
                     }
                 ]
             }
-            
-            
-            "Gnashing Teeth +10 vs AC (5 attacks) - 10 damage. Natural Even Hit or Miss: The hydra's next gnashing teeth attack, if it has an attack left this turn, can be against any nearby enemy instead of against a creature engaged with it. Miss: 5 damage."
         ],
-        abilities: ["Too Tough to Trick: Whenever the hydra would suffer any of the follow conditions, it ignores the condition and takes 5 damage instead: confused, dazed, hampered, stunned, or weakened.", "Roiling Swirl: If the hydra has at least two gnashing teeth attacks left during a turn, it can expend one of those attacks to move to engage a nearby enemy as a free action (but it will still take opportunity attacks for doing so).", "Sprout Sixth Head: The first time the hydra is staggered, as a free action it gains 40 HP and a sixth gnashing teeth attack, and is considered undamaged at its new HP total. Using the hydra's current HP as a new baseline, the hydra will be staggered again when it drops below 50% of that total.", "Sprout Seventh Head: The second time the hydra is staggered, as a free action it gains 40 HP and a seventh gnashing teeth attack, etc. Use a new HP baseline as before, but there is no eighth head waiting to sprout.", "[Nastier Special] Sprout Eighth Head: You know the drill."],
+        specialAbilities: [
+            {
+                name: "Too Tough to Trick",
+                text: "Whenever the hydra would suffer any of the follow conditions, it ignores the condition and takes 5 damage instead: confused, dazed, hampered, stunned, or weakened."
+            },            
+            {
+                name: "Roiling Swirl",
+                text: "If the hydra has at least two gnashing teeth attacks left during a turn, it can expend one of those attacks to move to engage a nearby enemy as a free action (but it will still take opportunity attacks for doing so)."
+            },            
+            {
+                name: "Sprout Sixth Head",
+                text: "The first time the hydra is staggered, as a free action it gains 40 HP and a sixth gnashing teeth attack, and is considered undamaged at its new HP total. Using the hydra's current HP as a new baseline, the hydra will be staggered again when it drops below 50% of that total."
+            },            
+            {
+                name: "Sprout Seventh Head",
+                text: "The second time the hydra is staggered, as a free action it gains 40 HP and a seventh gnashing teeth attack, etc. Use a new HP baseline as before, but there is no eighth head waiting to sprout."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Sprout Eighth Head",
+                text: "You know the drill."
+            }
+        ],
         isStaggered: false,
         id: 75
     },
     
     {
         name: "Seven-Headed Hydra",
+        type: "beast",
         level: 7,
-        type: "wrecker (huge)",
+        sizeOrStrength: "huge",
+        role: "wrecker",
         initiative: "+11",
         ac: 24,
         pd: 21,
@@ -4194,39 +4263,50 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 200,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Gnashing Teeth",
+                bonus: 12,
+                defenseTargeted: "AC",
+                numberOfAttacks: 7,
+                damage: "12 damage",
+                miss: "7 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The hydra's next gnashing teeth attack, if it has an attack left this turn, can be against any nearby enemy instead of against a creature engaged with it."
                     }
                 ]
-            },
-            
-            
-            "Gnashing Teeth +12 vs AC (7 attacks) - 12 damage. Natural Even Hit or Miss: The hydra's next gnashing teeth attack, if it has an attack left this turn, can be against any nearby enemy instead of against a creature engaged with it. Miss: 7 damage.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "close",
+                target: "1D2 nearby enemies",
+                name: "[nastier special - special trigger] Flame Breath",
+                bonus: 12,
+                defenseTargeted: "PD",
+                damage: "2D12 fire damage",
+                miss: "half damage"
             }
-            
-            "[Nastier Special - special trigger] C: Flame Breath +12 vs PD (1D2 nearby enemies) - 2D12 fire damage. Miss: Half damage."
         ],
-        abilities: ["Sprout Eighth Head: The first time the hydra is staggered, as a free action it gains 50 HP and an eighth gnashing teeth attack, and is considered undamaged at its new HP total. Using the hydra's current HP as a new baseline, the hydra will be staggered again when it drops below 50% of that total.", "Sprout Ninth Head: The second time the hydra is staggered, as a free action it gains 50 HP and a ninth gnashing teeth attack, and is considered undamaged at its new HP total. Using the hydra's current HP as a new baseline, the hydra will be staggered again when it drops below 50% of that total.", "Resist Opportunity Attacks 16+.", "[Nastier Special] Pyrohydra: When the hydra gets a natural even attack roll with a gnashing teeth attack, its next attack that turn (if it has one) is a flame breath attack instead. Note that flame breath attacks don't lead to other flaming breaths; they hydra has to return to making gnashing teeth attacks first."],
+        specialAbilities: [
+            {
+                name: "Sprout Eighth Head",
+                text: "The first time the hydra is staggered, as a free action it gains 50 HP and an eighth gnashing teeth attack, and is considered undamaged at its new HP total. Using the hydra's current HP as a new baseline, the hydra will be staggered again when it drops below 50% of that total."
+            },            
+            {
+                name: "Sprout Ninth Head",
+                text: "The second time the hydra is staggered, as a free action it gains 50 HP and a ninth gnashing teeth attack, and is considered undamaged at its new HP total. Using the hydra's current HP as a new baseline, the hydra will be staggered again when it drops below 50% of that total."
+            },
+            {
+                name: "Resist",
+                text: "Opportunity Attacks 16+"
+            }        
+        ],
+        nastierSpecials: [
+            {
+                name: "Pyrohydra",
+                text: "When the hydra gets a natural even attack roll with a gnashing teeth attack, its next attack that turn (if it has one) is a flame breath attack instead. Note that flame breath attacks don't lead to other flaming breaths; they hydra has to return to making gnashing teeth attacks first."
+            }
+        ],
         isStaggered: false,
         id: 76
     },
@@ -4235,8 +4315,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Kobold Archer",
+        type: "humanoid",
         level: 1,
-        type: "mook",
+        sizeOrStrength: "normal",
+        role: "mook",
         mookNumber: 1,
         initiative: "+4",
         ac: 16,
@@ -4246,48 +4328,40 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 6,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            
-            "Simple Knife +6 vs AC - 3 damage", 
-            
+                type: "melee",
+                name: "Simple Knife",
+                bonus: 6,
+                defenseTargeted: "AC",
+                damage: "3 damage"
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            }
-            
-            "R: Tiny Crossbow or Javelin +7 vs AC - 3 damage"
-        
+                type: "ranged",
+                name: "Tiny Crossbow or Javelin",
+                bonus: 7,
+                defenseTargeted: "AC",
+                damage: "3 damage"
+            }        
         ],
-        abilities: ["Evasive: Kobolds take no damage from missed attacks.", "Split Off: When one of the kobold's allies engages a creature engaged with the kobold, the kobold can pop free as a free action."],
+        specialAbilities: [
+            {
+                name: "Evasive",
+                text: "Kobolds take no damage from missed attacks."
+            },
+            {
+                name: "Split Off",
+                text: "When one of the kobold's allies engages a creature engaged with the kobold, the kobold can pop free as a free action."
+            }        
+        ],
         isStaggered: false,
         id: 77
     },
     
     {
         name: "Kobold Warrior",
+        type: "humanoid",
         level: 1,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+4",
         ac: 18,
         pd: 15,
@@ -4296,32 +4370,39 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 22,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Spear",
+                bonus: 8,
+                defenseTargeted: "AC",
+                damage: "4 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The kobold warrior can pop free from the target."
                     }
                 ]
             }
-            
-            
-            
-            "Spear +8 vs AC - 4 damage. Natural Even Hit or Miss: The kobold warrior can pop free from the target."
         ],
-        abilities: ["Evasive: Kobolds take no damage from missed attacks.", "Not Brave: Kobold warriors with single digit HP will run away at the first chance they get."],
+        specialAbilities: [
+            {
+                name: "Evasive",
+                text: "Kobolds take no damage from missed attacks."
+            },
+            {
+                name: "Not Brave",
+                text: "Kobold warriors with single digit HP will run away at the first chance they get."
+            }
+        ],
         isStaggered: false,
         id: 78
     },
     
     {
         name: "Kobold Hero",
+        type: "humanoid",
         level: 2,
-        type: "leader",
+        sizeOrStrength: "normal",
+        role: "leader",
         initiative: "+3",
         ac: 18,
         pd: 16,
@@ -4330,22 +4411,26 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 34,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Shortsword",
+                bonus: 7,
+                defenseTargeted: "AC",
+                damage: "6 damage",
+                effect: "each nearby non-leader kobold deals +3 damage with its next attack this battle that hits.",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Miss",
+                        effect: "3 damage"
                     }
                 ]
             }
-            
-            "Shortsword +7 vs AC - 6 damage, and each nearby non-leader kobold deals +3 damage with its next attack this battle that hits. Natural Even Miss: 3 damage."
         ],
-        abilities: ["Evasive: Kobolds take no damage from missed attacks."],
+        specialAbilities: [
+            {
+                name: "Evasive",
+                text: "Kobolds take no damage from missed attacks."
+            }        
+        ],
         isStaggered: false,
         id: 79
     },
@@ -4354,8 +4439,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Lizardman Savage",
+        type: "humanoid",
         level: 2,
-        type: "wrecker",
+        sizeOrStrength: "normal",
+        role: "wrecker",
         initiative: "+6",
         ac: 17,
         pd: 16,
@@ -4364,71 +4451,42 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 32,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Stone-tip Spear (or Club)",
+                bonus: 7,
+                defenseTargeted: "AC",
+                damage: "7 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 16+",
+                        effect: "The lizardman savage can make a bite attack against the target or another creature engaged with it as a free action."
                     }
                 ]
-            },
-            
-            
-            "Stone-tip Spear (or Club) +7 vs AC - 7 damage. Natural 16+: The lizardman savage can make a bite attack against the target or another creature engaged with it as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            "[special trigger] Bite +7 vs AC - 5 damage, and the lizardman savage can make a ripping frenzy attack against the target as a standard action during its next turn if it's engaged with that target.", 
-            
+                type: "melee",
+                name: "[special trigger] Bite",
+                bonus: 7,
+                defenseTargeted: "AC",
+                damage: "5 damage",
+                effect: "the lizardman savage can make a ripping frenzy attack against the target as a standard action during its next turn if it's engaged with that target."
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            "[special trigger] Ripping Frenzy +9 vs AC (3 attacks) - 5 damage.", 
-            
+                type: "melee",
+                name: "[special trigger] Ripping Frenzy",
+                bonus: 9,
+                defenseTargeted: "AC",
+                numberOfAttacks: 3,
+                damage: "5 damage"
+            },     
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "ranged",
+                name: "Thrown Spear",
+                bonus: 6,
+                defenseTargeted: "AC",
+                damage: "5 damage"
             }
-            
-            "R: Thrown Spear +6 vs AC - 5 damage"
         ],
-        abilities: ["None"],
         isStaggered: false,
         id: 80
     },
@@ -4437,8 +4495,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Manticore",
+        type: "beast",
         level: 6,
-        type: "archer (large)",
+        sizeOrStrength: "large",
+        role: "archer",
         initiative: "+13",
         ac: 22,
         pd: 20,
@@ -4447,55 +4507,46 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 182,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Battering Paws",
+                bonus: 11,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "20 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 16+",
+                        effect: "The manticore can make a single volley of tail spikes attack (one attack roll) against a different target as a free action."
                     }
                 ]
-            },
-            
-            
-            "Battering Paws +11 vs AC (2 attacks) - 20 damage. Natural 16+: The manticore can make a single volley of tail spikes attack (one attack roll) against a different target as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            "Crushing Leonine Jaws +11 vs AC - 30 damage; OR 50 damage against a creature taking ongoing poison damage.", 
-            
+                type: "melee",
+                name: "Crushing Leonine Jaws",
+                bonus: 11,
+                defenseTargeted: "AC",
+                damage: "30 damage; OR 50 damage against a creature taking ongoing poison damage"
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "close",
+                target: "1D3 nearby or far away enemies in a group",
+                name: "Volley of Tail Spikes",
+                bonus: 13,
+                defenseTargeted: "AC",
+                damage: null,
+                effect: "5 ongoing poison damage (hard save ends)."
             }
-            
-            "C: Volley of Tail Spikes +13 vs AC (1D3 nearby or far away enemies in a group) - 5 ongoing poison damage (hard save ends)."
         ],
-        abilities: ["Flight: Manticores are poor fliers in tight spaces, but out in the open they are more capable.", "Poison Reservoirs: Each time the manticore uses its volley of tail spikes attack, it takes 1D6 damage, or 2D6 damage if it is staggered."],
+        specialAbilities: [
+            {
+                name: "Flight",
+                text: "Manticores are poor fliers in tight spaces, but out in the open they are more capable."
+            },
+            {
+                name: "Poison Reservoirs",
+                text: "Each time the manticore uses its volley of tail spikes attack, it takes 1D6 damage, or 2D6 damage if it is staggered."
+            }
+        ],
         isStaggered: false,
         id: 81
     },
