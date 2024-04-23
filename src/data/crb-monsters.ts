@@ -4864,9 +4864,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Black Pudding",
+        type: "ooze",
         level: 9,
         sizeOrStrength: "huge",
-        type: "wrecker (huge)",
+        role: "wrecker",
         initiative: "+8",
         ac: 23,
         pd: 20,
@@ -4875,31 +4876,44 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 470,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "close",
+                target: "up to 4 attacks, each against a different nearby enemy",
+                name: "Acid-drenched Pseudopod",
+                bonus: 14,
+                defenseTargeted: "PD",
+                damage: "30 acid damage",
+                effect: "10 ongoing acid damage",
+                miss: "10 acid damage"
             }
-            
-            
-            "C: Acid-drenched Pseudopod +14 vs PD (up to 4 attacks, each against a different nearby enemy) - 30 acid damage, and 10 ongoing acid damage. Miss: 10 acid damage."
         ],
-        abilities: ["Flows Where it Likes: The ooze is immune to opportunity attacks.", "Ooze: The ooze is immune to effects. When an attack applies a condition to an ooze, that condition doesn't affect it.", "Climber: A black pudding sticks to ceilings and walls when it wishes, sliding along as easily as on the floor.", "Slippery: The pudding has resist weapons 12+."],
+        specialAbilities: [
+            {
+                name: "Flows Where It Likes",
+                text: "The ooze is immune to opportunity attacks."
+            },            
+            {
+                name: "Ooze",
+                text: "The ooze is immune to effects. When an attack applies a condition to an ooze, that condition doesn't affect it."
+            },            
+            {
+                name: "Climber",
+                text: "A black pudding sticks to ceilings and walls when it wishes, sliding along as easily as on the floor."
+            },            
+            {
+                name: "Slippery",
+                text: "The pudding has resist weapons 12+."
+            }
+        ],
         isStaggered: false,
         id: 87
     },
     
     {
         name: "Gelatinous Cube",
+        type: "ooze",
         level: 5,
-        type: "blocker (huge)",
+        sizeOrStrength: "huge",
+        role: "blocker",
         initiative: "+4",
         ac: 20,
         pd: 18,
@@ -4908,48 +4922,47 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 200,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            
-            
-            "Shlup'n'schlorp +10 vs PD - 30 acid damage, and the cube engulfs the target (functions like a grab; see below) if it's smaller than the cube. Miss: The cube can make a spasms attack as a free action.", 
-            
+                type: "melee",
+                name: "Shlup'n'schlorp",
+                bonus: 10,
+                defenseTargeted: "PD",
+                damage: "30 acid damage",
+                effect: "the cube engulfs the target (functions like a grab; see below) if it's smaller than the cube.",
+                miss: "The cube can make a spasms attack as a free action."
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "close",
+                target: "up to 2 attacks, each against a different nearby target",
+                name: "[special trigger] Spasms",
+                bonus: 10,
+                defenseTargeted: "AC",
+                damage: "15 damage"
             }
-            
-            "[special trigger] C: Spasms +10 vs AC (up to 2 attacks, each against a different nearby enemy) - 15 damage."
         ],
-        abilities: ["Flows Where it Likes: The ooze is immune to opportunity attacks.", "Ooze: The ooze is immune to effects. When an attack applies a condition to an ooze, that condition doesn't affect it.", "Engulf and Dissolve: Targets engulfed/grabbed by the cube take 30 acid damage at the start of the cube's turn but are not viable targets for additional attacks by the cube. Multiple targets can be held within the cube simultaneously. Any engulfed creature that is also staggered must begin making last gasp saves or become paralyzed as the cube's toxins overwhelm it."],
+        specialAbilities: [
+            {
+                name: "Flows Where It Likes",
+                text: "The ooze is immune to opportunity attacks."
+            },            
+            {
+                name: "Ooze",
+                text: "The ooze is immune to effects. When an attack applies a condition to an ooze, that condition doesn't affect it."
+            }, 
+            {
+                name: "Engulf and Dissolve",
+                text: "Targets engulfed/grabbed by the cube take 30 acid damage at the start of the cube's turn but are not viable targets for additional attacks by the cube. Multiple targets can be held within the cube simultaneously. Any engulfed creature that is also staggered must begin making last gasp saves or become paralyzed as the cube's toxins overwhelm it."
+            }        
+        ],
         isStaggered: false,
         id: 88
     },
     
     {
         name: "Ochre Jelly",
+        type: "ooze",
         level: 3,
-        type: "wrecker (large)",
+        sizeOrStrength: "large",
+        role: "wrecker",
         initiative: "+2",
         ac: 18,
         pd: 17,
@@ -4958,23 +4971,34 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 90,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "close",
+                target: "1D4 attacks, each against a different nearby enemy",
+                name: "Acid-drenched Pseudopod",
+                bonus: 8,
+                defenseTargeted: "PD",
+                damage: "6 acid damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "3 ongoing acid damage."
                     }
                 ]
             }
-            
-            
-            "C: Acid-drenched Pseudopod +8 vs PD (1D4 attacks, each against a different nearby enemy) - 6 acid damage. Natural Even Hit or Miss: 3 ongoing acid damage."
         ],
-        abilities: ["Flows Where it Likes: The ooze is immune to opportunity attacks.", "Ooze: The ooze is immune to effects. When an attack applies a condition to an ooze, that condition doesn't affect it.", "Splitter: The first time an ochre jelly takes 20 or more damage from a single attack, it splits into two normal-sized ochre jellies, each with half the original creature's HP plus 2D6 HP for good luck. Treat the new jellies as undamaged jellies at their new HP totals, but they don't have the splitter ability (maybe they get back together if they survive the fight. Maybe they don't."],
+        specialAbilities: [
+            {
+                name: "Flows Where It Likes",
+                text: "The ooze is immune to opportunity attacks."
+            },            
+            {
+                name: "Ooze",
+                text: "The ooze is immune to effects. When an attack applies a condition to an ooze, that condition doesn't affect it."
+            }, 
+            {
+                name: "Splitter",
+                text: "The first time an ochre jelly takes 20 or more damage from a single attack, it splits into two normal-sized ochre jellies, each with half the original creature's HP plus 2D6 HP for good luck. Treat the new jellies as undamaged jellies at their new HP totals, but they don't have the splitter ability (maybe they get back together if they survive the fight. Maybe they don't."
+            }
+        ],
         isStaggered: false,
         id: 89
     },
@@ -4983,8 +5007,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Orc Warrior",
+        type: "humanoid",
         level: 1,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+3",
         ac: 16,
         pd: 14,
@@ -4993,31 +5019,29 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 30,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Jagged Sword",
+                bonus: 6,
+                defenseTargeted: "AC",
+                damage: "6 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Dangerous",
+                        effect: "The crit range of attacks by orcs expands by 3 unless they are staggered."
                     }
                 ]
             }
-            
-            
-            "Jagged Sword +6 vs AC - 6 damage. Dangerous: The crit range of attacks by orcs expands by 3 unless they are staggered."
         ],
-        abilities: ["None"],
         isStaggered: false,
         id: 90
     },
     
     {
         name: "Orc Berserker",
+        type: "humanoid",
         level: 2,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+5",
         ac: 16,
         pd: 15,
@@ -5026,32 +5050,35 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 40,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Greataxe",
+                bonus: 7,
+                defenseTargeted: "AC",
+                damage: "8 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Dangerous",
+                        effect: "The crit range of attacks by orcs expands by 3 unless they are staggered."
                     }
                 ]
-            }
-            
-            
-            "Greataxe +7 vs AC - 8 damage. Dangerous: The crit range of attacks by orcs expands by 3 unless they are staggered."
-        
+            }        
         ],
-        abilities: ["Unstoppable: When an orc berserker drops to 0 HP, it does not immediately die. Ignore any damage in excess of 0 HP, roll 2D6, and give the berserker that many temporary hit points. No other healing can affect the berserker or give it more temporary hit points: when the temporary HP are gone, the berserker dies."],
+        specialAbilities: [
+            {
+                name: "Unstoppable",
+                text: "When an orc berserker drops to 0 HP, it does not immediately die. Ignore any damage in excess of 0 HP, roll 2D6, and give the berserker that many temporary hit points. No other healing can affect the berserker or give it more temporary hit points: when the temporary HP are gone, the berserker dies."
+            }
+        ],
         isStaggered: false,
         id: 91
     },
     
     {
         name: "Orc Shaman",
+        type: "humanoid",
         level: 2,
-        type: "leader",
+        sizeOrStrength: "normal",
+        role: "leader",
         initiative: "+5",
         ac: 18,
         pd: 12,
@@ -5060,47 +5087,38 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 36,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Spear",
+                bonus: 6,
+                defenseTargeted: "AC",
+                damage: "6 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Dangerous",
+                        effect: "The crit range of attacks by orcs expands by 3 unless they are staggered."
                     }
                 ]
-            },
-            
-            
-            "Spear +6 vs AC - 6 damage. Dangerous: The crit range of attacks by orcs expands by 3 unless they are staggered.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "ranged",
+                target: "1D3 nearby enemies",
+                name: "Battle Curse",
+                bonus: 7,
+                defenseTargeted: "MD",
+                damage: "4 psychic damage",
+                effect: "for the rest of the battle, melee attacks by orcs deal +1D4 damage against the target (non-cumulative)."
             }
-            
-            "R: Battle Curse +7 vs MD (1D3 nearby enemies) - 4 psychic damage, and for the rest of the battle, melee attacks by orcs deal +1D4 damage against the target (non-cumulative)."
         ],
-        abilities: ["None"],
         isStaggered: false,
         id: 92
     },
     
     {
         name: "Orc Rager",
+        type: "humanoid",
         level: 7,
-        type: "mook",
+        sizeOrStrength: "normal",
+        role: "mook",
         mookNumber: 1,
         initiative: "+12",
         ac: 22,
@@ -5110,31 +5128,35 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 27,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Greataxe",
+                bonus: 12,
+                defenseTargeted: "AC",
+                damage: "16 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Dangerous Mooks",
+                        effect: "The crit range of melee attacks by orc ragers expands by 3 until half the orc rager mob has been dropped."
                     }
                 ]
             }
-            
-            
-            "Greataxe +12 vs AC - 16 damage. Dangerous mooks: The crit range of melee attacks by orc ragers expands by 3 until half the orc rager mob has been dropped."
         ],
-        abilities: ["Dying Strike: When an orc rager drops to 0 HP, it can make a final attack as a free action. (GM, since it isn't always important which mook dies, feel free to make these extra attacks come from the ragers engaged with a PC.)"],
+        specialAbilities: [
+            {
+                name: "Dying Strike",
+                text: "When an orc rager drops to 0 HP, it can make a final attack as a free action. (GM, since it isn't always important which mook dies, feel free to make these extra attacks come from the ragers engaged with a PC.)"
+            }
+        ],
         isStaggered: false,
         id: 93
     },
     
     {
         name: "Great Fang Cadre",
+        type: "humanoid",
         level: 10,
-        type: "mook",
+        sizeOrStrength: "normal",
+        role: "mook",
         mookNumber: 1,
         initiative: "+13",
         ac: 27,
@@ -5144,40 +5166,42 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 50,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Double Axe",
+                bonus: 15,
+                defenseTargeted: "AC",
+                damage: "25 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 11+",
+                        effect: "The cadre can make a second double axe attack (no more) as a free action."
+                    },
+                    {
+                        trigger: "Dangerous Mooks",
+                        effect: "The crit range of melee attacks by great fang cadre orcs expands by 3 until half the great fang cadre mob has been dropped."
                     }
                 ]
-            },
-            
-            
-            "Double Axe +15 vs AC - 25 damage. Natural 11+: The cadre can make a second double axe attack (no more) as a free action. Dangerous Mooks: The crit range of melee attacks by great fang cadre orcs expands by 3 until half the great fang cadre mob has been dropped.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "ranged",
+                name: "Big, Black, Creaking Bow",
+                bonus: 15,
+                defenseTargeted: "AC",
+                damage: "37 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "The attack targets PD instead of AC."
                     }
                 ]
-            }
-            
-            "R: Big, Black, Creaking Bow +15 vs AC - 37 damage. Natural Even Hit or Miss: The attack targets PD instead of AC."
-        
+            }        
         ],
-        abilities: ["[Nastier Special] On the Spot Mutation: Whenever an attack eliminates one or more members of the mob, there is a 50% chance that each survivor gains a mutation like a sudden new body part or temporary magical aura. The GM chooses which of the following improvements, perhaps at random, and invents a new part or magic effect to explain it: extra melee attack, damage aura: 1D20 damage vs any enemy that starts its turn engaged with the orc, or +4 bonus to AC."],
+        nastierSpecials: [
+            {
+                name: "On the Spot Mutation",
+                text: "Whenever an attack eliminates one or more members of the mob, there is a 50% chance that each survivor gains a mutation like a sudden new body part or temporary magical aura. The GM chooses which of the following improvements, perhaps at random, and invents a new part or magic effect to explain it: extra melee attack, damage aura: 1D20 damage vs any enemy that starts its turn engaged with the orc, or +4 bonus to AC."
+            }
+        ],
         isStaggered: false,
         id: 94
     },
