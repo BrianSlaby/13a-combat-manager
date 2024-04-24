@@ -5210,8 +5210,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Otyugh",
+        type: "Aberration",
         level: 3,
-        type: "blocker (large)",
+        sizeOrStrength: "large",
+        role: "blocker",
         initiative: "+5",
         ac: 19,
         pd: 17,
@@ -5220,38 +5222,42 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 84,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Grasping Tentacles",
+                bonus: 8,
+                defenseTargeted: "PD",
+                numberOfAttacks: 2,
+                damage: "5 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "The otyugh can grab the target."
+                    },
+                    {
+                        trigger: "Natural 18 or 20",
+                        effect: "The otyugh can grab the target and make a big toothy maw attack against it as a free action."
                     }
                 ]
-            },
-            
-            "Grasping Tentacles +8 vs PD (2 attacks) - 5 damage. Natural Even Hit: The otyugh can grab the target. Natural 18 or 20: The otyugh can grab the target and make a big toothy maw attack against it as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "melee",
+                target: "one enemy it's grabbing; includes a +4 grab bonus",
+                name: "Big Toothy Maw",
+                bonus: 12,
+                defenseTargeted: "AC",
+                damage: "16 damage"
             }
-            
-            "Big Toothy Maw +12 vs AC (one enemy it's grabbing; includes a +4 grab bonus) - 16 damage."
         ],
-        abilities: ["Trash Nest Defense: The otyugh gains a +2 bonus to all defenses while fighting in its nest or in similar piles of excrement and trash.", "Tentacle Flail: Once per round, an otyugh can make a grasping tentacles attack as a free action against a moving nearby creature it is not engaged with; on a natural even hit, the target is grabbed and its movement stops."],
+        specialAbilities: [
+            {
+                name: "Trash Nest Defense",
+                text: "The otyugh gains a +2 bonus to all defenses while fighting in its nest or in similar piles of excrement and trash."
+            },
+            {
+                name: "Tentacle Flail",
+                text: "Once per round, an otyugh can make a grasping tentacles attack as a free action against a moving nearby creature it is not engaged with; on a natural even hit, the target is grabbed and its movement stops."
+            }
+        ],
         isStaggered: false,
         id: 95
     },
@@ -5260,8 +5266,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Owlbear",
+        type: "beast",
         level: 4,
-        type: "wrecker (large)",
+        sizeOrStrength: "large",
+        role: "wrecker",
         initiative: "+8",
         ac: 19,
         pd: 17,
@@ -5270,23 +5278,30 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 101,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Rip and Peck",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "15 damage",
+                effect: "until the end of the owlbear's next turn, the target is hampered while engaged with the owlbear.",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Vicious Hybrid",
+                        effect: "If the escalation die is even, make another rip and peck attack."
                     }
                 ]
             }
-            
-            
-            "Rip and Peck +9 vs AC - 15 damage, and until the end of the owlbear's next turn, the target is hampered while engaged with the owlbear. Vicious Hybrid: If the escalation die is even, make another rip and peck attack."
         ],
-        abilities: ["Feed the Cubs: An owlbear that scores a critical hit against a hampered enemy tears a piece of the creature off (GM chooses a limb) and will subsequently attempt to retreat with the prize to feed its cubs. The torn-up enemy is stunned until the end of its next turn.", "Silent Hunter: Owlbear's are nearly silent until the strike. Checks to hear them approaching take a -5 penalty."],
+        specialAbilities: [
+            {
+                name: "Feed the Cubs",
+                text: "An owlbear that scores a critical hit against a hampered enemy tears a piece of the creature off (GM chooses a limb) and will subsequently attempt to retreat with the prize to feed its cubs. The torn-up enemy is stunned until the end of its next turn."
+            },            
+            {
+                name: "Silent Hunter",
+                text: "Owlbear's are nearly silent until the strike. Checks to hear them approaching take a -5 penalty."
+            }        
+        ],
         isStaggered: false,
         id: 96
     },
@@ -5295,8 +5310,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Phase Spider",
+        type: "beast",
         level: 7,
-        type: "spoiler (large)",
+        sizeOrStrength: "large",
+        role: "spoiler",
         initiative: "+16",
         ac: 23,
         pd: 22,
@@ -5305,39 +5322,39 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 200,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Phasing Fangs",
+                bonus: 11,
+                defenseTargeted: "PD",
+                numberOfAttacks: 2,
+                damage: "25 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "The spider can make a rummage and filch attack against the target as a free action, even if the target isn't staggered."
                     }
                 ]
-            },
-            
-            
-            "Phasing Fangs +11 vs PD (2 attacks) - 25 damage. Natural Even Hit: The spider can make a rummage and filch attack against the target as a free action, even if the target isn't staggered.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "melee",
+                target: "one staggered creature",
+                name: "Rummage and Filch",
+                bonus: 11,
+                defenseTargeted: "MD",
+                damage: null,
+                effect: "the phase spider steals a random true magic item from the target (see below)."
             }
-            
-            "Rummage and Filch +11 vs MD (one staggered creature) - the phase spider steals a random true magic item from the target (see below)."
         ],
-        abilities: ["Phasing Abilities: As long as it didn't just return from being out of phase, at the start of the phase spider's turn, roll a D6 to see which of its phase and teleport abilities it can access that turn. The spider doesn't have to use the available ability and can attack normally, if it wishes. 1-2: Short teleport - as a move action, the spider can telport anywhere it can see nearby. 3: Long teleport - As a move action, the spider can teleport anywhere it can see nearby or far away. 4-5: Phase out - as a move action, the spider can remove itself from the battlefield, returning on its next initiative turn anywhere it chooses nearby. It doesn't get to make a phase roll at the start of its next turn, though. 6: Teleport away - if the spider has stolen at least one magic item, as a move action it can teleport back to its lair, or to its master if it has one. It leaves the battle. If it hasn't stolen an item yet, it won't leave and can use its choice of the other abilities this turn.", "Stolen Items: The spider stows items it has stolen in a disgusting pouch in its abdomen. Wizards speculate that if stolen items are not handed over to a master, it somehow affects the phase spider's hideous reproductive process, so a spider without an item will fight until it gets one. If the heroes can slay the spider before it flees, they get their stuff back. If the spider hasn't returned to its lair or a master yet, there might be magic items in its pouch stolen from other beings; such items will be grateful to have been rescued. A result of 20 on a D20 means there are items in the pouch, or you can skip the roll to use something found in its pouch as an opportunity to mix the PC's up in a new story."],
+        specialAbilities: [
+            {
+                name: "Phasing Abilities",
+                text: "As long as it didn't just return from being out of phase, at the start of the phase spider's turn, roll a D6 to see which of its phase and teleport abilities it can access that turn. The spider doesn't have to use the available ability and can attack normally, if it wishes. 1-2: Short teleport - as a move action, the spider can telport anywhere it can see nearby. 3: Long teleport - As a move action, the spider can teleport anywhere it can see nearby or far away. 4-5: Phase out - as a move action, the spider can remove itself from the battlefield, returning on its next initiative turn anywhere it chooses nearby. It doesn't get to make a phase roll at the start of its next turn, though. 6: Teleport away - if the spider has stolen at least one magic item, as a move action it can teleport back to its lair, or to its master if it has one. It leaves the battle. If it hasn't stolen an item yet, it won't leave and can use its choice of the other abilities this turn."
+            },            
+            {
+                name: "Stolen Items",
+                text: "The spider stows items it has stolen in a disgusting pouch in its abdomen. Wizards speculate that if stolen items are not handed over to a master, it somehow affects the phase spider's hideous reproductive process, so a spider without an item will fight until it gets one. If the heroes can slay the spider before it flees, they get their stuff back. If the spider hasn't returned to its lair or a master yet, there might be magic items in its pouch stolen from other beings; such items will be grateful to have been rescued. A result of 20 on a D20 means there are items in the pouch, or you can skip the roll to use something found in its pouch as an opportunity to mix the PC's up in a new story."
+            }
+        ],
         isStaggered: false,
         id: 97
     },
@@ -5346,8 +5363,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Rakshasa",
+        type: "humanoid",
         level: 8,
-        type: "caster (double-strength)",
+        sizeOrStrength: "double-strength",
+        role: "caster",
         initiative: "+16",
         ac: 23,
         pd: 20,
@@ -5356,57 +5375,59 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 280,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Claws and Bite",
+                bonus: 11,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "25 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "The rakshasa can make a rend mind attack as a free action."
                     }
                 ]
-            },
-            
-            
-            "Claws and Bite +11 vs AC (2 attacks) - 25 damage. Natural Even Hit: The rakshasa can make a rend mind attack as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "ranged",
+                target: "1D3 nearby enemies",
+                name: "Striped Lightning Bolts",
+                bonus: 13,
+                defenseTargeted: "PD",
+                damage: "25 lightning damage, or 50 lightning damage against a staggered target.",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "The rakshasa can make a rend mind attack as a free action."
                     }
                 ]
-            },
-            
-            
-            "R: Striped Lightning Bolts +13 vs PD (1D3 nearby enemies) - 25 lightning damage, or 50 lightning damage against a staggered target. Natural Even Hit: The rakshasa can make a rend mind attack as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "close",
+                target: "one nearby enemy",
+                name: "Rend Mind",
+                bonus: 13,
+                defenseTargeted: "MD",
+                damage: "15 psychic damage",
+                effect: "the target is confused until the end of the rakshasa's next turn."
             }
-            
-            
-            "C: Rend Mind +13 vs MD (one nearby enemy) - 15 psychic damage, and the target is confused until the end of the rakshasa's next turn."
         ],
-        abilities: ["Shapechange: As a standard action, the rakshasa can changes its form to that of any humanoid, or back to its own shape. Seeing through the shapechange requires a DC 25 skill check.", "[Nastier Special] Master of Chaos: The rakshasa gains a bonus to all defenses equal to the current number of confused enemies in the battle.", "[Nastier Special] Reversal of Fate: Once per day as a quick action, the rakshasa steals the escalation die; until the end of the battle, the rakshasa gains an attack bonus equal to the die's value when it was stolen. Reset the escalation die to 0 for the players and increase it normally with each new round."],
+        specialAbilities: [
+            {
+                name: "Shapechange",
+                text: "As a standard action, the rakshasa can changes its form to that of any humanoid, or back to its own shape. Seeing through the shapechange requires a DC 25 skill check."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Master of Chaos",
+                text: "The rakshasa gains a bonus to all defenses equal to the current number of confused enemies in the battle."
+            },
+            {
+                name: "Reversal of Fate",
+                text: "Once per day as a quick action, the rakshasa steals the escalation die; until the end of the battle, the rakshasa gains an attack bonus equal to the die's value when it was stolen. Reset the escalation die to 0 for the players and increase it normally with each new round."
+            }
+        ],
         isStaggered: false,
         id: 98
     },
@@ -5415,8 +5436,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Sahuagin",
+        type: "humanoid",
         level: 5,
-        type: "wrecker",
+        sizeOrStrength: "normal",
+        role: "wrecker",
         initiative: "+9",
         ac: 20,
         pd: 19,
@@ -5425,39 +5448,41 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 70,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Trident and Bite",
+                bonus: 10,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "10 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 20",
+                        effect: "Increase the escalation die by 1, and the target is hampered until the end of its next turn."
                     }
                 ]
-            },
-            
-            
-            "Trident and Bite +10 vs AC (2 attacks) - 10 damage. Natural 20: Increase the escalation die by 1, and the target is hampered until the end of its next turn.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "ranged",
+                target: "one nearby enemy, or a far away enemy at a -2 penalty",
+                name: "Barbed Crossbow",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "10 damage",
+                effect: "5 ongoing damage"
             }
-            
-            "R: Barbed Crossbow +9 vs AC (one nearby enemy, or a far away enemy at a -2 penalty) - 10 damage, and 5 ongoing damage."
         ],
-        abilities: ["Blood Frenzy: Make a note of the escalation die when the sahuagin becomes staggered. The sahuagin gains a bonus to its melee attacks and damage equal to the escalation die value for the rest of the battle.", "[Nastier Special] Demon-touched: Roll a D6 on the Demon Random Abilities table (CRB page 209). The sahuagin gains that ability."],
+        specialAbilities: [
+            {
+                name: "Blood Frenzy",
+                text: "Make a note of the escalation die when the sahuagin becomes staggered. The sahuagin gains a bonus to its melee attacks and damage equal to the escalation die value for the rest of the battle."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Demon-touched",
+                text: "Roll a D6 on the Demon Random Abilities table (CRB page 209). The sahuagin gains that ability."
+            }
+        ],
         isStaggered: false,
         id: 99
     },
@@ -5466,8 +5491,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Decrepit Skeleton",
+        type: "undead",
         level: 1,
-        type: "mook",
+        sizeOrStrength: "normal",
+        role: "mook",
         mookNumber: 1,
         initiative: "+6",
         ac: 16,
@@ -5477,31 +5504,33 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 7,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "melee",
+                name: "Sword",
+                bonus: 6,
+                defenseTargeted: "AC",
+                damage: "3 damage"
             }
-            
-            
-            "Sword +6 vs AC - 3 damage"
         ],
-        abilities: ["Resist Weapons 16+", "Vulnerability: Holy"],
+        specialAbilities: [
+            {
+                name: "Resist",
+                text: "Weapons 16+"
+            },
+            {
+                name: "Vulnerability",
+                text: "Holy"
+            }        
+        ],
         isStaggered: false,
         id: 100
     },
     
     {
         name: "Skeletal Hound",
+        type: "undead",
         level: 1,
-        type: "blocker",
+        sizeOrStrength: "normal",
+        role: "blocker",
         initiative: "+7",
         ac: 15,
         pd: 13,
@@ -5510,31 +5539,47 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 24,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Bite",
+                bonus: 6,
+                defenseTargeted: "AC",
+                damage: "5 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "The hound leaves teeth in the wound; the target takes 5 ongoing damage, and the hound takes 1D6 damage."
                     }
                 ]
             }
-            
-            
-            "Bite +6 vs AC - 5 damage. Natural Even Hit: The hound leaves teeth in the wound; the target takes 5 ongoing damage, and the hound takes 1D6 damage."
         ],
-        abilities: ["Resist Weapons 16+", "Vulnerability: Holy", "Chomp Chomp Chomp: Enemies with a lower initiative than the hound take a -5 penalty to disengage checks against it.", "Skilled Intercept 11+: Once per round, an engaged skeletal hound can attempt to pop free and intercept an enemy moving past it. Roll a normal save: on an 11+, it succeeds."],
+        specialAbilities: [
+            {
+                name: "Resist",
+                text: "Weapons 16+"
+            },
+            {
+                name: "Vulnerability",
+                text: "Holy"
+            } ,
+            {
+                name: "Chomp Chomp Chomp",
+                text: "Enemies with a lower initiative than the hound take a -5 penalty to disengage checks against it."
+            },
+            {
+                name: "Skilled Intercept 11+",
+                text: "Once per round, an engaged skeletal hound can attempt to pop free and intercept an enemy moving past it. Roll a normal save: on an 11+, it succeeds."
+            }        
+        ],
         isStaggered: false,
         id: 101
     },
     
     {
         name: "Skeleton Archer",
+        type: "undead",
         level: 1,
-        type: "archer",
+        sizeOrStrength: "normal",
+        role: "archer",
         initiative: "+7",
         ac: 16,
         pd: 14,
@@ -5543,46 +5588,40 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 26,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            "Jabby Bones +5 vs AC - 4 damage", 
-            
+                type: "melee",
+                name: "Jabby Bones",
+                bonus: 5,
+                defenseTargeted: "AC",
+                damage: "4 damage"
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "ranged",
+                name: "Shortbow",
+                bonus: 7,
+                defenseTargeted: "AC",
+                damage: "6 damage"
             }
-            
-            "R: Shortbow +7 vs AC - 6 damage"
         ],
-        abilities: ["Resist Weapons 16+", "Vulnerability: Holy"],
+        specialAbilities: [
+            {
+                name: "Resist",
+                text: "Weapons 16+"
+            },
+            {
+                name: "Vulnerability",
+                text: "Holy"
+            }         
+        ],
         isStaggered: false,
         id: 102
     },
     
     {
         name: "Skeleton Warrior",
+        type: "undead",
         level: 2,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+8",
         ac: 16,
         pd: 14,
@@ -5591,30 +5630,33 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 26,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "melee",
+                name: "Spear",
+                bonus: 8,
+                defenseTargeted: "AC",
+                damage: "6 damage"
             }
-            
-            "Spear +8 vs AC - 6 damage"
         ],
-        abilities: ["Resist Weapons 16+", "Vulnerability: Holy"],
+        specialAbilities: [
+            {
+                name: "Resist",
+                text: "Weapons 16+"
+            },
+            {
+                name: "Vulnerability",
+                text: "Holy"
+            } 
+        ],
         isStaggered: false,
         id: 103
     },
     
     {
         name: "Blackamber Skeletal Legionnaire",
+        type: "undead",
         level: 4,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+10",
         ac: 21,
         pd: 15,
@@ -5623,39 +5665,44 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 48,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Shortsword",
+                bonus: 10,
+                defenseTargeted: "AC",
+                damage: "14 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 16+",
+                        effect: "The target moves down 1D3 points in initiative order, to a minimum of 1."
+                    },
+                    {
+                        trigger: "Natural Even Miss",
+                        effect: "5 damage"
                     }
                 ]
-            },
-            
-            
-            "Shortsword +10 vs AC - 14 damage. Natural 16+: The target moves down 1D3 points in initiative order, to a minimum of 1. Natural Even Miss: 5 damage.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "ranged",
+                name: "Javelin",
+                bonus: 8,
+                defenseTargeted: "AC",
+                damage: "10 damage"
             }
-            
-            "R: Javelin +8 vs AC - 10 damage."
         ],
-        abilities: ["Resist Weapons 16+", "Vulnerability: Holy", "Press Advantage: The legionnaire deals +1D8 damage with its attacks against enemies that have a lower initiative than it."],
+        specialAbilities: [
+            {
+                name: "Resist",
+                text: "Weapons 16+"
+            },
+            {
+                name: "Vulnerability",
+                text: "Holy"
+            } ,
+            {
+                name: "Press Advantage",
+                text: "The legionnaire deals +1D8 damage with its attacks against enemies that have a lower initiative than it."
+            }
+        ],
         isStaggered: false,
         id: 104
     },
@@ -5664,8 +5711,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Trog",
+        type: "humanoid",
         level: 2,
-        type: "spoiler",
+        sizeOrStrength: "normal",
+        role: "spoiler",
         initiative: "+4",
         ac: 18,
         pd: 17,
@@ -5674,47 +5723,41 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 38,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            
-            "Club +6 vs AC - 8 damage. Miss: Damage equal to the penalty the trog's stench currently imposes on the target.", 
-            
+                type: "melee",
+                name: "Club",
+                bonus: 6,
+                defenseTargeted: "AC",
+                damage: "8 damage",
+                miss: "Damage equal to the penalty the trog's stench currently imposes on the target."
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "ranged",
+                name: "Javelin",
+                bonus: 5,
+                defenseTargeted: "AC",
+                damage: "6 damage"
             }
-            
-            "R: Javelin +5 vs AC - 6 damage"
         ],
-        abilities: ["Trog Stench: Trogs spray scents that stink so badly other humanoids take penalties to all attacks, defenses, and saves when engaged with a troglodyte or when nearby three or more troglodytes. Non-humanoids usually aren't affected. Humanoids affected by trog stench can make a normal save at the end of each of their turns (though they'll be taking a penalty). If the save succeeds, the humanoid can ignore all trog stench for the rest of the battle. Trog stench penalties vary for different kin: -4: Elves, gnolls, gnomes; -3: Humans, halflings, half-elves, holy ones, tieflings, most everyone else; -2: Half-orcs, dragonics; -1: Dwarves; -0: Forgeborn.", "Chameleon: Underground, or in swamps and rivers, attacks against troglodytes by enemies who aren't engaged with them take a -4 penalty."],
+        specialAbilities: [
+            {
+                name: "Trog Stench",
+                text: "Trogs spray scents that stink so badly other humanoids take penalties to all attacks, defenses, and saves when engaged with a troglodyte or when nearby three or more troglodytes. Non-humanoids usually aren't affected. Humanoids affected by trog stench can make a normal save at the end of each of their turns (though they'll be taking a penalty). If the save succeeds, the humanoid can ignore all trog stench for the rest of the battle. Trog stench penalties vary for different kin: -4: Elves, gnolls, gnomes; -3: Humans, halflings, half-elves, holy ones, tieflings, most everyone else; -2: Half-orcs, dragonics; -1: Dwarves; -0: Forgeborn."
+            },
+            {
+                name: "Chameleon",
+                text: "Underground, or in swamps and rivers, attacks against troglodytes by enemies who aren't engaged with them take a -4 penalty."
+            }
+        ],
         isStaggered: false,
         id: 105
     },
     
     {
         name: "Trog Chanter",
+        type: "humanoid",
         level: 3,
-        type: "leader",
+        sizeOrStrength: "normal",
+        role: "leader",
         initiative: "+5",
         ac: 19,
         pd: 16,
@@ -5723,47 +5766,49 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 44,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            
-            "Spear +8 vs AC - 12 damage. Miss: Damage equal to the penalty the trog's stench currently imposes on the target.", 
-            
+                type: "melee",
+                name: "Spear",
+                bonus: 8,
+                defenseTargeted: "AC",
+                damage: "12 damage",
+                miss: "Damage equal to the penalty the trog's stench currently imposes on the target."
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "ranged",
+                target: "one nearby enemy, or a far away enemy at a -2 penalty",
+                name: "Hissing Curse",
+                bonus: 10,
+                defenseTargeted: "MD",
+                damage: "10 damage",
+                effect: "the target is again affected by trog stench if it had saved against the effect.",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 20",
+                        effect: "All nearby humanoids who saved against trog stench earlier in the battle are affected by it again."
                     }
                 ]
             }
-            
-            "Hissing Curse +10 vs MD (one nearby enemy, or a far away enemy at a -2 penalty) - 10 damage, and the target is again affected by trog stench if it had saved against the effect. Natural 20: All nearby humanoids who saved against trog stench earlier in the battle are affected by it again."
         ],
-        abilities: ["Trog Stench: Trogs spray scents that stink so badly other humanoids take penalties to all attacks, defenses, and saves when engaged with a troglodyte or when nearby three or more troglodytes. Non-humanoids usually aren't affected. Humanoids affected by trog stench can make a normal save at the end of each of their turns (though they'll be taking a penalty). If the save succeeds, the humanoid can ignore all trog stench for the rest of the battle. Trog stench penalties vary for different kin: -4: Elves, gnolls, gnomes; -3: Humans, halflings, half-elves, holy ones, tieflings, most everyone else; -2: Half-orcs, dragonics; -1: Dwarves; -0: Forgeborn.", "Chameleon: Underground, or in swamps and rivers, attacks against troglodytes by enemies who aren't engaged with them take a -4 penalty."],
+        specialAbilities: [
+            {
+                name: "Trog Stench",
+                text: "Trogs spray scents that stink so badly other humanoids take penalties to all attacks, defenses, and saves when engaged with a troglodyte or when nearby three or more troglodytes. Non-humanoids usually aren't affected. Humanoids affected by trog stench can make a normal save at the end of each of their turns (though they'll be taking a penalty). If the save succeeds, the humanoid can ignore all trog stench for the rest of the battle. Trog stench penalties vary for different kin: -4: Elves, gnolls, gnomes; -3: Humans, halflings, half-elves, holy ones, tieflings, most everyone else; -2: Half-orcs, dragonics; -1: Dwarves; -0: Forgeborn."
+            },
+            {
+                name: "Chameleon",
+                text: "Underground, or in swamps and rivers, attacks against troglodytes by enemies who aren't engaged with them take a -4 penalty."
+            }
+        ],
         isStaggered: false,
         id: 106
     },
     
     {
         name: "Trog Underling",
+        type: "humanoid",
         level: 8,
-        type: "mook",
+        sizeOrStrength: "normal",
+        role: "mook",
         mookNumber: 1,
         initiative: "+10",
         ac: 23,
@@ -5773,39 +5818,31 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 38,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            },
-            
-            
-            "Club +12 vs AC - 22 damage. Miss: Damage equal to three times the penalty the trog's stench currently imposes on the target.", 
-            
+                type: "melee",
+                name: "Club",
+                bonus: 12,
+                defenseTargeted: "AC",
+                damage: "22 damage",
+                miss: "Damage equal to three times the penalty the trog's stench currently imposes on the target."
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "ranged",
+                name: "Javelin",
+                bonus: 11,
+                defenseTargeted: "AC",
+                damage: "16 damage"
             }
-            
-            "R: Javelin +11 vs AC - 16 damage"
         ],
-        abilities: ["Trog Stench: Trogs spray scents that stink so badly other humanoids take penalties to all attacks, defenses, and saves when engaged with a troglodyte or when nearby three or more troglodytes. Non-humanoids usually aren't affected. Humanoids affected by trog stench can make a normal save at the end of each of their turns (though they'll be taking a penalty). If the save succeeds, the humanoid can ignore all trog stench for the rest of the battle. Trog stench penalties vary for different kin: -4: Elves, gnolls, gnomes; -3: Humans, halflings, half-elves, holy ones, tieflings, most everyone else; -2: Half-orcs, dragonics; -1: Dwarves; -0: Forgeborn.", "Chameleon: Underground, or in swamps and rivers, attacks against troglodytes by enemies who aren't engaged with them take a -4 penalty."],
+        specialAbilities: [
+            {
+                name: "Trog Stench",
+                text: "Trogs spray scents that stink so badly other humanoids take penalties to all attacks, defenses, and saves when engaged with a troglodyte or when nearby three or more troglodytes. Non-humanoids usually aren't affected. Humanoids affected by trog stench can make a normal save at the end of each of their turns (though they'll be taking a penalty). If the save succeeds, the humanoid can ignore all trog stench for the rest of the battle. Trog stench penalties vary for different kin: -4: Elves, gnolls, gnomes; -3: Humans, halflings, half-elves, holy ones, tieflings, most everyone else; -2: Half-orcs, dragonics; -1: Dwarves; -0: Forgeborn."
+            },
+            {
+                name: "Chameleon",
+                text: "Underground, or in swamps and rivers, attacks against troglodytes by enemies who aren't engaged with them take a -4 penalty."
+            }        
+        ],
         isStaggered: false,
         id: 107
     },
@@ -5839,7 +5876,37 @@ const crbMonsterData: monsterStatBlock[] = [
             
             "Greedy Wicked Claw +8 vs AC (2 attacks) - 15 damage"
         ],
-        abilities: ["Trollish Regeneration 10: While a troll is damaged, its rubbery flesh heals 10 HP at the start of the troll's turn. It can regenerate five times per battle. If it heals to its maximum HP, then that use of regeneration doesn't count against the five-use limit. When the troll is hit by an attack that deals fire or acid damage, it loses one use of its regeneration, and it can't regenerate during its next turn. Dropping a troll down to 0 HP doesn't kill it if it has any uses of regeneration left.", "[Nastier Special] Increased Regeneration: Increase the troll's regeneration dice; the baseline amount a troll regenerates should run about 1/9 of its total HP, but you can go higher to be nasty.", "Mutant: Fire and acid don't screw with the troll's regeneration; lightning does instead.", "Rending: If both claw attacks hit the same target, the target also takes 10 ongoing damage."],
+        abilities: [
+            {
+                name: "",
+                text: ""
+            }
+
+            
+            "Trollish Regeneration 10: While a troll is damaged, its rubbery flesh heals 10 HP at the start of the troll's turn. It can regenerate five times per battle. If it heals to its maximum HP, then that use of regeneration doesn't count against the five-use limit. When the troll is hit by an attack that deals fire or acid damage, it loses one use of its regeneration, and it can't regenerate during its next turn. Dropping a troll down to 0 HP doesn't kill it if it has any uses of regeneration left.", 
+            
+            
+            "[Nastier Special] Increased Regeneration: Increase the troll's regeneration dice; the baseline amount a troll regenerates should run about 1/9 of its total HP, but you can go higher to be nasty.", 
+            
+            "Mutant: Fire and acid don't screw with the troll's regeneration; lightning does instead.", 
+            
+            
+            "Rending: If both claw attacks hit the same target, the target also takes 10 ongoing damage."
+        ],
+        nastierSpecials: [
+            {
+                name: "",
+                text: ""
+            },
+            {
+                name: "",
+                text: ""
+            },
+            {
+                name: "",
+                text: ""
+            }
+        ],
         isStaggered: false,
         id: 108
     },
@@ -5890,7 +5957,19 @@ const crbMonsterData: monsterStatBlock[] = [
             
             "[Nastier Special] C: Vampiric Compulsion +15 vs MD (one enemy; see below) - the target is confused and vulnerable (save ends). Limited Use: The vampire can use vampiric compulsion as a free action only when a nearby enemy attacks the vampire and misses with a natural attack roll of 1-5."
         ],
-        abilities: ["Vulnerability: Holy", "Vampiric Regeneration: The vampire regenerates 1 HP per level at the start of each round indefinitely, but it turns to mist if it drops to 0 HP (see below).", "Mist Form: Unless it is slain in a manner appropriate for truly killing vampires in the campaign, a vampire that drops to 0 HP drifts away to return and fight some other day."],
+        abilities: [
+            {
+                name: "",
+                text: ""
+            }
+            
+            
+            "Vulnerability: Holy", 
+            
+            "Vampiric Regeneration: The vampire regenerates 1 HP per level at the start of each round indefinitely, but it turns to mist if it drops to 0 HP (see below).", 
+            
+            "Mist Form: Unless it is slain in a manner appropriate for truly killing vampires in the campaign, a vampire that drops to 0 HP drifts away to return and fight some other day."
+        ],
         isStaggered: false,
         id: 109
     },
@@ -5939,7 +6018,14 @@ const crbMonsterData: monsterStatBlock[] = [
             
             "[special trigger] Fangs +14 vs AC - 7 damage, and a humanoid target is weakened until the end of the vampire spawn's next turn."
         ],
-        abilities: ["Vulnerability: Holy"],
+        abilities: [
+            {
+                name: "",
+                text: ""
+            }
+            
+            "Vulnerability: Holy"
+        ],
         isStaggered: false,
         id: 110
     },
@@ -5973,7 +6059,14 @@ const crbMonsterData: monsterStatBlock[] = [
             
             "Claws and Fangs +15 vs AC - 30 damage. Natural 18+: If the target is staggered, it is also hampered until the end of its next turn."
         ],
-        abilities: ["Vulnerability: Holy"],
+        abilities: [
+            {
+                name: "",
+                text: ""
+            }
+
+            "Vulnerability: Holy"
+        ],
         isStaggered: false,
         id: 111
     },
@@ -6007,7 +6100,23 @@ const crbMonsterData: monsterStatBlock[] = [
             
             "Sword +9 vs AC - 10 damage. Natural Even Hit or Miss: unless the wight is staggered, the attack also deals 8 ongoing negative energy damage."
         ],
-        abilities: ["Vulnerability: Holy", "[Nastier Special] Barrow-touch: The wight's attacks against enemies taking ongoing negative energy damage are against PD instead of AC and their crit range expands by 2."],
+        abilities: [
+            {
+                name: "",
+                text: ""
+            }
+            
+            
+            "Vulnerability: Holy", 
+            
+            "[Nastier Special] Barrow-touch: The wight's attacks against enemies taking ongoing negative energy damage are against PD instead of AC and their crit range expands by 2."
+        ],
+        nastierSpecials: [
+            {
+                name: "",
+                text: ""
+            }
+        ],
         isStaggered: false,
         id: 112
     },
@@ -6059,7 +6168,39 @@ const crbMonsterData: monsterStatBlock[] = [
             "C: Spiraling Assault +10 vs PD (1D3 nearby enemies) - 10 negative energy damage, and after the attack the wraith teleports to and engages with one target it hit. Limited Use: The wraith can use spiraling assault only when the escalation die is even."
         
         ],
-        abilities: ["Vulnerability: Holy", "Flight: The wraith hovers and zooms about.", "Ghostly: This creature has Resist Damage 16+ to all damage (yes, even holy damage) except force damage, which damages it normally. A wraith can move through solid objects, but it can't end its movement inside them.", "[Nastier Special] Drain Life: The wraith heals half the damage it deals when it hits with a natural 18+ attack roll."],
+        abilities: [
+            {
+                name: "",
+                text: ""
+            },
+            {
+                name: "",
+                text: ""
+            },
+            {
+                name: "",
+                text: ""
+            }
+            
+            
+            "Vulnerability: Holy", 
+            
+            
+            "Flight: The wraith hovers and zooms about.", 
+            
+            
+            "Ghostly: This creature has Resist Damage 16+ to all damage (yes, even holy damage) except force damage, which damages it normally. A wraith can move through solid objects, but it can't end its movement inside them.", 
+            
+            
+            "[Nastier Special] Drain Life: The wraith heals half the damage it deals when it hits with a natural 18+ attack roll."
+        
+        ],
+        nastierSpecials: [
+            {
+                name: "",
+                text: ""
+            }
+        ],
         isStaggered: false,
         id: 113
     },
@@ -6110,7 +6251,24 @@ const crbMonsterData: monsterStatBlock[] = [
             
             "[special trigger] Deadly Tail Stinger +10 vs PD - 15 damage, and the target takes 10 ongoing poison damage (hard save ends)."
         ],
-        abilities: ["Flight: Wyverns are poor fliers in tight spaces, but out in the open, they are more capable.", "[Nastier Special] Escalating Poison: Add the escalation die to the wyvern's ongoing poison damage whenever that damage is dealt."],
+        abilities: [
+            {
+                name: "",
+                text: ""
+            }
+            
+            
+            "Flight: Wyverns are poor fliers in tight spaces, but out in the open, they are more capable.", 
+            
+            
+            "[Nastier Special] Escalating Poison: Add the escalation die to the wyvern's ongoing poison damage whenever that damage is dealt."
+        ],
+        nastierSpecials: [
+            {
+                name: "",
+                text: ""
+            }
+        ],
         isStaggered: false,
         id: 114
     },
@@ -6146,7 +6304,20 @@ const crbMonsterData: monsterStatBlock[] = [
             
             "Rotting Fist +5 vs AC - 3 damage. Natural 16+: Both the zombie and its target take 1D4 damage!"
         ],
-        abilities: ["Vulnerability: Holy", "Headshot: A critical hit against a zombie shuffler deals triple damage isntead of the normal double damage for a crit."],
+        abilities: [
+            {
+                name: "",
+                text: ""
+            },
+            {
+                name: "",
+                text: ""
+            }
+            
+            "Vulnerability: Holy", 
+            
+            "Headshot: A critical hit against a zombie shuffler deals triple damage isntead of the normal double damage for a crit."
+        ],
         isStaggered: false,
         id: 115
     },
@@ -6179,7 +6350,22 @@ const crbMonsterData: monsterStatBlock[] = [
             
             "Rotting Fist +7 vs AC - 6 damage. Natural 16+: Both the zombie and its target take 1D6 damage!"
         ],
-        abilities: ["Vulnerability: Holy", "Headshot: A critical hit against a zombie drops it to 0 HP.", "[Nastier Special] Eat Brains: More dangerous zombies don't try to kill the moving targets before feasting on brains; they keep attacking any enemy they've knocked unconscious, rolling attacks against the helpless enemy until it's dead."],
+        abilities: [
+            
+            
+            "Vulnerability: Holy", 
+            
+            "Headshot: A critical hit against a zombie drops it to 0 HP.", 
+            
+            
+            "[Nastier Special] Eat Brains: More dangerous zombies don't try to kill the moving targets before feasting on brains; they keep attacking any enemy they've knocked unconscious, rolling attacks against the helpless enemy until it's dead."
+        ],
+        nastierSpecials: [
+            {
+                name: "",
+                text: ""
+            }
+        ],
         isStaggered: false,
         id: 116
     },
@@ -6212,7 +6398,14 @@ const crbMonsterData: monsterStatBlock[] = [
             
             "Club or Club-like Fists +9 vs AC - 22 damage. Natural Even Hit or Miss: Both the zombie and its target take 4D6 damage!"
         ],
-        abilities: ["Vulnerability: Holy", "Headshot: A critical hit against a zombie drops it to 0 HP."],
+        abilities: [
+            
+            
+            "Vulnerability: Holy", 
+            
+            
+            "Headshot: A critical hit against a zombie drops it to 0 HP."
+        ],
         isStaggered: false,
         id: 117
     },
@@ -6246,7 +6439,21 @@ const crbMonsterData: monsterStatBlock[] = [
             
             "Club or Club-like Fists +14 vs AC - 50 damage. Natural Even Hit or Miss: Both the zombie and its target take 6D10 damage!"
         ],
-        abilities: ["Vulnerability: Holy", "Headshot: A critical hit against a giant zombie mook deals triple damage instead of the normal double damage for a crit.", "Double-strength mook: The giant zombie mook counts as two 9th level mooks when you are building battles."],
+        abilities: [
+            
+            
+            "Vulnerability: Holy", 
+            
+            
+            "Headshot: A critical hit against a giant zombie mook deals triple damage instead of the normal double damage for a crit.", 
+            
+            {
+                name: "",
+                text: ""
+            }
+            
+            "Double-strength mook: The giant zombie mook counts as two 9th level mooks when you are building battles."
+        ],
         isStaggered: false,
         id: 118
     }
