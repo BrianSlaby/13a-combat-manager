@@ -5851,8 +5851,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Troll",
+        type: "giant",
         level: 4,
-        type: "troop (large)",
+        sizeOrStrength: "large",
+        role: "troop",
         initiative: "+9",
         ac: 17,
         pd: 17,
@@ -5861,50 +5863,32 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 90,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "melee",
+                name: "Greedy Wicked Claw",
+                bonus: 8,
+                defenseTargeted: "AC",
+                numberOfAttacks: 2,
+                damage: "15 damage"
             }
-            
-            "Greedy Wicked Claw +8 vs AC (2 attacks) - 15 damage"
         ],
-        abilities: [
+        specialAbilities: [
             {
-                name: "",
-                text: ""
+                name: "Trollish Regeneration 10",
+                text: "While a troll is damaged, its rubbery flesh heals 10 HP at the start of the troll's turn. It can regenerate five times per battle. If it heals to its maximum HP, then that use of regeneration doesn't count against the five-use limit. When the troll is hit by an attack that deals fire or acid damage, it loses one use of its regeneration, and it can't regenerate during its next turn. Dropping a troll down to 0 HP doesn't kill it if it has any uses of regeneration left."
             }
-
-            
-            "Trollish Regeneration 10: While a troll is damaged, its rubbery flesh heals 10 HP at the start of the troll's turn. It can regenerate five times per battle. If it heals to its maximum HP, then that use of regeneration doesn't count against the five-use limit. When the troll is hit by an attack that deals fire or acid damage, it loses one use of its regeneration, and it can't regenerate during its next turn. Dropping a troll down to 0 HP doesn't kill it if it has any uses of regeneration left.", 
-            
-            
-            "[Nastier Special] Increased Regeneration: Increase the troll's regeneration dice; the baseline amount a troll regenerates should run about 1/9 of its total HP, but you can go higher to be nasty.", 
-            
-            "Mutant: Fire and acid don't screw with the troll's regeneration; lightning does instead.", 
-            
-            
-            "Rending: If both claw attacks hit the same target, the target also takes 10 ongoing damage."
         ],
         nastierSpecials: [
             {
-                name: "",
-                text: ""
+                name: "Increased Regeneration",
+                text: "Increase the troll's regeneration dice; the baseline amount a troll regenerates should run about 1/9 of its total HP, but you can go higher to be nasty."
             },
             {
-                name: "",
-                text: ""
+                name: "Mutant",
+                text: "Fire and acid don't screw with the troll's regeneration; lightning does instead."
             },
             {
-                name: "",
-                text: ""
+                name: "Rending",
+                text: "If both claw attacks hit the same target, the target also takes 10 ongoing damage."
             }
         ],
         isStaggered: false,
@@ -5915,8 +5899,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Vampire",
+        type: "undead",
         level: 10,
-        type: "spoiler",
+        sizeOrStrength: "normal",
+        role: "spoiler",
         initiative: "+15",
         ac: 26,
         pd: 20,
@@ -5925,50 +5911,48 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 220,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Deathly Touch",
+                bonus: 15,
+                defenseTargeted: "PD",
+                damage: "50 negative energy damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 11+",
+                        effect: "The target is also weakened until the end of its next turn. In addition, the target expends one unused limited trait (a spell, power, or talent with a once per battle or daily use, but not magic item powers) of its choice."
                     }
                 ]
-            },
-            
-            
-            "Deathly Touch +15 vs PD - 50 negative energy damage. Natural 11+: The target is also weakened until the end of its next turn. In addition, the target expends one unused limited trait (a spell, power, or talent with a once per battle or daily use, but not magic item powers) of its choice.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "close",
+                target: "one enemy; see below",
+                name: "[nastier special] Vampiric Compulsion",
+                bonus: 15,
+                defenseTargeted: "MD",
+                damage: null,
+                effect: "the target is confused and vulnerable (save ends).",
+                limitedUse: "The vampire can use vampiric compulsion as a free action only when a nearby enemy attacks the vampire and misses with a natural attack roll of 1-5."
             }
-            
-            "[Nastier Special] C: Vampiric Compulsion +15 vs MD (one enemy; see below) - the target is confused and vulnerable (save ends). Limited Use: The vampire can use vampiric compulsion as a free action only when a nearby enemy attacks the vampire and misses with a natural attack roll of 1-5."
         ],
-        abilities: [
+        specialAbilities: [
             {
-                name: "",
+                name: "Vulnerability",
+                text: "Holy"
+            },
+            {
+                name: "Vampiric Regeneration",
+                text: "The vampire regenerates 1 HP per level at the start of each round indefinitely, but it turns to mist if it drops to 0 HP (see below)."
+            },
+            {
+                name: "Mist Form",
+                text: "Unless it is slain in a manner appropriate for truly killing vampires in the campaign, a vampire that drops to 0 HP drifts away to return and fight some other day."
+            }
+        ],
+        nastierSpecials: [
+            {
+                name: "Vampiric Compulsion",
                 text: ""
             }
-            
-            
-            "Vulnerability: Holy", 
-            
-            "Vampiric Regeneration: The vampire regenerates 1 HP per level at the start of each round indefinitely, but it turns to mist if it drops to 0 HP (see below).", 
-            
-            "Mist Form: Unless it is slain in a manner appropriate for truly killing vampires in the campaign, a vampire that drops to 0 HP drifts away to return and fight some other day."
         ],
         isStaggered: false,
         id: 109
@@ -5976,8 +5960,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Vampire Spawn",
+        type: "undead",
         level: 6,
-        type: "spoiler",
+        sizeOrStrength: "normal",
+        role: "spoiler",
         initiative: "+10",
         ac: 20,
         pd: 17,
@@ -5986,45 +5972,32 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 90,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Claw",
+                bonus: 10,
+                defenseTargeted: "AC",
+                damage: "18 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "The vampire spawn can make a fangs attack against the target as a free action."
                     }
                 ]
-            },
-            
-            
-            "Claw +10 vs AC - 18 damage. Natural Even Hit: The vampire spawn can make a fangs attack against the target as a free action.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "melee",
+                name: "[special trigger] Fangs",
+                bonus: 14,
+                defenseTargeted: "AC",
+                damage: "7 damage",
+                effect: "a humanoid target is weakened until the end of the vampire spawn's next turn."
             }
-            
-            "[special trigger] Fangs +14 vs AC - 7 damage, and a humanoid target is weakened until the end of the vampire spawn's next turn."
         ],
-        abilities: [
+        specialAbilities: [
             {
-                name: "",
-                text: ""
+                name: "Vulnerability",
+                text: "Holy"
             }
-            
-            "Vulnerability: Holy"
         ],
         isStaggered: false,
         id: 110
@@ -6032,8 +6005,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Spawn of the Master",
+        type: "undead",
         level: 10,
-        type: "mook",
+        sizeOrStrength: "normal",
+        role: "mook",
         mookNumber: 1,
         initiative: "+16",
         ac: 25,
@@ -6043,29 +6018,24 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 54,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Claws and Fangs",
+                bonus: 15,
+                defenseTargeted: "AC",
+                damage: "30 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 18+",
+                        effect: "If the target is staggered, it is also hampered until the end of its next turn."
                     }
                 ]
             }
-            
-            
-            "Claws and Fangs +15 vs AC - 30 damage. Natural 18+: If the target is staggered, it is also hampered until the end of its next turn."
         ],
-        abilities: [
+        specialAbilities: [
             {
-                name: "",
-                text: ""
+                name: "Vulnerability",
+                text: "Holy"
             }
-
-            "Vulnerability: Holy"
         ],
         isStaggered: false,
         id: 111
@@ -6075,8 +6045,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Wight",
+        type: "undead",
         level: 4,
-        type: "spoiler",
+        sizeOrStrength: "normal",
+        role: "spoiler",
         initiative: "+7",
         ac: 21,
         pd: 17,
@@ -6085,36 +6057,29 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 48,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Sword",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "10 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "unless the wight is staggered, the attack also deals 8 ongoing negative energy damage."
                     }
                 ]
             }
-            
-            "Sword +9 vs AC - 10 damage. Natural Even Hit or Miss: unless the wight is staggered, the attack also deals 8 ongoing negative energy damage."
         ],
-        abilities: [
+        specialAbilities: [
             {
-                name: "",
-                text: ""
+                name: "Vulnerability",
+                text: "Holy"
             }
-            
-            
-            "Vulnerability: Holy", 
-            
-            "[Nastier Special] Barrow-touch: The wight's attacks against enemies taking ongoing negative energy damage are against PD instead of AC and their crit range expands by 2."
         ],
         nastierSpecials: [
             {
-                name: "",
-                text: ""
+                name: "Barrow-touch",
+                text: "The wight's attacks against enemies taking ongoing negative energy damage are against PD instead of AC and their crit range expands by 2."
             }
         ],
         isStaggered: false,
@@ -6125,8 +6090,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Wraith",
+        type: "undead",
         level: 5,
-        type: "spoiler",
+        sizeOrStrength: "normal",
+        role: "spoiler",
         initiative: "+10",
         ac: 19,
         pd: 14,
@@ -6135,70 +6102,47 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 66,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Ice-cold Ghost Blade",
+                bonus: 10,
+                defenseTargeted: "PD",
+                damage: "14 negative energy damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 16+",
+                        effect: "The target is also weakened (save ends)."
                     }
                 ]
-            },
-            
-            
-            "Ice-cold Ghost Blade +10 vs PD - 14 negative energy damage. Natural 16+: The target is also weakened (save ends).", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
-            }
-            
-            "C: Spiraling Assault +10 vs PD (1D3 nearby enemies) - 10 negative energy damage, and after the attack the wraith teleports to and engages with one target it hit. Limited Use: The wraith can use spiraling assault only when the escalation die is even."
-        
+                type: "close",
+                target: "1D3 nearby enemies",
+                name: "Spiraling Assault",
+                bonus: 10,
+                defenseTargeted: "PD",
+                damage: "10 negative energy damage",
+                effect: "after the attack the wraith teleports to and engages with one target it hit.",
+                limitedUse: "The wraith can use spiraling assault only when the escalation die is even."
+            }        
         ],
-        abilities: [
+        specialAbilities: [
             {
-                name: "",
-                text: ""
+                name: "Vulnerability",
+                text: "Holy"
             },
             {
-                name: "",
-                text: ""
+                name: "Flight",
+                text: "The wraith hovers and zooms about."
             },
             {
-                name: "",
-                text: ""
-            }
-            
-            
-            "Vulnerability: Holy", 
-            
-            
-            "Flight: The wraith hovers and zooms about.", 
-            
-            
-            "Ghostly: This creature has Resist Damage 16+ to all damage (yes, even holy damage) except force damage, which damages it normally. A wraith can move through solid objects, but it can't end its movement inside them.", 
-            
-            
-            "[Nastier Special] Drain Life: The wraith heals half the damage it deals when it hits with a natural 18+ attack roll."
-        
+                name: "Ghostly",
+                text: "This creature has Resist Damage 16+ to all damage (yes, even holy damage) except force damage, which damages it normally. A wraith can move through solid objects, but it can't end its movement inside them."
+            }        
         ],
         nastierSpecials: [
             {
-                name: "",
-                text: ""
+                name: "Drain Life",
+                text: "The wraith heals half the damage it deals when it hits with a natural 18+ attack roll."
             }
         ],
         isStaggered: false,
@@ -6209,8 +6153,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Wyvern",
+        type: "beast",
         level: 5,
-        type: "wrecker (large)",
+        sizeOrStrength: "large",
+        role: "wrecker",
         initiative: "+10",
         ac: 20,
         pd: 19,
@@ -6219,54 +6165,37 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 140,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Tearing Jaws",
+                bonus: 10,
+                defenseTargeted: "AC",
+                damage: "35 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit",
+                        effect: "The wyvern can make a deadly tail stinger attack during its next turn."
                     }
                 ]
-            },
-            
-            
-            "Tearing Jaws +10 vs AC - 35 damage. Natural Even Hit: The wyvern can make a deadly tail stinger attack during its next turn.", 
-            
+            },            
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
-                extraEffects: [
-                    {
-                        trigger: "",
-                        effect: ""
-                    }
-                ]
+                type: "melee",
+                name: "[special trigger] Deadly Tail Stinger",
+                bonus: 10,
+                defenseTargeted: "PD",
+                damage: "15 damage",
+                effect: "the target takes 10 ongoing poison damage (hard save ends)."
             }
-            
-            "[special trigger] Deadly Tail Stinger +10 vs PD - 15 damage, and the target takes 10 ongoing poison damage (hard save ends)."
         ],
-        abilities: [
+        specialAbilities: [
             {
-                name: "",
-                text: ""
+                name: "Flight",
+                text: "Wyverns are poor fliers in tight spaces, but out in the open, they are more capable."
             }
-            
-            
-            "Flight: Wyverns are poor fliers in tight spaces, but out in the open, they are more capable.", 
-            
-            
-            "[Nastier Special] Escalating Poison: Add the escalation die to the wyvern's ongoing poison damage whenever that damage is dealt."
         ],
         nastierSpecials: [
             {
-                name: "",
-                text: ""
+                name: "Escalating Poison",
+                text: "Add the escalation die to the wyvern's ongoing poison damage whenever that damage is dealt."
             }
         ],
         isStaggered: false,
@@ -6277,8 +6206,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Zombie Shuffler",
+        type: "undead",
         level: 1,
-        type: "mook",
+        sizeOrStrength: "normal",
+        role: "mook",
         mookNumber: 1,
         initiative: "+0",
         ac: 14,
@@ -6288,35 +6219,28 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 10,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Rotting Fist",
+                bonus: 5,
+                defenseTargeted: "AC",
+                damage: "3 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 16+",
+                        effect: "Both the zombie and its target take 1D4 damage!"
                     }
                 ]
             }
-            
-            
-            "Rotting Fist +5 vs AC - 3 damage. Natural 16+: Both the zombie and its target take 1D4 damage!"
         ],
-        abilities: [
+        specialAbilities: [
             {
-                name: "",
-                text: ""
+                name: "Vulnerability",
+                text: "Holy"
             },
             {
-                name: "",
-                text: ""
+                name: "Headshot",
+                text: "A critical hit against a zombie shuffler deals triple damage isntead of the normal double damage for a crit."
             }
-            
-            "Vulnerability: Holy", 
-            
-            "Headshot: A critical hit against a zombie shuffler deals triple damage isntead of the normal double damage for a crit."
         ],
         isStaggered: false,
         id: 115
@@ -6324,8 +6248,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Human Zombie",
+        type: "undead",
         level: 2,
-        type: "troop",
+        sizeOrStrength: "normal",
+        role: "troop",
         initiative: "+1",
         ac: 15,
         pd: 13,
@@ -6334,36 +6260,33 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 60,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Rotting Fist",
+                bonus: 7,
+                defenseTargeted: "AC",
+                damage: "6 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural 16+",
+                        effect: "Both the zombie and its target take 1D6 damage!"
                     }
                 ]
             }
-            
-            
-            "Rotting Fist +7 vs AC - 6 damage. Natural 16+: Both the zombie and its target take 1D6 damage!"
         ],
-        abilities: [
-            
-            
-            "Vulnerability: Holy", 
-            
-            "Headshot: A critical hit against a zombie drops it to 0 HP.", 
-            
-            
-            "[Nastier Special] Eat Brains: More dangerous zombies don't try to kill the moving targets before feasting on brains; they keep attacking any enemy they've knocked unconscious, rolling attacks against the helpless enemy until it's dead."
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Holy"
+            },
+            {
+                name: "Headshot",
+                text: "A critical hit against a zombie drops it to 0 HP."
+            }
         ],
         nastierSpecials: [
             {
-                name: "",
-                text: ""
+                name: "Eat Brains",
+                text: "More dangerous zombies don't try to kill the moving targets before feasting on brains; they keep attacking any enemy they've knocked unconscious, rolling attacks against the helpless enemy until it's dead."
             }
         ],
         isStaggered: false,
@@ -6372,8 +6295,10 @@ const crbMonsterData: monsterStatBlock[] = [
     
     {
         name: "Big Zombie",
+        type: "undead",
         level: 4,
-        type: "wrecker (large)",
+        sizeOrStrength: "large",
+        role: "wrecker",
         initiative: "+3",
         ac: 17,
         pd: 15,
@@ -6382,38 +6307,39 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 160,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Club or Club-like Fists",
+                bonus: 9,
+                defenseTargeted: "AC",
+                damage: "22 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "Both the zombie and its target take 4D6 damage!"
                     }
                 ]
             }
-            
-            
-            "Club or Club-like Fists +9 vs AC - 22 damage. Natural Even Hit or Miss: Both the zombie and its target take 4D6 damage!"
         ],
-        abilities: [
-            
-            
-            "Vulnerability: Holy", 
-            
-            
-            "Headshot: A critical hit against a zombie drops it to 0 HP."
+        specialAbilities: [
+            {
+                name: "Vulnerability",
+                text: "Holy"
+            },
+            {
+                name: "Headshot",
+                text: "A critical hit against a zombie drops it to 0 HP."
+            }
         ],
         isStaggered: false,
         id: 117
     },
     
     {
-        name: "Giant Zombie (large)",
+        name: "Giant Zombie",
+        type: "undead",
         level: 9,
-        type: "mook",
+        sizeOrStrength: "large",
+        role: "mook",
         mookNumber: 1,
         initiative: "+8",
         ac: 23,
@@ -6423,36 +6349,32 @@ const crbMonsterData: monsterStatBlock[] = [
         health: 100,
         attacks: [
             {
-                type: "",
-                name: "",
-                bonus: ,
-                defenseTargeted: "",
-                damage: "",
+                type: "melee",
+                name: "Club or Club-like Fists",
+                bonus: 14,
+                defenseTargeted: "AC",
+                damage: "50 damage",
                 extraEffects: [
                     {
-                        trigger: "",
-                        effect: ""
+                        trigger: "Natural Even Hit or Miss",
+                        effect: "Both the zombie and its target take 6D10 damage!"
                     }
                 ]
             }
-            
-            
-            "Club or Club-like Fists +14 vs AC - 50 damage. Natural Even Hit or Miss: Both the zombie and its target take 6D10 damage!"
         ],
-        abilities: [
-            
-            
-            "Vulnerability: Holy", 
-            
-            
-            "Headshot: A critical hit against a giant zombie mook deals triple damage instead of the normal double damage for a crit.", 
-            
+        specialAbilities: [
             {
-                name: "",
-                text: ""
+                name: "Vulnerability",
+                text: "Holy"
+            },
+            {
+                name: "Headshot",
+                text: "A critical hit against a giant zombie mook deals triple damage instead of the normal double damage for a crit."
+            },            
+            {
+                name: "Double-strength Mook",
+                text: "The giant zombie mook counts as two 9th level mooks when you are building battles."
             }
-            
-            "Double-strength mook: The giant zombie mook counts as two 9th level mooks when you are building battles."
         ],
         isStaggered: false,
         id: 118
