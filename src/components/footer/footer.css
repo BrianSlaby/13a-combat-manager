@@ -1,0 +1,25 @@
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    gap: 2em;
+    padding: 1em;
+    margin: 0;
+    background-color: var(--black-red-clr);
+    font-size: 0.75rem;
+    color: var(--off-white-clr);
+    position: relative;
+    bottom: 0;
+}
+
+footer a {
+    color: var(--anchor-light-clr);
+}
+
+footer a:visited {
+    color: var(--anchor-v-light-clr);
+}
+
+.footer-col {
+    flex-basis: 40%;
+}

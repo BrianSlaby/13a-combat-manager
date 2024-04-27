@@ -1,3 +1,4 @@
+import React from "react"
 
 
 type effect = {
@@ -44,3 +45,10 @@ export type monsterStatBlock = {
     id: number
 }
 
+
+export type buttonProps = {
+    onClick: () => void,
+    children: React.ReactNode,
+    style: "standard-btn" | "delete-card-btn",
+    color: "main" | "secondary" | "ghost"
+}

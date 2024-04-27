@@ -1,0 +1,15 @@
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    margin: 0;
+    background-color: var(--dark-red-clr);
+}
+
+header > h1 {
+    color: gold;
+    font-family: "Philosopher", sans-serif;
+    font-size: 3rem;
+}
