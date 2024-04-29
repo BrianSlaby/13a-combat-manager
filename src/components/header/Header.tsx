@@ -1,13 +1,14 @@
 import React from "react"
 import "./header.css"
+import { headerProps } from "../../types"
 import Button from "../button/Button"
 
-export default function Header(): React.JSX.Element {
+export default function Header({ 
+    handleChooseMonstersClick, 
+    handleClearMonstersClick 
+}: headerProps): React.JSX.Element {
 
-    // PLACEHOLDER FUNCTION
-    function handleClick() {
-        console.log("button clicked!")
-    }
+   
 
     return (
         <>
@@ -16,13 +17,13 @@ export default function Header(): React.JSX.Element {
 
                 <div>
                     <Button 
-                        onClick={handleClick}
+                        onClick={handleChooseMonstersClick}
                         style="standard-btn"
                         color="main"
                     >Choose Monsters</Button>
 
                     <Button
-                        onClick={handleClick}
+                        onClick={handleClearMonstersClick}
                         style="standard-btn"
                         color="ghost"
                     >Clear Monsters</Button>

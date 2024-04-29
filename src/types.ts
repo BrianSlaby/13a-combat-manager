@@ -46,9 +46,25 @@ export type monsterStatBlock = {
 }
 
 
+export type headerProps = {
+    handleChooseMonstersClick: () => void,
+    handleClearMonstersClick: () => void
+}
+
+export type homeProps = {
+    isSelectMonstersModalOpen: boolean,
+    setIsSelectMonstersModalOpen: (arg: boolean) => void
+}
+
 export type buttonProps = {
     onClick: () => void,
     children: React.ReactNode,
     style: "standard-btn" | "delete-card-btn",
     color: "main" | "secondary" | "ghost"
+}
+
+export type modalProps = {
+    children?: React.ReactNode,
+    isOpen: boolean,
+    closeModal: () => void
 }

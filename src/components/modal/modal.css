@@ -1,0 +1,12 @@
+dialog {
+    border-radius: 12px;
+}
+
+.top-banner {
+    margin-top: 0;
+    padding: 0.75em;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
