@@ -39,3 +39,8 @@ button:active {
     color: var(--off-white-clr);
     border: 2px solid var(--off-white-clr);
 }
+
+.none {
+    background-color: transparent;
+    border: none;
+}

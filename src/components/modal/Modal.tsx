@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react"
 import "./modal.css"
 import { modalProps } from "../../types"
 import Button from "../button/Button"
+import CircleX from "../../assets/icons/CircleX"
 
 export default function Modal({ 
     children, 
@@ -50,9 +51,12 @@ export default function Modal({
                 <Button
                     onClick={handleCloseModal}
                     style="delete-card-btn"
-                    color="secondary"
+                    color="none"
                 >
-                    X
+                    <CircleX 
+                        size={30}
+                        color="red"
+                    />
                 </Button>
             </div>
 

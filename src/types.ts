@@ -60,11 +60,16 @@ export type buttonProps = {
     onClick: () => void,
     children: React.ReactNode,
     style: "standard-btn" | "delete-card-btn",
-    color: "main" | "secondary" | "ghost"
+    color: "main" | "secondary" | "ghost" | "none"
 }
 
 export type modalProps = {
     children?: React.ReactNode,
     isOpen: boolean,
     closeModal: () => void
+}
+
+export type circleXProps = {
+    size: number,
+    color?: string
 }
