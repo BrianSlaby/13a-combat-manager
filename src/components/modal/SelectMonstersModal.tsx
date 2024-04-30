@@ -4,8 +4,18 @@ import Modal from "./Modal"
 import { monsterData } from "../../data/monsterData"
 import "./modal.css"
 
+type selectMonstersModalProps = modalProps & {
+    setSelectedMonsters: React.Dispatch<React.SetStateAction<monsterStatBlock[]>>
+}
 
-export default function SelectMonstersModal({ isOpen, closeModal }: modalProps): React.JSX.Element {
+
+export default function SelectMonstersModal({ 
+    isOpen, 
+    closeModal, 
+    setSelectedMonsters 
+
+}: selectMonstersModalProps): React.JSX.Element {
+    
     const [ selectedMonsterLevels, setSelectedMonsterLevels ] = useState<number[]>([])
 
     const levels: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -18,6 +28,14 @@ export default function SelectMonstersModal({ isOpen, closeModal }: modalProps):
             } else {
                 return [...prevLevels, level]
             }
+        })
+    }
+
+    function handleMonsterSelect(event: React.ChangeEvent<HTMLSelectElement>) {
+        const selectedMonsterObj: monsterStatBlock = filteredMonsterData.filter(monster => monster.name === event.target.value)[0]
+
+        setSelectedMonsters( prevMonsters => {
+            return [ ...prevMonsters, selectedMonsterObj ]
         })
     }
 
@@ -65,7 +83,11 @@ export default function SelectMonstersModal({ isOpen, closeModal }: modalProps):
 
                 <div id="dropdown-container">
                     <label htmlFor="monsters-dropdown">Select Monsters</label>
-                    <select id="monsters-dropdown" name="monsters-dropdown">
+                    <select 
+                        id="monsters-dropdown" 
+                        name="monsters-dropdown"
+                        onChange={handleMonsterSelect}
+                    >
                         <option value="">Please Select a Monster</option>
                         {
                             filteredMonsterData.map(monster => {
