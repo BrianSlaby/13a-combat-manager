@@ -1,10 +1,19 @@
-import React from "react"
+import React, { useState } from "react"
 import { modalProps } from "../../types"
 import Modal from "./Modal"
+import { monsterData } from "../../data/monsterData"
 import "./modal.css"
 
 
 export default function SelectMonstersModal({ isOpen, closeModal }: modalProps): React.JSX.Element {
+    const [ selectedMonsterLevels, setSelectedMonsterLevels ] = useState<number[]>([])
+
+    function handleFilterByLevel() {
+        // add onChange to checkboxes?
+        // add checked attribute to checkboxes and make them controlled by state?  This would require a different state variable for each checkbox.
+    }
+
+    // a useEffect that loops through all of the checkbox options to update selected levels array?  Would require an array of checkbox objects in a state variable.
 
     return (
         <Modal
@@ -218,7 +227,19 @@ export default function SelectMonstersModal({ isOpen, closeModal }: modalProps):
                 <div id="dropdown-container">
                     <label htmlFor="monsters-dropdown">Select Monsters</label>
                     <select id="monsters-dropdown" name="monsters-dropdown">
-
+                        <option value="">Please Select a Monster</option>
+                        {
+                            monsterData.map(monster => {
+                                return (
+                                    <option
+                                        value={monster.name}
+                                    >
+                                        {`${monster.name}, level ${monster.level} ${monster.sizeOrStrength} ${monster.role}`}
+                                    </option>
+                                )
+                            })
+                          
+                        }
                     </select>
                 </div>
 
