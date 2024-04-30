@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { modalProps } from "../../types"
+import { modalProps, monsterStatBlock } from "../../types"
 import Modal from "./Modal"
 import { monsterData } from "../../data/monsterData"
 import "./modal.css"
@@ -8,12 +8,24 @@ import "./modal.css"
 export default function SelectMonstersModal({ isOpen, closeModal }: modalProps): React.JSX.Element {
     const [ selectedMonsterLevels, setSelectedMonsterLevels ] = useState<number[]>([])
 
-    function handleFilterByLevel() {
-        // add onChange to checkboxes?
-        // add checked attribute to checkboxes and make them controlled by state?  This would require a different state variable for each checkbox.
+    const levels: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    const filteredMonsterData = handleFilterByLevel(monsterData)
+
+    function handleCheckboxChange(level: number) {
+        setSelectedMonsterLevels(prevLevels => {
+            if (prevLevels.includes(level)) {
+                return prevLevels.filter(l => l !== level)
+            } else {
+                return [...prevLevels, level]
+            }
+        })
     }
 
-    // a useEffect that loops through all of the checkbox options to update selected levels array?  Would require an array of checkbox objects in a state variable.
+    function handleFilterByLevel(data: monsterStatBlock[]) {
+      return data.filter(monster => {
+        return selectedMonsterLevels.includes(monster.level)
+      }).sort((a, b) => (a.name > b.name) ? 1 : -1)
+    }
 
     return (
         <Modal
@@ -22,206 +34,33 @@ export default function SelectMonstersModal({ isOpen, closeModal }: modalProps):
         >
             <div className="select-monsters-modal-content">
                 <div id="level-check-container">
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-zero" 
-                            className="level-check-label"
-                        >0</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-zero" 
-                            name="level-zero" 
-                            data-level="0" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-one" 
-                            className="level-check-label"
-                        >1</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-one" 
-                            name="level-one" 
-                            data-level="1" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label htmlFor="level-two" className="level-check-label">2</label>
-                        <input type="checkbox" id="level-two" name="level-two" data-level="2" className="level-check"/> 
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-three" 
-                            className="level-check-label"
-                        >3</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-three" 
-                            name="level-three" 
-                            data-level="3" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-four" 
-                            className="level-check-label"
-                        >4</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-four" 
-                            name="level-four" 
-                            data-level="4" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-five" 
-                            className="level-check-label"
-                        >5</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-five" 
-                            name="level-five" 
-                            data-level="5" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-six" 
-                            className="level-check-label"
-                        >6</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-six" 
-                            name="level-six" 
-                            data-level="6" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-seven" 
-                            className="level-check-label"
-                        >7</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-seven" 
-                            name="level-seven" 
-                            data-level="7" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-eight" 
-                            className="level-check-label"
-                        >8</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-eight" 
-                            name="level-eight" 
-                            data-level="8" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-nine" 
-                            className="level-check-label"
-                        >9</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-nine" 
-                            name="level-nine" 
-                            data-level="9" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-ten" 
-                            className="level-check-label"
-                        >10</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-ten" 
-                            name="level-ten" 
-                            data-level="10" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-eleven" 
-                            className="level-check-label"
-                        >11</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-eleven" 
-                            name="level-eleven" 
-                            data-level="11" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-twelve" 
-                            className="level-check-label"
-                        >12</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-twelve" 
-                            name="level-twelve" 
-                            data-level="12" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-thirteen" 
-                            className="level-check-label"
-                        >13</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-thirteen" 
-                            name="level-thirteen" 
-                            data-level="13" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-fourteen" 
-                            className="level-check-label"
-                        >14</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-fourteen" 
-                            name="level-fourteen" 
-                            data-level="14" 
-                            className="level-check"
-                        />
-                    </div>
-                    <div className="checkbox-container">
-                        <label 
-                            htmlFor="level-fifteen" 
-                            className="level-check-label"
-                        >15</label>
-                        <input 
-                            type="checkbox" 
-                            id="level-fifteen" 
-                            name="level-fifteen" 
-                            data-level="15" 
-                            className="level-check"
-                        />
-                    </div>
+                    {
+                        levels.map(level => {
+                            return (
+                                <div 
+                                    className="checkbox-container"
+                                    key={level}
+                                >
+                                    <label
+                                        htmlFor={`level-${level}`}
+                                        className="level-check-label"
+                                    >
+                                        {level}
+                                    </label>
 
+                                    <input 
+                                        type="checkbox"
+                                        id={`level-${level}`}
+                                        name={`level-${level}`}
+                                        data-level={level}
+                                        className="level-check"
+                                        checked={selectedMonsterLevels.includes(level)}
+                                        onChange={() => handleCheckboxChange(level)}
+                                    />
+                                </div>
+                            )
+                        })
+                    }
                 </div>
 
                 <div id="dropdown-container">
@@ -229,10 +68,11 @@ export default function SelectMonstersModal({ isOpen, closeModal }: modalProps):
                     <select id="monsters-dropdown" name="monsters-dropdown">
                         <option value="">Please Select a Monster</option>
                         {
-                            monsterData.map(monster => {
+                            filteredMonsterData.map(monster => {
                                 return (
                                     <option
                                         value={monster.name}
+                                        key={monster.id}
                                     >
                                         {`${monster.name}, level ${monster.level} ${monster.sizeOrStrength} ${monster.role}`}
                                     </option>
