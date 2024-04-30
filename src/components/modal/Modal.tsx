@@ -10,14 +10,14 @@ export default function Modal({
     closeModal 
 
 }: modalProps): React.JSX.Element {
-    const [ isModalOpen, setIsModalOpen ] = useState(isOpen)
+     const [ isModalOpen, setIsModalOpen ] = useState(isOpen)
     const modalRef = useRef(null)
 
     function handleCloseModal() {
         if (closeModal) {
             closeModal()
+            setIsModalOpen(false)
         }
-        setIsModalOpen(false)
     }
 
     function handleKeydown(event: React.KeyboardEvent<HTMLDialogElement>) {

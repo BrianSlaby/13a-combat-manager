@@ -11,3 +11,23 @@ dialog {
     justify-content: flex-end;
     align-items: center;
 }
+
+.select-monsters-modal-content {
+    display: grid;
+    grid-template-columns: 100px auto;
+    min-width: 400px;
+}
+
+.checkbox-container {
+    display: flex;
+}
+
+.level-check {
+    order: -1;
+}
+
+#dropdown-container {
+    display: flex;
+    flex-direction: column;
+
+}
