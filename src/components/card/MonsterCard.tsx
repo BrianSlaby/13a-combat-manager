@@ -9,7 +9,7 @@ type monsterCardProps = {
 export default function MonsterCard({ monster, index }: monsterCardProps): React.JSX.Element {
 
     return (
-        <div>
+        <div className="monster-card">
             <p>{`Placeholder for ${monster.name}, card index ${index}`}</p>
         </div>
     )

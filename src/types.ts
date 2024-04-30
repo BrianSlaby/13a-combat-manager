@@ -53,7 +53,9 @@ export type headerProps = {
 
 export type homeProps = {
     isSelectMonstersModalOpen: boolean,
-    setIsSelectMonstersModalOpen: (arg: boolean) => void
+    setIsSelectMonstersModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    selectedMonsters: monsterStatBlock[],
+    setSelectedMonsters: React.Dispatch<React.SetStateAction<monsterStatBlock[]>>
 }
 
 export type buttonProps = {
