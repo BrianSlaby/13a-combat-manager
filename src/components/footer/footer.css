@@ -4,7 +4,7 @@ footer {
     justify-content: space-around;
     gap: 2em;
     padding: 1em;
-    margin: 0;
+    margin: 3em 0 0;
     background-color: var(--black-red-clr);
     font-size: 0.75rem;
     color: var(--off-white-clr);

@@ -75,3 +75,9 @@ export type circleXProps = {
     size: number,
     color?: string
 }
+
+export type monsterCardProps = {
+    monster: monsterStatBlock,
+    index?: number
+}
+

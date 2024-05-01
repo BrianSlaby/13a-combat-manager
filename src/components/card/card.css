@@ -1,4 +1,136 @@
 .monster-card {
     max-width: 350px;
-    border-radius: 8px;
+    border-radius: 12px;
+    line-height: 1.25rem;
 }
+
+.card-header {
+    background-color: var(--dull-blue-clr);
+    color: var(--off-white-clr);
+    border-radius: 7px 7px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3,
+.card-header button {
+    margin: 0.35em;
+}
+
+.card-sctn {
+    padding: 0.5em 1em;
+}
+
+.card-sctn-dark {
+    background-color: hsl(53deg 23% 73%);
+    background-image: linear-gradient(
+        90deg,
+        hsl(53deg 23% 73%) 0%,
+        hsl(51deg 24% 75%) 13%,
+        hsl(50deg 25% 77%) 25%,
+        hsl(49deg 27% 79%) 37%,
+        hsl(49deg 28% 81%) 50%,
+        hsl(48deg 30% 83%) 63%,
+        hsl(47deg 32% 86%) 75%,
+        hsl(46deg 35% 88%) 87%,
+        hsl(45deg 38% 90%) 100%
+        );
+}
+
+.card-sctn-light {
+    background-color: hsl(53deg 17% 90%);
+    background-image: linear-gradient(
+        90deg,
+        hsl(53deg 17% 90%) 0%,
+        hsl(53deg 17% 90%) 13%,
+        hsl(52deg 17% 90%) 25%,
+        hsl(52deg 16% 90%) 37%,
+        hsl(52deg 16% 91%) 50%,
+        hsl(51deg 16% 91%) 63%,
+        hsl(51deg 15% 91%) 75%,
+        hsl(50deg 15% 91%) 87%,
+        hsl(50deg 14% 92%) 100%
+        );
+}
+
+.defense-sctn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.defense-list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.health-container {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+}
+
+.health-container p {
+    text-align: right;
+}
+
+.dmg-sctn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dmg-input-container,
+.dmg-btn-container,
+.mook-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 0.5em;
+}
+
+.attack-sctn,
+.ability-sctn {
+    font-size: 0.8rem;
+}
+
+.attack-sctn h4,
+.ability-sctn h4 {
+    font-size: 1rem;
+}
+
+.sub-p {
+    padding-left: 1.5em;
+    margin-top: -0.75em;
+}
+
+.card-sctn:last-child {
+    border-radius: 0 0 7px 7px;
+}
+
+/* ====================
+         INPUTS
+   ==================== */
+
+.dmg-input,
+.mooks-input {
+    font-size: 1.125rem;
+    padding: 0.2em;
+    max-width: 75px;
+    border-radius: 5px;
+    border: 1px solid darkgrey;
+    margin-top: 0.2em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
