@@ -1,8 +1,8 @@
 import React from "react"
 import "./card.css"
-import { monsterCardProps } from "../../types"
+import { monsterCardSectionProps } from "../../types"
 
-export default function AbilitySection({ monster }: monsterCardProps): React.JSX.Element {
+export default function AbilitySection({ monster }: monsterCardSectionProps): React.JSX.Element {
     const { specialAbilities, nastierSpecials } = monster
 
     return (
@@ -17,7 +17,9 @@ export default function AbilitySection({ monster }: monsterCardProps): React.JSX
                 specialAbilities.map(special => {
                     const { name, text } = special
                     return (
-                        <p><span className="bold">{name}</span>{`: ${text}`}</p>
+                        <p
+                            key={name}
+                        ><span className="bold">{name}</span>{`: ${text}`}</p>
                     )
                 })
                 
@@ -32,7 +34,9 @@ export default function AbilitySection({ monster }: monsterCardProps): React.JSX
                 nastierSpecials.map(special => {
                     const { name, text } = special
                     return (
-                        <p><span className="bold">{name}</span>{`: ${text}`}</p>
+                        <p
+                            key={name}
+                        ><span className="bold">{name}</span>{`: ${text}`}</p>
                     )
                 })
             }

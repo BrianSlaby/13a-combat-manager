@@ -35,9 +35,12 @@ export default function SelectMonstersModal({
     function handleMonsterSelect(event: React.ChangeEvent<HTMLSelectElement>) {
         const selectedMonsterObj: monsterStatBlock = filteredMonsterData.filter(monster => monster.name === event.target.value)[0]
 
-        setSelectedMonsters( prevMonsters => {
-            return [ ...prevMonsters, selectedMonsterObj ]
-        })
+        if (selectedMonsterObj) {
+            setSelectedMonsters( prevMonsters => {
+                return [ ...prevMonsters, selectedMonsterObj ]
+            })
+            event.target.value = ""
+        }
     }
 
     function handleFilterByLevel(data: monsterStatBlock[]) {

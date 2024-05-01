@@ -29,6 +29,8 @@ export default function Home({
                         <MonsterCard 
                             monster={monster}
                             index={index}
+                            selectedMonsters={selectedMonsters}
+                            setSelectedMonsters={setSelectedMonsters}
                             key={index}
                         />
                     )

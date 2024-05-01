@@ -1,8 +1,8 @@
 import React from "react"
 import "./card.css"
-import { monsterCardProps } from "../../types"
+import { monsterCardSectionProps } from "../../types"
 
-export default function AttackSection({ monster }: monsterCardProps): React.JSX.Element {
+export default function AttackSection({ monster }: monsterCardSectionProps): React.JSX.Element {
     const { attacks } = monster
 
     return (

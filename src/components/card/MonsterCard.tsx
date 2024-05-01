@@ -7,18 +7,32 @@ import AbilitySection from "./AbilitySection"
 import "./card.css"
 
 
-export default function MonsterCard({ monster, index }: monsterCardProps): React.JSX.Element {
+export default function MonsterCard({ 
+    monster, 
+    index,
+    selectedMonsters,
+    setSelectedMonsters 
+
+}: monsterCardProps): React.JSX.Element {
     const hasAbilitySection = monster.specialAbilities || monster.nastierSpecials
+
+
+    function removeMonsterCard(cardIndex: number) {
+        const newSelectedMonsters = selectedMonsters.splice(cardIndex, 1)
+        setSelectedMonsters(newSelectedMonsters)
+        
+    }
 
     return (
         <div 
             className="monster-card"
             id={`monster-card${index}`}
+            data-cardindex={index}
         >
             <div className="card-header card-sctn">
                 <h3>{monster.name}</h3>
                 <Button
-                    onClick={() => console.log(EventTarget)}
+                    onClick={() => console.log()}
                     style="delete-card-btn"
                     color="none"
                 >
@@ -104,11 +118,3 @@ export default function MonsterCard({ monster, index }: monsterCardProps): React
         </div>
     )
 }
-
-            /* 
-
-                <div class="dmg-btn-container">
-                    <button id="dmg${index}-btn" class="text-btn dmg-btn" data-dmgbtn="${index}">Deal Damage</button>
-                </div>
-           
-             */

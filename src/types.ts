@@ -78,6 +78,12 @@ export type circleXProps = {
 
 export type monsterCardProps = {
     monster: monsterStatBlock,
-    index?: number
+    index: number,
+    selectedMonsters: monsterStatBlock[],
+    setSelectedMonsters: React.Dispatch<React.SetStateAction<monsterStatBlock[]>>
+}
+
+export type monsterCardSectionProps = {
+    monster: monsterStatBlock
 }
 
