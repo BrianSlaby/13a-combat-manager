@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import { monsterCardProps } from "../../types"
 import Button from "../button/Button"
 import CircleX from "../../assets/icons/CircleX"
@@ -14,32 +14,58 @@ export default function MonsterCard({
     setSelectedMonsters 
 
 }: monsterCardProps): React.JSX.Element {
+    const [ dmgInputValue, setDmgInputValue ] = useState<number | "">("")
+
     const hasAbilitySection = monster.specialAbilities || monster.nastierSpecials
+    const staggeredClass = monster.isStaggered ? "staggered" : ""
 
 
-    function removeMonsterCard(event: React.MouseEvent<HTMLButtonElement>) {
-        if (event.currentTarget.dataset.cardindex) {
-            const cardIndex = parseInt(event.currentTarget.dataset.cardindex)
+    function removeMonsterCard() {
+        const newSelectedMonsters = [...selectedMonsters.slice(0, index), ...selectedMonsters.slice(index + 1)]
 
-            const newSelectedMonsters = [...selectedMonsters.slice(0, cardIndex), ...selectedMonsters.slice(cardIndex + 1)]
-
-            setSelectedMonsters(newSelectedMonsters)
-        }        
+        setSelectedMonsters(newSelectedMonsters)    
     }
 
     function handleMookNumber(event: React.ChangeEvent<HTMLInputElement>) {
-        if (event.currentTarget.dataset.mookinput) {
-            const cardIndex = parseInt(event.currentTarget.dataset.mookinput)
-            const currentMonsterObj = {...selectedMonsters[cardIndex]}
+        const currentMonsterObj = {...selectedMonsters[index]}
+        
+        if (event.currentTarget.value) {
+            currentMonsterObj.mookNumber = parseInt(event.currentTarget.value)
+            currentMonsterObj.health = currentMonsterObj.hp * currentMonsterObj.mookNumber
 
-            if (event.currentTarget.value) {
-                currentMonsterObj.mookNumber = parseInt(event.currentTarget.value)
-                currentMonsterObj.health = currentMonsterObj.hp * currentMonsterObj.mookNumber
+            const newSelectedMonsters = [...selectedMonsters.slice(0, index), currentMonsterObj, ...selectedMonsters.slice(index + 1)]
 
-                const newSelectedMonsters = [...selectedMonsters.slice(0, cardIndex), currentMonsterObj, ...selectedMonsters.slice(cardIndex + 1)]
+            setSelectedMonsters(newSelectedMonsters)
+        }
+    }
 
-                setSelectedMonsters(newSelectedMonsters)
+    function updateDamageInput(event: React.ChangeEvent<HTMLInputElement>) {
+        if (event.currentTarget.value) {
+            setDmgInputValue(parseInt(event.currentTarget.value))
+        } else (
+            setDmgInputValue("")
+        )
+    }
+
+    function handleDamage() {
+        if (dmgInputValue) {
+            const currentMonsterObj = {...selectedMonsters[index]}
+            currentMonsterObj.health = currentMonsterObj.health - dmgInputValue
+
+            if (currentMonsterObj.health <= currentMonsterObj.hp / 2) {
+                currentMonsterObj.isStaggered = true
+            } else (
+                currentMonsterObj.isStaggered = false
+            )
+
+            if (currentMonsterObj.role === "mook") {
+                currentMonsterObj.mookNumber = Math.ceil(currentMonsterObj.health / currentMonsterObj.hp)
             }
+
+            const newSelectedMonsters = [...selectedMonsters.slice(0, index), currentMonsterObj, ...selectedMonsters.slice(index + 1)]
+
+            setSelectedMonsters(newSelectedMonsters)
+            setDmgInputValue("")
         }
     }
 
@@ -55,8 +81,6 @@ export default function MonsterCard({
                     onClick={removeMonsterCard}
                     style="delete-card-btn"
                     color="none"
-                    dataset="cardindex"
-                    datasetValue={index}
                 >
                     <CircleX 
                         size={25}
@@ -79,7 +103,7 @@ export default function MonsterCard({
                 <div className="health-container">
                     <p>{`Total HP: ${monster.hp}`}</p>
                     <p><span
-                        className={`ADD checkStaggeredClass(index) HERE!!!!`}
+                        className={staggeredClass}
                         id={`accent${index}`}
                     >{`Current HP: ${monster.health}`}</span></p>
                 </div>
@@ -96,12 +120,13 @@ export default function MonsterCard({
                         id={`dmg${index}`}
                         name={`dmg${index}`}
                         className="dmg-input"
-                        data-dmginput={index}
+                        value={dmgInputValue}
+                        onChange={updateDamageInput}
                     />
                 </div>
                 <div className="dmg-btn-container">
                     <Button
-                        onClick={() => console.log(EventTarget)}
+                        onClick={handleDamage}
                         style="standard-btn"
                         color="secondary"
                     >Deal Damage</Button>
@@ -131,7 +156,6 @@ export default function MonsterCard({
                         className="mooks-input" 
                         id={`mooks${index}`}
                         name={`mooks${index}`}
-                        data-mookinput={index} 
                         onChange={handleMookNumber}
                     />
                     <p id={`mookstatus${index}`}>Number of Mooks: {monster.mookNumber}</p>
