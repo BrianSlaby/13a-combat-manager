@@ -12,6 +12,7 @@ header > h1 {
     color: gold;
     font-family: "Philosopher", sans-serif;
     font-size: 3rem;
+    line-height: 1.1em;
 }
 
 header button {

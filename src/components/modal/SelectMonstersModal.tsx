@@ -74,7 +74,6 @@ export default function SelectMonstersModal({
                                         type="checkbox"
                                         id={`level-${level}`}
                                         name={`level-${level}`}
-                                        data-level={level}
                                         className="level-check"
                                         checked={selectedMonsterLevels.includes(level)}
                                         onChange={() => handleCheckboxChange(level)}
@@ -87,8 +86,7 @@ export default function SelectMonstersModal({
 
                 <div id="dropdown-container">
                     <label htmlFor="monsters-dropdown">Select Monsters</label>
-                    <select 
-                        id="monsters-dropdown" 
+                    <select  
                         name="monsters-dropdown"
                         onChange={handleMonsterSelect}
                     >

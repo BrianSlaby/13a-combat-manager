@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { homeProps } from "../types"
 import SelectMonstersModal from "../components/modal/SelectMonstersModal"
 import MonsterCard from "../components/card/MonsterCard"

@@ -72,8 +72,6 @@ export default function MonsterCard({
     return (
         <div 
             className="monster-card"
-            id={`monster-card${index}`}
-            data-cardindex={index}
         >
             <div className="card-header card-sctn">
                 <h3>{monster.name}</h3>
@@ -104,7 +102,6 @@ export default function MonsterCard({
                     <p>{`Total HP: ${monster.hp}`}</p>
                     <p><span
                         className={staggeredClass}
-                        id={`accent${index}`}
                     >{`Current HP: ${monster.health}`}</span></p>
                 </div>
             </div>
@@ -158,7 +155,7 @@ export default function MonsterCard({
                         name={`mooks${index}`}
                         onChange={handleMookNumber}
                     />
-                    <p id={`mookstatus${index}`}>Number of Mooks: {monster.mookNumber}</p>
+                    <p className="bold">Number of Mooks: {monster.mookNumber}</p>
                 </div>
             }
            
