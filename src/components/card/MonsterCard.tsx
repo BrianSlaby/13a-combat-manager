@@ -22,9 +22,25 @@ export default function MonsterCard({
             const cardIndex = parseInt(event.currentTarget.dataset.cardindex)
 
             const newSelectedMonsters = [...selectedMonsters.slice(0, cardIndex), ...selectedMonsters.slice(cardIndex + 1)]
-            
+
             setSelectedMonsters(newSelectedMonsters)
         }        
+    }
+
+    function handleMookNumber(event: React.ChangeEvent<HTMLInputElement>) {
+        if (event.currentTarget.dataset.mookinput) {
+            const cardIndex = parseInt(event.currentTarget.dataset.mookinput)
+            const currentMonsterObj = {...selectedMonsters[cardIndex]}
+
+            if (event.currentTarget.value) {
+                currentMonsterObj.mookNumber = parseInt(event.currentTarget.value)
+                currentMonsterObj.health = currentMonsterObj.hp * currentMonsterObj.mookNumber
+
+                const newSelectedMonsters = [...selectedMonsters.slice(0, cardIndex), currentMonsterObj, ...selectedMonsters.slice(cardIndex + 1)]
+
+                setSelectedMonsters(newSelectedMonsters)
+            }
+        }
     }
 
     return (
@@ -116,6 +132,7 @@ export default function MonsterCard({
                         id={`mooks${index}`}
                         name={`mooks${index}`}
                         data-mookinput={index} 
+                        onChange={handleMookNumber}
                     />
                     <p id={`mookstatus${index}`}>Number of Mooks: {monster.mookNumber}</p>
                 </div>
