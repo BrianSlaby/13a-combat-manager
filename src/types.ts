@@ -59,10 +59,12 @@ export type homeProps = {
 }
 
 export type buttonProps = {
-    onClick: () => void,
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
     children: React.ReactNode,
     style: "standard-btn" | "delete-card-btn",
-    color: "main" | "secondary" | "ghost" | "none"
+    color: "main" | "secondary" | "ghost" | "none",
+    dataset?: string,
+    datasetValue?: number | string | boolean
 }
 
 export type modalProps = {

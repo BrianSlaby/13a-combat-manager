@@ -6,15 +6,19 @@ export default function Button({
     onClick, 
     children, 
     style="standard-btn",
-    color
+    color,
+    dataset,
+    datasetValue
 }: buttonProps): React.JSX.Element {
     
     const buttonClasses = `${style} ${color}`
+    const datasetAttribute = dataset ? `data-${dataset}` : ""
 
     return (
         <button
             onClick={onClick}
             className={buttonClasses}
+            {...(datasetAttribute && {[datasetAttribute]: datasetValue})}
         >{children}</button>
     )
 }

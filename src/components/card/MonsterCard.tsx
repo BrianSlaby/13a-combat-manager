@@ -17,10 +17,14 @@ export default function MonsterCard({
     const hasAbilitySection = monster.specialAbilities || monster.nastierSpecials
 
 
-    function removeMonsterCard(cardIndex: number) {
-        const newSelectedMonsters = selectedMonsters.splice(cardIndex, 1)
-        setSelectedMonsters(newSelectedMonsters)
-        
+    function removeMonsterCard(event: React.MouseEvent<HTMLButtonElement>) {
+        if (event.currentTarget.dataset.cardindex) {
+            const cardIndex = parseInt(event.currentTarget.dataset.cardindex)
+
+            const newSelectedMonsters = [...selectedMonsters.slice(0, cardIndex), ...selectedMonsters.slice(cardIndex + 1)]
+            
+            setSelectedMonsters(newSelectedMonsters)
+        }        
     }
 
     return (
@@ -32,9 +36,11 @@ export default function MonsterCard({
             <div className="card-header card-sctn">
                 <h3>{monster.name}</h3>
                 <Button
-                    onClick={() => console.log()}
+                    onClick={removeMonsterCard}
                     style="delete-card-btn"
                     color="none"
+                    dataset="cardindex"
+                    datasetValue={index}
                 >
                     <CircleX 
                         size={25}
