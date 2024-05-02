@@ -35,7 +35,6 @@ const crbMonsterData: monsterStatBlock[] = [
             }
 
         ],
-        specialAbilities: [],
         nastierSpecials: [
             {
                 name: "Squealing Pack Attack",
@@ -119,7 +118,6 @@ const crbMonsterData: monsterStatBlock[] = [
                 effect: "3 ongoing poison damage"
             }
         ],
-        specialAbilities: [],
         isStaggered: false,
         id: 5
     },
@@ -276,7 +274,6 @@ const crbMonsterData: monsterStatBlock[] = [
                 ]
             }
         ],
-        specialAbilities: [],
         isStaggered: false,
         id: 9
     },

@@ -11,6 +11,9 @@
   --black-red-clr: #1c0306;
   --dull-blue-clr: #335C67;
   --off-white-clr: #f7f7f7;
+  --lt-gray-clr: #f2f0e9;
+  --md-gray-clr: #a6a6a6;
+  --dk-gray-clr: #757575;
 
   --anchor-light-clr: #afddfa;
   --anchor-v-light-clr: #e7cafa;
@@ -22,6 +25,7 @@ body {
   padding: 0;
   font-family: var(--main-font);
   line-height: 1.5em;
+  background-color: var(--lt-gray-clr);
 }
 
 .bold {

@@ -2,12 +2,13 @@
     max-width: 350px;
     border-radius: 12px;
     line-height: 1.25rem;
+    box-shadow: 1px 1px 3px 1px var(--dk-gray-clr);
 }
 
 .card-header {
     background-color: var(--dull-blue-clr);
     color: var(--off-white-clr);
-    border-radius: 7px 7px 0 0;
+    border-radius: 12px 12px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,6 +17,10 @@
 .card-header h3,
 .card-header button {
     margin: 0.35em;
+}
+
+.card-sctn:last-child {
+    border-radius: 0 0 12px 12px;
 }
 
 .card-sctn {
@@ -52,6 +57,10 @@
         hsl(50deg 15% 91%) 87%,
         hsl(50deg 14% 92%) 100%
         );
+}
+
+.card-subheader p {
+    margin: 0.3em;
 }
 
 .defense-sctn {
@@ -104,10 +113,6 @@
 .sub-p {
     padding-left: 1.5em;
     margin-top: -0.75em;
-}
-
-.card-sctn:last-child {
-    border-radius: 0 0 7px 7px;
 }
 
 /* ====================
