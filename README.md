@@ -17,6 +17,16 @@ Similar functionality is available in an earlier project that I developed, the [
 - Damage input fields on each card automate the math for each monster's current hit points.  Current hit point text turns red when the monster becomes staggered.  
 - Mook cards have an input for specifying how many individuals are in the mook group.  As the hit points of the mook group decrease, the card keeps an updated total for how many individuals are left in the group.
 
+## Project Status / To Do List
+
+This project is still a work in progress. It currently has the baseline functionality of the first version of this project (see Overview section), but it only contains the monsters from the 1st Edition 13th Age Core Rulebook.
+
+- ~~Update monster data from the Core Rulebook~~
+- Update monster data from Bestiary
+- Enter monster data from 13 True Ways
+- Enter monster data from 2nd Edition Core Rulebook
+- Create toggle for 1st and 2nd Edition
+
 ## Dependencies
 
 - React.js
