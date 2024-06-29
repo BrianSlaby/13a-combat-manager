@@ -6,9 +6,9 @@ The first solo project that I developed after learning JavaScript was a [13th Ag
 
 ## Live Site URL
 
-This project is currently in development, and has not been deployed yet.  
+[13th Age Combat Manager](https://13th-age-combat-manager.netlify.app/).  
 
-Similar functionality is available in an earlier project that I developed, the [13th Age Monster Damage Tracker](https://13th-age-monster-tracker.netlify.app/).  
+The older version of this project is the [13th Age Monster Damage Tracker](https://13th-age-monster-tracker.netlify.app/).  This version contains complete data for the 1st Edition 13th Age Core Rulebook and Bestiary, so if you'd like to use Bestiary monsters you should use the older app.  If you're interested in comparing the code for the two versions, the repository is located [HERE](https://github.com/BrianSlaby/13a-dmg-tracker).
 
 ## Features
 
