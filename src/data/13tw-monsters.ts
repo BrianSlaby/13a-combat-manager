@@ -4,63 +4,64 @@ import { monsterStatBlock } from "../types"
 
 const thirteenTrueWaysMonsterData: monsterStatBlock[] = [
 
-    // ANIMALS
+    // ANIMALS (3)
     // id for Wibble (Bestiary) was 322; next id is 323
     
     
-    // AZERS
+    
+    // AZERS (3)
     
     
     
-    // BAT DEMON
+    // BAT DEMON (1)
     
     
     
-    // CLOUD GIANTS
+    // CLOUD GIANTS (3)
     
     
     
-    // DEVILS
+    // DEVILS (17)
     
     
     
-    // DRAGONS, METALLIC
+    // DRAGONS, METALLIC (15)
     
     
     
-    // ELEMENTALS
+    // ELEMENTALS (16)
     
     
     
-    // FLOWER OF UNLIFE
+    // FLOWER OF UNLIFE (4)
     
     
     
-    // GNOLLS
+    // GNOLLS (2)
     
     
     
-    // MUMMY
+    // MUMMY (1)
     
     
     
-    // PIXIES
+    // PIXIES (1)
     
     
     
-    // SOUL FLENSERS
+    // SOUL FLENSERS (2)
     
     
     
-    // SPECTERS
+    // SPECTERS (2)
     
     
     
-    // TREANTS
+    // TREANTS (3)
     
     
     
-    // WEREBEASTS
+    // WEREBEASTS (5)
     
     
     
