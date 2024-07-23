@@ -1,6 +1,7 @@
 
 footer {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     gap: 2em;
     padding: 1em;
@@ -20,6 +21,20 @@ footer a:visited {
     color: var(--anchor-v-light-clr);
 }
 
-.footer-col {
-    flex-basis: 40%;
+.last-updated-text {
+    text-align: center;
+}
+
+@media (min-width: 850px) {
+    footer {
+        flex-direction: row;
+    }
+
+    .footer-col {
+        flex-basis: 40%;
+    }
+
+    .last-updated-text {
+        text-align: left;
+    }
 }
