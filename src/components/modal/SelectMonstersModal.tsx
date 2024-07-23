@@ -55,7 +55,9 @@ export default function SelectMonstersModal({
             closeModal={closeModal}
         >
             <div className="select-monsters-modal-content">
-                <div id="level-check-container">
+                <span className="level-check-header">Select Monster Levels</span>
+                <div className="level-check-container">
+
                     {
                         levels.map(level => {
                             return (
