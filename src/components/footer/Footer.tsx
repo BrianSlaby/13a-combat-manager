@@ -12,7 +12,7 @@ export default function Footer(): React.JSX.Element {
 
                 <div className="footer-col">
                     <p>Source code available at <a href="https://github.com/BrianSlaby/13a-combat-manager" target="_blank" >https://github.com/BrianSlaby/13a-combat-manager</a>.</p>
-                    <p>Updated 2024</p>
+                    <p className="last-updated-text">Updated 2024</p>
                 </div>
             </footer>
         </>
