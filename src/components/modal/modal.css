@@ -1,5 +1,6 @@
 dialog {
     border-radius: 12px;
+    max-width: 100vw;
 }
 
 .top-banner {
@@ -14,20 +15,38 @@ dialog {
 
 .select-monsters-modal-content {
     display: grid;
-    grid-template-columns: 100px auto;
-    min-width: 400px;
+}
+
+.level-check-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 1.25em;
+    column-gap: 0.25em;
+}
+
+.level-check-header {
+    margin-top: 2em;
+    margin-bottom: 0;
 }
 
 .checkbox-container {
     display: flex;
+    padding: 0.15em;
 }
 
 .level-check {
     order: -1;
+    margin-right: 0.4em;
 }
 
 #dropdown-container {
     display: flex;
     flex-direction: column;
+    order: -1;
+}
 
+@media (min-width: 500px) {
+    .select-monsters-modal-content {
+        min-width: 400px;
+    }
 }
